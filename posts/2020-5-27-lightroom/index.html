@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>How I manage my Lightroom library - Jonathon Lacher</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="How I manage my Lightroom library" />
+<meta property="og:description" content="After I bought a mirrorless micro four thirds camera last year, I&rsquo;ve entered the rabbit whole of media management." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://jonathonlacher.com/posts/2020-5-27-lightroom/" />
+<meta property="article:published_time" content="2020-05-27T13:31:34+00:00" />
+<meta property="article:modified_time" content="2020-05-27T13:31:34+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How I manage my Lightroom library"/>
+<meta name="twitter:description" content="After I bought a mirrorless micro four thirds camera last year, I&rsquo;ve entered the rabbit whole of media management."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="http://jonathonlacher.com/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<base href="http://jonathonlacher.com/">
+	<h1 class="site-title"><a href="http://jonathonlacher.com/">Jonathon Lacher</a></h1>
+	<div class="site-description"><h2>Personal site</h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/jonathonlacher" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">How I manage my Lightroom library</h1>
+			<div class="meta">Posted at &mdash; May 27, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>After I bought a <a href="https://www.getolympus.com/us/en/e-m10-mark-ii.html">mirrorless micro four thirds camera</a> last year, I&rsquo;ve entered the rabbit whole of media management.</p>
+<p>I started by shooting in JPEG and dumping the images I liked into Google Photos, simple enough, right?
+After a while, for various reasons, I started shooting in RAW.
+But after filling my first SD card full of RAW files, I realized I needed a way to process them.</p>
+<p>Lightroom seems to be the default choice, so I went with that.
+I know there are open source alternatives like <a href="https://www.darktable.org/">Darktable</a>, but I haven&rsquo;t invested much time into exploring it.</p>
+<h2 id="ratings">Ratings</h2>
+<p>I cull my photos in waves.
+I first mark for deletion any photo that I consider throwaway; such as the focus is off, or I shot a dozen photos in rapid succession and I know I won&rsquo;t even consider a few of them.</p>
+<p>Then I start staring my photos.
+I&rsquo;ll give any viable photo 1 star.
+Then I&rsquo;ll go through all the 1 star photos and give 2 stars.
+If there are enough photos, I&rsquo;ll repeat for 3 stars, and on rare occasions 4 stars.</p>
+<h2 id="developing">Developing</h2>
+<p>I won&rsquo;t touch on my editing process right now, that&rsquo;s a whole separate skill which I&rsquo;m still learning.
+But in terms of order of operations, only after culling my photos through ratings will I start developing and editing them.</p>
+<h2 id="exporting">Exporting</h2>
+<p>After I&rsquo;ve developed my photos, I&rsquo;ll export them to a more usable format like JPEG.
+I found a great Lightroom plugin called <a href="http://regex.info/blog/lightroom-goodies/folder-publisher">Jeffrey’s “Folder Publisher” Lightroom Plugin</a> which can export JPEGs in the same directory hierarchy that you store your RAW files.</p>
+<p>For example, I store my RAW files as such:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">raw_photos/
+├── 2020-5-20/
+│   ├── img223.raw
+│   ├── img224.raw
+│   └── img225.raw
+└──2020-5-23/
+    ├── img228.raw
+    └── img229.raw
+</code></pre></div><p>The plugin on execution will export JPEGs as follows:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">exported_photos/
+├── 2020-5-20/
+│   ├── img223.jpg
+│   ├── img224.jpg
+│   └── img225.jpg
+└──2020-5-23/
+    ├── img228.jpg
+    └── img229.jpg
+</code></pre></div><p>I&rsquo;ll typically export to JPEG photos with 2 stars or higher.
+At this point, they&rsquo;re ready for sharing.</p>
+
+		</div>
+
+		<div class="post-tags">
+			
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-166924647-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<script>feather.replace()</script>
+</body>
+</html>

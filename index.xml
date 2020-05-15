@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jonathon Lacher</title>
+    <link>http://jonathonlacher.com/</link>
+    <description>Recent content on Jonathon Lacher</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 May 2020 15:06:10 -0500</lastBuildDate>
+    
+	<atom:link href="http://jonathonlacher.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FCC broadband map</title>
+      <link>http://jonathonlacher.com/posts/2020-6-24-fcc-fiber/</link>
+      <pubDate>Thu, 25 Jun 2020 02:47:29 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-6-24-fcc-fiber/</guid>
+      <description>When I&amp;rsquo;m looking at property, one of the additional research steps I take is figuring out the available internet providers.</description>
+    </item>
+    
+    <item>
+      <title>How I manage my Lightroom library</title>
+      <link>http://jonathonlacher.com/posts/2020-5-27-lightroom/</link>
+      <pubDate>Wed, 27 May 2020 13:31:34 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-5-27-lightroom/</guid>
+      <description>After I bought a mirrorless micro four thirds camera last year, I&amp;rsquo;ve entered the rabbit whole of media management.</description>
+    </item>
+    
+    <item>
+      <title>Corporate Memphis</title>
+      <link>http://jonathonlacher.com/posts/2020-5-24-corperate-memphis/</link>
+      <pubDate>Mon, 25 May 2020 00:47:41 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-5-24-corperate-memphis/</guid>
+      <description>If you&amp;rsquo;re a Todoist user, you may have seen this image Even if you haven&amp;rsquo;t, the style may look familiar.</description>
+    </item>
+    
+    <item>
+      <title>Craigslist search operators</title>
+      <link>http://jonathonlacher.com/posts/2020-5-19-craigslist/</link>
+      <pubDate>Tue, 19 May 2020 23:15:21 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-5-19-craigslist/</guid>
+      <description>I&amp;rsquo;m currently searching for a second vehicle and have been trolling Craigslist postings.</description>
+    </item>
+    
+    <item>
+      <title>Sync your laptop and external monitor brightness</title>
+      <link>http://jonathonlacher.com/posts/2020-5-16-lunar/</link>
+      <pubDate>Sat, 16 May 2020 23:00:08 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-5-16-lunar/</guid>
+      <description>Since working from home, I&amp;rsquo;ve been using an external monitor more heavily.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://jonathonlacher.com/about/</link>
+      <pubDate>Fri, 15 May 2020 15:06:10 -0500</pubDate>
+      
+      <guid>http://jonathonlacher.com/about/</guid>
+      <description>New dad, currently software engineer on SRE at Target.</description>
+    </item>
+    
+  </channel>
+</rss>
