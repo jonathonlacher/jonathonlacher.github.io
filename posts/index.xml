@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Jonathon Lacher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jul 2020 02:11:15 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 02:59:22 +0000</lastBuildDate>
     
 	<atom:link href="http://jonathonlacher.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Where I get my weather forecasts</title>
+      <link>http://jonathonlacher.com/posts/2020-7-15-weather/</link>
+      <pubDate>Thu, 16 Jul 2020 02:59:22 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-7-15-weather/</guid>
+      <description>I&amp;rsquo;ve been an Android user for the last 10 years, and for the last 3-4 years I&amp;rsquo;ve been using the Dark Sky weather app.</description>
+    </item>
     
     <item>
       <title>Flickr&#39;s Camera Finder</title>
