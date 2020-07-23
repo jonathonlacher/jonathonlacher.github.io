@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Jonathon Lacher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jul 2020 02:59:22 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2020 13:17:57 +0000</lastBuildDate>
     
 	<atom:link href="http://jonathonlacher.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Why I don&#39;t listen to white noise (An ode to brown noise)</title>
+      <link>http://jonathonlacher.com/posts/2020-7-23-brown-noise/</link>
+      <pubDate>Thu, 23 Jul 2020 13:17:57 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-7-23-brown-noise/</guid>
+      <description>When I need to focus in a distracting or noisy environment, I use a combination of noise canceling headphones and brownian (brown) noise.</description>
+    </item>
     
     <item>
       <title>Where I get my weather forecasts</title>
