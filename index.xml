@@ -6,10 +6,15 @@
     <description>Recent content on Jonathon Lacher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 May 2020 15:06:10 -0500</lastBuildDate>
-    
-	<atom:link href="http://jonathonlacher.com/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sun, 29 Nov 2020 06:01:17 +0000</lastBuildDate><atom:link href="http://jonathonlacher.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Winter heating</title>
+      <link>http://jonathonlacher.com/posts/2020-11-20-heating/</link>
+      <pubDate>Sun, 29 Nov 2020 06:01:17 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2020-11-20-heating/</guid>
+      <description>We bought a house, it was built in the 1920s and the main floor uses hot water radiators as the primary heat source (boiler is a Weil-McLain CG-4).</description>
+    </item>
     
     <item>
       <title>Network debugging with MTR</title>
@@ -44,7 +49,7 @@
       <pubDate>Mon, 06 Jul 2020 02:11:15 +0000</pubDate>
       
       <guid>http://jonathonlacher.com/posts/2020-7-5-flickr/</guid>
-      <description>It&amp;rsquo;s a temptation in photography to ascribe gear like an expensive camera body or a fast n&amp;rsquo; sharp lense as the the reason great photos are great.</description>
+      <description>It&amp;rsquo;s a temptation in photography to ascribe gear like an expensive camera body or a fast n&#39; sharp lense as the the reason great photos are great.</description>
     </item>
     
     <item>
