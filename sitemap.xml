@@ -1,88 +1,57 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>http://jonathonlacher.com/</loc>
-    <lastmod>2020-11-29T06:01:17+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/</loc>
-    <lastmod>2020-11-29T06:01:17+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-11-20-heating/</loc>
-    <lastmod>2020-11-29T06:01:17+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-8-3-mtr/</loc>
-    <lastmod>2020-08-04T02:19:59+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-7-23-brown-noise/</loc>
-    <lastmod>2020-07-23T13:17:57+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-7-15-weather/</loc>
-    <lastmod>2020-07-16T02:59:22+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-7-5-flickr/</loc>
-    <lastmod>2020-07-06T02:11:15+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-6-26-podcasts/</loc>
-    <lastmod>2020-06-30T03:44:21+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-6-25-rectangle/</loc>
-    <lastmod>2020-06-26T03:24:04+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-6-24-fcc-fiber/</loc>
-    <lastmod>2020-06-25T02:47:29+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-5-27-lightroom/</loc>
-    <lastmod>2020-05-27T13:31:34+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-5-24-corperate-memphis/</loc>
-    <lastmod>2020-05-25T00:47:41+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-5-19-craigslist/</loc>
-    <lastmod>2020-05-19T23:15:21+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jonathonlacher.com/posts/2020-5-16-lunar/</loc>
-    <lastmod>2020-05-16T23:00:08+00:00</lastmod>
-  </url>
-  
   <url>
     <loc>http://jonathonlacher.com/about/</loc>
-    <lastmod>2020-05-15T15:06:10-05:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2023-01-19T04:00:46+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2022-01-18-software-design-book-1/</loc>
+    <lastmod>2023-01-19T03:45:22+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/</loc>
+    <lastmod>2023-01-19T03:45:22+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/</loc>
+    <lastmod>2023-01-19T03:45:22+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-11-20-heating/</loc>
+    <lastmod>2020-11-29T06:01:17+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-8-3-mtr/</loc>
+    <lastmod>2020-08-04T02:19:59+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-7-23-brown-noise/</loc>
+    <lastmod>2020-07-23T13:17:57+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-7-15-weather/</loc>
+    <lastmod>2020-07-16T02:59:22+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-7-5-flickr/</loc>
+    <lastmod>2020-07-06T02:11:15+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-6-26-podcasts/</loc>
+    <lastmod>2020-06-30T03:44:21+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-6-25-rectangle/</loc>
+    <lastmod>2020-06-26T03:24:04+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-6-24-fcc-fiber/</loc>
+    <lastmod>2020-06-25T02:47:29+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-5-27-lightroom/</loc>
+    <lastmod>2020-05-27T13:31:34+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-5-24-corperate-memphis/</loc>
+    <lastmod>2020-05-25T00:47:41+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-5-19-craigslist/</loc>
+    <lastmod>2020-05-19T23:15:21+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/2020-5-16-lunar/</loc>
+    <lastmod>2020-05-16T23:00:08+00:00</lastmod>
+  </url><url>
     <loc>http://jonathonlacher.com/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://jonathonlacher.com/tags/</loc>
   </url>
-  
 </urlset>

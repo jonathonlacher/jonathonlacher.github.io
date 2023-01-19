@@ -6,7 +6,25 @@
     <description>Recent content on Jonathon Lacher</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Nov 2020 06:01:17 +0000</lastBuildDate><atom:link href="http://jonathonlacher.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Jan 2023 03:45:22 +0000</lastBuildDate><atom:link href="http://jonathonlacher.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://jonathonlacher.com/about/</link>
+      <pubDate>Thu, 19 Jan 2023 04:00:46 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/about/</guid>
+      <description>Currently a software engineer at Gap Inc. Previously software engineer at Target.</description>
+    </item>
+    
+    <item>
+      <title>Book notes: A Philosophy of Software Design, Chapters 1-3</title>
+      <link>http://jonathonlacher.com/posts/2022-01-18-software-design-book-1/</link>
+      <pubDate>Thu, 19 Jan 2023 03:45:22 +0000</pubDate>
+      
+      <guid>http://jonathonlacher.com/posts/2022-01-18-software-design-book-1/</guid>
+      <description>This is the first in a series of posts of my notes on the book A Philosophy of Software Design by John Ousterhout.</description>
+    </item>
+    
     <item>
       <title>Winter heating</title>
       <link>http://jonathonlacher.com/posts/2020-11-20-heating/</link>
@@ -49,7 +67,7 @@
       <pubDate>Mon, 06 Jul 2020 02:11:15 +0000</pubDate>
       
       <guid>http://jonathonlacher.com/posts/2020-7-5-flickr/</guid>
-      <description>It&amp;rsquo;s a temptation in photography to ascribe gear like an expensive camera body or a fast n&#39; sharp lense as the the reason great photos are great.</description>
+      <description>It&amp;rsquo;s a temptation in photography to ascribe gear like an expensive camera body or a fast n&amp;rsquo; sharp lense as the the reason great photos are great.</description>
     </item>
     
     <item>
@@ -113,15 +131,6 @@
       
       <guid>http://jonathonlacher.com/posts/2020-5-16-lunar/</guid>
       <description>Since working from home, I&amp;rsquo;ve been using an external monitor more heavily.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://jonathonlacher.com/about/</link>
-      <pubDate>Fri, 15 May 2020 15:06:10 -0500</pubDate>
-      
-      <guid>http://jonathonlacher.com/about/</guid>
-      <description>New dad, currently software engineer on SRE at Target.</description>
     </item>
     
   </channel>
