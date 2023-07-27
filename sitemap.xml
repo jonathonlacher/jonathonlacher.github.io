@@ -2,16 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://jonathonlacher.com/posts/2023-07-27-kinesis-day-1/</loc>
+    <lastmod>2023-07-27T13:04:54+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/</loc>
+    <lastmod>2023-07-27T13:04:54+00:00</lastmod>
+  </url><url>
+    <loc>http://jonathonlacher.com/posts/</loc>
+    <lastmod>2023-07-27T13:04:54+00:00</lastmod>
+  </url><url>
     <loc>http://jonathonlacher.com/about/</loc>
     <lastmod>2023-01-19T04:00:46+00:00</lastmod>
   </url><url>
     <loc>http://jonathonlacher.com/posts/2022-01-18-software-design-book-1/</loc>
-    <lastmod>2023-01-19T03:45:22+00:00</lastmod>
-  </url><url>
-    <loc>http://jonathonlacher.com/</loc>
-    <lastmod>2023-01-19T03:45:22+00:00</lastmod>
-  </url><url>
-    <loc>http://jonathonlacher.com/posts/</loc>
     <lastmod>2023-01-19T03:45:22+00:00</lastmod>
   </url><url>
     <loc>http://jonathonlacher.com/posts/2020-11-20-heating/</loc>
