@@ -4,143 +4,114 @@
     <title>Posts on Jonathon Lacher</title>
     <link>http://jonathonlacher.com/posts/</link>
     <description>Recent content in Posts on Jonathon Lacher</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Oct 2023 03:38:59 +0000</lastBuildDate><atom:link href="http://jonathonlacher.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Oct 2023 03:38:59 +0000</lastBuildDate>
+    <atom:link href="http://jonathonlacher.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kinesis update</title>
       <link>http://jonathonlacher.com/posts/2023-10-25-kinesis-update/</link>
       <pubDate>Thu, 26 Oct 2023 03:38:59 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2023-10-25-kinesis-update/</guid>
-      <description>It&amp;rsquo;s much more difficult to learn a new keyboard that I thought.</description>
+      <description>&lt;p&gt;It&amp;rsquo;s much more difficult to learn a new keyboard that I thought.&#xA;The multi-key shortcuts are the hardest to re-learn.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Day 1 trying the Kinesis Advantage 2</title>
       <link>http://jonathonlacher.com/posts/2023-07-27-kinesis-day-1/</link>
       <pubDate>Thu, 27 Jul 2023 13:04:54 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2023-07-27-kinesis-day-1/</guid>
-      <description>Why am I trying an ergo keyboard? Was starting to feel some mild hand pain, and I&amp;rsquo;ve never bought my own keyboard before, so this seemed like a good excuse to try something new.</description>
+      <description>&lt;p&gt;Why am I trying an ergo keyboard?&#xA;Was starting to feel some mild hand pain, and I&amp;rsquo;ve never bought my own keyboard before, so this seemed like a good excuse to try something new.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Book notes: A Philosophy of Software Design, Chapters 1-3</title>
       <link>http://jonathonlacher.com/posts/2022-01-18-software-design-book-1/</link>
       <pubDate>Thu, 19 Jan 2023 03:45:22 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2022-01-18-software-design-book-1/</guid>
-      <description>This is the first in a series of posts of my notes on the book A Philosophy of Software Design by John Ousterhout.</description>
+      <description>&lt;p&gt;This is the first in a series of posts of my notes on the book &lt;a href=&#34;https://web.stanford.edu/~ouster/cgi-bin/book.php&#34;&gt;A Philosophy of Software Design&lt;/a&gt; by John Ousterhout.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Winter heating</title>
       <link>http://jonathonlacher.com/posts/2020-11-20-heating/</link>
       <pubDate>Sun, 29 Nov 2020 06:01:17 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-11-20-heating/</guid>
-      <description>We bought a house, it was built in the 1920s and the main floor uses hot water radiators as the primary heat source (boiler is a Weil-McLain CG-4).</description>
+      <description>&lt;p&gt;We bought a house, it was built in the 1920s and the main floor uses hot water radiators as the primary heat source (boiler is a &lt;a href=&#34;https://www.weil-mclain.com/sites/default/files/field-file/cgm-pcg-series-4-manual_1.pdf&#34;&gt;Weil-McLain CG-4&lt;/a&gt;). I also have a &lt;a href=&#34;https://nonul.mylinkdrive.com/item/MXZ-3A30NA-1.html&#34;&gt;three zone Mitsubishi mini-split system&lt;/a&gt;, with two zones upstairs and one on the main floor. The upstairs also has electric baseboard heat in all rooms.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Network debugging with MTR</title>
       <link>http://jonathonlacher.com/posts/2020-8-3-mtr/</link>
       <pubDate>Tue, 04 Aug 2020 02:19:59 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-8-3-mtr/</guid>
-      <description>I&amp;rsquo;ve been dealing with intermittent packet loss at my current home connection.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been dealing with intermittent packet loss at my current home connection. I initially wasn&amp;rsquo;t sure if the issue was with my home router/switch or my ISP. With MTR, I found the issue wasn&amp;rsquo;t with my home equipment, but somewhere after my ISP&amp;rsquo;s router.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Why I don&#39;t listen to white noise (An ode to brown noise)</title>
       <link>http://jonathonlacher.com/posts/2020-7-23-brown-noise/</link>
       <pubDate>Thu, 23 Jul 2020 13:17:57 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-7-23-brown-noise/</guid>
-      <description>When I need to focus in a distracting or noisy environment, I use a combination of noise canceling headphones and brownian (brown) noise.</description>
+      <description>&lt;p&gt;When I need to focus in a distracting or noisy environment, I use a combination of &lt;a href=&#34;https://www.bose.com/en_us/support/products/bose_headphones_support/bose_around_ear_headphones_support/quietcomfort-25-acoustic-noise-cancelling-headphones-apple-devices.html&#34;&gt;noise canceling headphones&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Brownian_noise&#34;&gt;brownian (brown) noise&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Where I get my weather forecasts</title>
       <link>http://jonathonlacher.com/posts/2020-7-15-weather/</link>
       <pubDate>Thu, 16 Jul 2020 02:59:22 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-7-15-weather/</guid>
-      <description>I&amp;rsquo;ve been an Android user for the last 10 years, and for the last 3-4 years I&amp;rsquo;ve been using the Dark Sky weather app.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been an Android user for the last 10 years, and for the last 3-4 years I&amp;rsquo;ve been using the &lt;a href=&#34;https://darksky.net/&#34;&gt;Dark Sky&lt;/a&gt; weather app.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Flickr&#39;s Camera Finder</title>
       <link>http://jonathonlacher.com/posts/2020-7-5-flickr/</link>
       <pubDate>Mon, 06 Jul 2020 02:11:15 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-7-5-flickr/</guid>
-      <description>It&amp;rsquo;s a temptation in photography to ascribe gear like an expensive camera body or a fast n&amp;rsquo; sharp lense as the the reason great photos are great.</description>
+      <description>&lt;p&gt;It&amp;rsquo;s a temptation in photography to ascribe gear like an expensive camera body or a fast n&amp;rsquo; sharp lense as the the reason great photos are great.&#xA;As if the gear itself will propel my photos from &amp;ldquo;ok&amp;rdquo; to &amp;ldquo;great&amp;rdquo;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Podcasts I like</title>
       <link>http://jonathonlacher.com/posts/2020-6-26-podcasts/</link>
       <pubDate>Tue, 30 Jun 2020 03:44:21 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-6-26-podcasts/</guid>
-      <description>Pocket Casts (my preferred podcast player) says I&amp;rsquo;ve listened to 1038 hours of audio since 2015.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.pocketcasts.com/&#34;&gt;Pocket Casts&lt;/a&gt; (my preferred podcast player) says I&amp;rsquo;ve listened to 1038 hours of audio since 2015.&#xA;This sounds like a lot, but per week it&amp;rsquo;s only &lt;code&gt;1038 / 5 / 52&lt;/code&gt; ~ 4 hours.&#xA;But it&amp;rsquo;s the consistency that counts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Mac window wrangling</title>
       <link>http://jonathonlacher.com/posts/2020-6-25-rectangle/</link>
       <pubDate>Fri, 26 Jun 2020 03:24:04 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-6-25-rectangle/</guid>
-      <description>I&amp;rsquo;ll admit that my experience with macOS/OSX only goes back a few years, but I was instantly frustrated with window management.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ll admit that my experience with macOS/OSX only goes back a few years, but I was instantly frustrated with window management.&#xA;Most folks around me seemed to have a sea of small windows that would pile up over the course of a day, maybe they would use mission control to switch between windows.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>FCC broadband map</title>
       <link>http://jonathonlacher.com/posts/2020-6-24-fcc-fiber/</link>
       <pubDate>Thu, 25 Jun 2020 02:47:29 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-6-24-fcc-fiber/</guid>
-      <description>When I&amp;rsquo;m looking at property, one of the additional research steps I take is figuring out the available internet providers.</description>
+      <description>&lt;p&gt;When I&amp;rsquo;m looking at property, one of the additional research steps I take is figuring out the available internet providers.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>How I manage my Lightroom library</title>
       <link>http://jonathonlacher.com/posts/2020-5-27-lightroom/</link>
       <pubDate>Wed, 27 May 2020 13:31:34 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-5-27-lightroom/</guid>
-      <description>After I bought a mirrorless micro four thirds camera last year, I&amp;rsquo;ve entered the rabbit whole of media management.</description>
+      <description>&lt;p&gt;After I bought a &lt;a href=&#34;https://www.getolympus.com/us/en/e-m10-mark-ii.html&#34;&gt;mirrorless micro four thirds camera&lt;/a&gt; last year, I&amp;rsquo;ve entered the rabbit whole of media management.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Corporate Memphis</title>
       <link>http://jonathonlacher.com/posts/2020-5-24-corperate-memphis/</link>
       <pubDate>Mon, 25 May 2020 00:47:41 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-5-24-corperate-memphis/</guid>
-      <description>If you&amp;rsquo;re a Todoist user, you may have seen this image Even if you haven&amp;rsquo;t, the style may look familiar.</description>
+      <description>&lt;p&gt;If you&amp;rsquo;re a &lt;a href=&#34;https://todoist.com/&#34;&gt;Todoist&lt;/a&gt; user, you may have seen this image&#xA;&lt;img src=&#34;http://jonathonlacher.com/images/todoist.png#responsive&#34; alt=&#34;&#34;&gt;&#xA;Even if you haven&amp;rsquo;t, the style may look familiar.&#xA;&lt;a href=&#34;https://www.are.na/claire-l-evans/corporate-memphis&#34;&gt;100s (1000s?) of organizations use the same style&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Craigslist search operators</title>
       <link>http://jonathonlacher.com/posts/2020-5-19-craigslist/</link>
       <pubDate>Tue, 19 May 2020 23:15:21 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-5-19-craigslist/</guid>
-      <description>I&amp;rsquo;m currently searching for a second vehicle and have been trolling Craigslist postings.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m currently searching for a second vehicle and have been trolling Craigslist postings.&#xA;I have &lt;a href=&#34;https://www.craigslist.org/about/saved_searches_and_alerts&#34;&gt;saved searches&lt;/a&gt; set up, but was receiving a lot of false positives because nothing stops unrelated postings from keyword stuffing.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Sync your laptop and external monitor brightness</title>
       <link>http://jonathonlacher.com/posts/2020-5-16-lunar/</link>
       <pubDate>Sat, 16 May 2020 23:00:08 +0000</pubDate>
-      
       <guid>http://jonathonlacher.com/posts/2020-5-16-lunar/</guid>
-      <description>Since working from home, I&amp;rsquo;ve been using an external monitor more heavily.</description>
+      <description>&lt;p&gt;Since working from home, I&amp;rsquo;ve been using an external monitor more heavily.&#xA;The light in my office changes throughout the day, and I found myself adjusting the brightness on my Macbook and external monitor separately.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
