@@ -6,8 +6,22 @@
     <description>Recent content in Posts on Jonathon Lacher</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Oct 2023 03:38:59 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Nov 2024 11:26:30 +0000</lastBuildDate>
     <atom:link href="http://jonathonlacher.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Planes Overhead</title>
+      <link>http://jonathonlacher.com/posts/2024-11-17-planes/</link>
+      <pubDate>Sun, 17 Nov 2024 11:26:30 +0000</pubDate>
+      <guid>http://jonathonlacher.com/posts/2024-11-17-planes/</guid>
+      <description>&lt;p&gt;For seeing what planes are overhead, I&amp;rsquo;ve been using &lt;a href=&#34;https://globe.adsbexchange.com/&#34;&gt;ADS-B Exchange&lt;/a&gt; since its a free-er version of the more commercial apps.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DOD Contracts</title>
+      <link>http://jonathonlacher.com/posts/2024-11-17-dod/</link>
+      <pubDate>Sun, 17 Nov 2024 07:41:35 +0000</pubDate>
+      <guid>http://jonathonlacher.com/posts/2024-11-17-dod/</guid>
+      <description>&lt;p&gt;Apparently most (all?) new DOD contracts are posted to &lt;a href=&#34;https://www.defense.gov/News/Contracts/&#34;&gt;this page&lt;/a&gt;?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Kinesis update</title>
       <link>http://jonathonlacher.com/posts/2023-10-25-kinesis-update/</link>
