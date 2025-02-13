@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Home assistant - Jonathon Lacher</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:url" content="http://jonathonlacher.com/posts/2025-02-11-a/">
+  <meta property="og:site_name" content="Jonathon Lacher">
+  <meta property="og:title" content="Home assistant">
+  <meta property="og:description" content="sfsdfsaf sdf sadf sdf sfda fdsa fsda dsfa adf fsafd">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-11T23:15:49+00:00">
+    <meta property="article:modified_time" content="2025-02-11T23:15:49+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Home assistant">
+  <meta name="twitter:description" content="sfsdfsaf sdf sadf sdf sfda fdsa fsda dsfa adf fsafd">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/main.css" /><link rel="stylesheet" type="text/css" href="http://jonathonlacher.com/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="http://jonathonlacher.com/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<base href="http://jonathonlacher.com/">
+	<h1 class="site-title"><a href="http://jonathonlacher.com/">Jonathon Lacher</a></h1>
+	<div class="site-description"><h2>My little blog</h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/jonathonlacher" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Home assistant</h1>
+			<div class="meta">Posted at &mdash; Feb 11, 2025</div>
+		</div>
+
+		<div class="markdown">
+			<p>sfsdfsaf sdf sadf sdf sfda fdsa fsda dsfa adf fsafd</p>
+<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#268bd2">alias</span>: Auto Humidifier
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">description</span>: &gt;-<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">  Control humidifier based on humidity levels and outdoor temperature forecast
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">  with bias towards staying on. Uses a comfort band approach considering
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">  forecasts up to 9 hours ahead.</span>  
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">triggers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#268bd2">trigger</span>: state
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">entity_id</span>: sensor.third_reality_inc_3rths24bz_humidity_3
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">for</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">minutes</span>: <span style="color:#2aa198">2</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#268bd2">trigger</span>: state
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">entity_id</span>: sensor.kstp_temperature
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">for</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">minutes</span>: <span style="color:#2aa198">2</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#268bd2">trigger</span>: event
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">event_type</span>: test_auto_humidifier
+</span></span><span style="display:flex;"><span>  - <span style="color:#268bd2">trigger</span>: time_pattern
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">hours</span>: /1
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">minutes</span>: <span style="color:#2aa198">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#268bd2">seconds</span>: <span style="color:#2aa198">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">actions</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#268bd2">variables</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">temp_current</span>: <span style="color:#2aa198">&#34;{{ states(&#39;sensor.kstp_temperature&#39;) | float(-999) }}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">temp_1hr</span>: <span style="color:#2aa198">&#34;{{ states(&#39;sensor.kstp_1hr_forecast&#39;) | float(-999) }}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">temp_6hr</span>: <span style="color:#2aa198">&#34;{{ states(&#39;sensor.kstp_6hr_forecast&#39;) | float(-999) }}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">temp_9hr</span>: <span style="color:#2aa198">&#34;{{ states(&#39;sensor.kstp_9hr_forecast&#39;) | float(-999) }}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">temp_values</span>: |-<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {{ [temp_current, temp_1hr, temp_6hr, temp_9hr]
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">           | select(&#39;&gt;=&#39;, -50)
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">           | select(&#39;&lt;=&#39;, 60)
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">           | list }}</span>        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">temp_avg</span>: &gt;-<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% if not temp_values %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          {{ -999 }}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% else %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          {% set comfort_temp = temp_values[0] | float %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          {% set future_extreme = (temp_values | min if (temp_values | min) &lt; comfort_temp else temp_values | max) | float %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          {% set comfort_band = 7 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          {% if (future_extreme - comfort_temp) | abs &gt; comfort_band %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">            {% if future_extreme &lt; comfort_temp %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">              {{ (comfort_temp + future_extreme * 2) / 3 }}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">            {% else %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">              {{ (comfort_temp * 2 + future_extreme) / 3 }}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">            {% endif %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          {% else %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">            {{ comfort_temp }}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          {% endif %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% endif %}</span>        
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">current</span>: &gt;-<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {{ states(&#39;sensor.third_reality_inc_3rths24bz_humidity_3&#39;) | float(-999)
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        }}</span>        
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">buffer_off</span>: <span style="color:#2aa198">1.5</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">buffer_on</span>: <span style="color:#2aa198">0.5</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">target</span>: |<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% if temp_avg &gt; 40 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          42.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 35 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          40.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 30 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          39.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 25 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          37.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 20 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          36.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 15 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          34.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 10 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          33.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 5 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          32.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; 0 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          30.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -5 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          29.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -10 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          28.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -15 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          27.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -20 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          26.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -25 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          26.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -30 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          25.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -35 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          25.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif temp_avg &gt; -40 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          24.5
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% else %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          24.0
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% endif %}</span>        
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">target_low</span>: <span style="color:#2aa198">&#34;{{ target | float - buffer_on }}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">target_high</span>: <span style="color:#2aa198">&#34;{{ target | float + buffer_off }}&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#268bd2">action</span>: |<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% if temp_avg == -999 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          none
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif current == -999 %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          none
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif not (current &gt; 0 and current &lt; 100) %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          none
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif not (temp_avg &gt; -50 and temp_avg &lt; 60) %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          none
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif current &lt; target_low %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          turn_on
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% elif current &gt; target_high %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          turn_off
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% else %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">          none
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">        {% endif %}</span>        
+</span></span><span style="display:flex;"><span>  - <span style="color:#268bd2">choose</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#268bd2">conditions</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">condition</span>: template
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">value_template</span>: <span style="color:#2aa198">&#34;{{ action == &#39;turn_on&#39; or action == &#39;turn_off&#39; }}&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">sequence</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">data</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#268bd2">title</span>: Humidifier Automation Status
+</span></span><span style="display:flex;"><span>              <span style="color:#268bd2">message</span>: &gt;-<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                Action Taken: Humidifier {{ action | replace(&#39;_&#39;, &#39; &#39;) }}.
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                Temperatures:
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Current: {{ temp_current }}°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • 1hr Forecast: {{ temp_1hr }}°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • 6hr Forecast: {{ temp_6hr }}°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • 9hr Forecast: {{ temp_9hr }}°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Future Extreme: {% set temps = [temp_current, temp_1hr, temp_6hr, temp_9hr] | select(&#39;&gt;=&#39;, -50) | select(&#39;&lt;=&#39;, 60) | list %}{% set future_extreme = temps|min if temps|min &lt; temps|first else temps|max %}{{ future_extreme | float }}°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                Temperature Analysis:
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Change from Current: {% set change = (future_extreme | float) - (temps|first | float) %}{{ change | round(1) }}°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Trend: {% if change &gt; 7 %}Significant Warming{% elif change &lt; -7 %}Significant Cooling{% else %}Stable{% endif %}
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Comfort Band: ±7°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Calculated Average: {{ temp_avg | round(1) }}°F
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                Humidity:
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Current: {{ current | round(1) }}%
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Target: {{ target | float | round(1) }}%
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                • Target Range: {{ target_low | round(1) }}% to {{ target_high | round(1) }}%
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                Current Humidifier State: {{ states(&#39;switch.humidifier_switch_3&#39;) }}</span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">action</span>: persistent_notification.create
+</span></span><span style="display:flex;"><span>  - <span style="color:#268bd2">choose</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#268bd2">conditions</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">condition</span>: template
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">value_template</span>: <span style="color:#2aa198">&#34;{{ action == &#39;turn_on&#39; }}&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">sequence</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">target</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#268bd2">entity_id</span>: switch.humidifier_switch_3
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">action</span>: switch.turn_on
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">data</span>: {}
+</span></span><span style="display:flex;"><span>      - <span style="color:#268bd2">conditions</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">condition</span>: template
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">value_template</span>: <span style="color:#2aa198">&#34;{{ action == &#39;turn_off&#39; }}&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">sequence</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">target</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#268bd2">entity_id</span>: switch.humidifier_switch_3
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">action</span>: switch.turn_off
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">data</span>: {}
+</span></span><span style="display:flex;"><span>      - <span style="color:#268bd2">conditions</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">condition</span>: template
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">value_template</span>: <span style="color:#2aa198">&#34;{{ action == &#39;none&#39; and (temp_avg == -999 or current == -999) }}&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#268bd2">sequence</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#268bd2">data</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#268bd2">title</span>: Humidifier Error
+</span></span><span style="display:flex;"><span>              <span style="color:#268bd2">message</span>: &gt;<span style="color:#2aa198">
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                Sensor error detected. Current Temp: {{ temp_current }}°F,  1hr
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                Forecast: {{ temp_1hr }}°F,  6hr Forecast: {{ temp_6hr }}°F,
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                9hr Forecast: {{ temp_9hr }}°F,  Average Temp: {{ temp_avg
+</span></span></span><span style="display:flex;"><span><span style="color:#2aa198">                }}°F,  Humidity: {{ current }}%</span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#268bd2">action</span>: persistent_notification.create
+</span></span><span style="display:flex;"><span><span style="color:#268bd2">mode</span>: single
+</span></span></code></pre></div>
+		</div>
+
+		<div class="post-tags">
+			
+				
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div><script>feather.replace()</script>
+</body>
+</html>
