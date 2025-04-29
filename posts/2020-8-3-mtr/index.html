@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Network debugging with MTR - Jonathon Lacher</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://jonathonlacher.com/posts/2020-8-3-mtr/">
+	<meta property="og:url" content="https://jonathonlacher.com/posts/2020-8-3-mtr/">
   <meta property="og:site_name" content="Jonathon Lacher">
   <meta property="og:title" content="Network debugging with MTR">
   <meta property="og:description" content="I’ve been dealing with intermittent packet loss at my current home connection. I initially wasn’t sure if the issue was with my home router/switch or my ISP. With MTR, I found the issue wasn’t with my home equipment, but somewhere after my ISP’s router.
@@ -20,21 +20,22 @@ MTR has been around for a few decades now, but I discovered it in the past few y
 MTR has been around for a few decades now, but I discovered it in the past few years. It’s a mashup of traceroute and ping and is useful for diagnosing network issues and quality. It essentially shows each hop between you and the endpoint, with packet loss percentage and ping information to each hop.">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/main.css" /><link rel="stylesheet" type="text/css" href="http://jonathonlacher.com/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/styles.css" />
 
+	
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-	<script src="http://jonathonlacher.com/js/main.js"></script>
 </head>
 
 <body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://jonathonlacher.com/">
-	<h1 class="site-title"><a href="http://jonathonlacher.com/">Jonathon Lacher</a></h1>
+	<div class="container wrapper">
+		<header class="header">
+	<base href="https://jonathonlacher.com/">
+	<h1 class="site-title"><a href="https://jonathonlacher.com/">Jonathon Lacher</a></h1>
 	<div class="site-description"><h2>My little blog</h2><nav class="nav social">
-			<ul class="flat"><a href="https://github.com/jonathonlacher" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul>
-		</nav>
+			<ul class="flat"><a href="https://github.com/jonathonlacher" title="GitHub"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul><script>
+				feather.replace();
+			</script></nav>
 	</div>
 
 	<nav class="nav">
@@ -50,16 +51,19 @@ MTR has been around for a few decades now, but I discovered it in the past few y
 			
 		</ul>
 	</nav>
-</div>
+</header>
 
 
-		<div class="post-header">
-			<h1 class="title">Network debugging with MTR</h1>
-			<div class="meta">Posted at &mdash; Aug 4, 2020</div>
-		</div>
+		<main>
+			
+<div class="post">
+	<div class="post-header">
+		<h1 class="title">Network debugging with MTR</h1>
+		<div class="meta">Posted at &mdash; Aug 4, 2020</div>
+	</div>
 
-		<div class="markdown">
-			<p>I&rsquo;ve been dealing with intermittent packet loss at my current home connection. I initially wasn&rsquo;t sure if the issue was with my home router/switch or my ISP. With MTR, I found the issue wasn&rsquo;t with my home equipment, but somewhere after my ISP&rsquo;s router.</p>
+	<div class="markdown">
+		<p>I&rsquo;ve been dealing with intermittent packet loss at my current home connection. I initially wasn&rsquo;t sure if the issue was with my home router/switch or my ISP. With MTR, I found the issue wasn&rsquo;t with my home equipment, but somewhere after my ISP&rsquo;s router.</p>
 <p><a href="https://github.com/traviscross/mtr">MTR</a> has been around for a few decades now, but I discovered it in the past few years. It&rsquo;s a mashup of traceroute and ping and is useful for diagnosing network issues and quality. It essentially shows each hop between you and the endpoint, with packet loss percentage and ping information to each hop.</p>
 <div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; sudo mtr jonathonlacher.com
 </span></span><span style="display:flex;"><span>                             My traceroute  <span style="color:#719e07">[</span>v0.93<span style="color:#719e07">]</span>
@@ -84,18 +88,17 @@ MTR has been around for a few decades now, but I discovered it in the past few y
 </span></span><span style="display:flex;"><span>I: Interarrival Jitter
 </span></span></code></pre></div><p>To dig deeper, look at <a href="https://www.linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/">Linode&rsquo;s comprehensive article on MTR</a> which includes longer explanations of how MTR works, how to interpret test results, and how to use TCP mode.</p>
 
-		</div>
+	</div>
+</div>
 
-		<div class="post-tags">
-			
-				
-			
-		</div>
-		</div>
-	<div class="footer wrapper">
+		</main>
+
+		<footer class="footer wrapper">
 	<nav class="nav">
 		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
-</div><script>feather.replace()</script>
+</footer>
+
+	</div>
 </body>
 </html>

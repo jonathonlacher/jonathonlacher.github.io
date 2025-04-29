@@ -282,6 +282,26 @@ text-decoration: none !important;
   margin-bottom: 4px;
 }
 
+.recent-posts .posts .post .description {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.recent-posts .posts .post a.read-more {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.85em;
+  background-color: transparent;
+  color: #a00;
+  padding: 0;
+}
+
+.recent-posts .posts .post a.read-more:hover {
+  text-decoration: underline;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 .post .post-header {
   margin-bottom: 30px;
 }

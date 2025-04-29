@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Book notes: A Philosophy of Software Design, Chapters 1-3 - Jonathon Lacher</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://jonathonlacher.com/posts/2022-01-18-software-design-book-1/">
+	<meta property="og:url" content="https://jonathonlacher.com/posts/2022-01-18-software-design-book-1/">
   <meta property="og:site_name" content="Jonathon Lacher">
   <meta property="og:title" content="Book notes: A Philosophy of Software Design, Chapters 1-3">
   <meta property="og:description" content="This is the first in a series of posts of my notes on the book A Philosophy of Software Design by John Ousterhout.
@@ -22,21 +22,22 @@ Most of my notes are loosely copied quotes, paraphrases, or summaries of my unde
 Intro The greatest limitation in writing software is our ability to understand the systems we are creating. (1) There are two approaches to fighting complexity. Eliminate complexity by making code simpler and more obvious. (2) Encapsulate it, so you can work on the system without being exposed to all the complexity at once (2) Book as two goals: (3) Describe the nature of software complexity, what does “complexity” mean, why does it matter, how can you recognize it? Present techniques you can use to help minimize complexity. Best way to use this book is in conjunction with code reviews. (4) Good way to improve design skills to to learn go recognize red flags (4) Moderation and discretion is important. Everything has limits, don’t take the ideas in this book to the extreme. (4) Chapter 2 Complexity is anything related to the structure of a software system that makes it hard to understand and modify. (5) Complexity is more apparent to readers than writers. (6) Symptoms of complexity: Change amplification: A seemingly simple change requires modifications in many places. (7) Cognitive load: An engineer needs to spend a lot more time learning and needs to hold much more info in their mind to make the change. Complexity isn’t measured in the number of lines; sometimes the more verbose version of code is simpler because it’s not trying to be clever. (7) Unknown unknowns: When it’s not obvious what pieces of code must be modified to complete a task or even what info is needed to complete the task. This is the worst symptom, since you only find out about it after something unknown rears its head. (9) Causes of complexity: Dependencies A dep exists when a piece of code can’t be understood and modified in isolation. (9) Deps can’t be eliminated, but we can be intentional. Two goals of software design: (10) 1. Reduce the number of deps 2. Make deps that remain simple and obvious Obscurity Occurs when important information is not obvious. Obscurity is often associated with deps, where it’s not obvious that a dep exists. (10) Inconsistency is also a major contributor to obscurity. The need for extensive docs is often a red flag that the design isn’t good. Complexity isn’t caused by a single terrible error, but accumulates in small chunks over time. (11) Once complexity has accumulated, it’s hard to eliminate since fixing any one issue won’t make a big difference. (11) In order to slow the growth of complexity, we must have a zero tolerance approach. Chapter 3 Tactical programming is the mindset of only getting something working, nothing else is considered. (13) The problem with tactical programming is it’s short sighted. The accumulation of just trying to introduce a new feature or fix a bug introduces complexity and kludges, which is how systems get complicated. (13) Once you start taking the tactical approach, it’s difficult to change. (14) Tactical tornado: A prolific programmer who pumps out code faster than others but in a totally tactical fashion. They may be admired by management, but they leave a wake of destruction and messes that other engineers must clean up. (14) Strategic programming: Working code isn’t enough. The most important thing is the long-term structure of the system. Your primary goal is to produce a great design which also happens to work. (14) Strategic programming requires an investment mindset. Rather than taking the shortest and fastest path to finishing something, you must invest time to improve the design of the system. (15) Continually make small improvements to system design: (15) Iterate on a design, don’t use the first one you think of. Imagine a few ways a system might need to be changed in the future and make sure the current design makes this easy. Write good documentation. Big upfront investments in design don’t work, this is waterfall. The best approach is lots of small investments on a continual basis. (15) Suggestion: spend 10%-20% of total development time on investments. While you make take 10-20% longer at first, these will pay off in the long-run and future changes will be easier. (15-16) Once a codebase is spaghetti, it’s nearly impossible to fix. (17) The most important factor of success in a company is the quality of its engineers. The best engineers care deeply about good design. (17) Once you start delaying design improvements, it’s easy for delays to become permanent and your culture will slip into the tactical approach. (18)">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://jonathonlacher.com/css/main.css" /><link rel="stylesheet" type="text/css" href="http://jonathonlacher.com/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/styles.css" />
 
+	
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-	<script src="http://jonathonlacher.com/js/main.js"></script>
 </head>
 
 <body>
-	<div class="container wrapper post">
-		<div class="header">
-	<base href="http://jonathonlacher.com/">
-	<h1 class="site-title"><a href="http://jonathonlacher.com/">Jonathon Lacher</a></h1>
+	<div class="container wrapper">
+		<header class="header">
+	<base href="https://jonathonlacher.com/">
+	<h1 class="site-title"><a href="https://jonathonlacher.com/">Jonathon Lacher</a></h1>
 	<div class="site-description"><h2>My little blog</h2><nav class="nav social">
-			<ul class="flat"><a href="https://github.com/jonathonlacher" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul>
-		</nav>
+			<ul class="flat"><a href="https://github.com/jonathonlacher" title="GitHub"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul><script>
+				feather.replace();
+			</script></nav>
 	</div>
 
 	<nav class="nav">
@@ -52,16 +53,19 @@ Intro The greatest limitation in writing software is our ability to understand t
 			
 		</ul>
 	</nav>
-</div>
+</header>
 
 
-		<div class="post-header">
-			<h1 class="title">Book notes: A Philosophy of Software Design, Chapters 1-3</h1>
-			<div class="meta">Posted at &mdash; Jan 19, 2023</div>
-		</div>
+		<main>
+			
+<div class="post">
+	<div class="post-header">
+		<h1 class="title">Book notes: A Philosophy of Software Design, Chapters 1-3</h1>
+		<div class="meta">Posted at &mdash; Jan 19, 2023</div>
+	</div>
 
-		<div class="markdown">
-			<p>This is the first in a series of posts of my notes on the book <a href="https://web.stanford.edu/~ouster/cgi-bin/book.php">A Philosophy of Software Design</a> by John Ousterhout.</p>
+	<div class="markdown">
+		<p>This is the first in a series of posts of my notes on the book <a href="https://web.stanford.edu/~ouster/cgi-bin/book.php">A Philosophy of Software Design</a> by John Ousterhout.</p>
 <p>Most of my notes are loosely copied quotes, paraphrases, or summaries of my understanding.
 I&rsquo;ve included the page number (from my edition) in parentheses.</p>
 <h2 id="intro">Intro</h2>
@@ -141,18 +145,17 @@ I&rsquo;ve included the page number (from my edition) in parentheses.</p>
 <li>Once you start delaying design improvements, it&rsquo;s easy for delays to become permanent and your culture will slip into the tactical approach. (18)</li>
 </ol>
 
-		</div>
+	</div>
+</div>
 
-		<div class="post-tags">
-			
-				
-			
-		</div>
-		</div>
-	<div class="footer wrapper">
+		</main>
+
+		<footer class="footer wrapper">
 	<nav class="nav">
 		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
 	</nav>
-</div><script>feather.replace()</script>
+</footer>
+
+	</div>
 </body>
 </html>
