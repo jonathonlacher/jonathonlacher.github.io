@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="generator" content="Hugo 0.140.2">
+	<meta name="generator" content="Hugo 0.147.0">
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Jonathon Lacher - My little blog </title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="alternate" type="application/rss+xml" href="http://jonathonlacher.com/index.xml" title="Jonathon Lacher" />
@@ -59,12 +59,28 @@
 				
 				
 				<div class="post">
+					<div class="meta">Apr 28, 2025</div>
+					<a class="title" href="/posts/2025-4-28-link-apple-notes/">Linking to Apple Notes from another note</a>
+					<span class="description">
+						
+						<blockquote>
+<p>To quickly add a link to another note, type &raquo; to have a list of your notes appear. Begin typing to narrow your results, then select the note you want to link to. When you use this shortcut, the link title always matches the current title of the linked note.</p>
+<p>— <a href="https://support.apple.com/guide/notes/add-links-apde615d29c2/mac">Add links in Notes on Mac</a></p></blockquote>
+<p>Was making a checklist note that was a checklist of other notes, and thought there must be a way to link to a note.</p>
+						
+					</span>
+				</div>
+				
+				<div class="post">
 					<div class="meta">Feb 12, 2025</div>
 					<a class="title" href="/posts/2025-02-12-mill-glaze/">Mill glaze</a>
 					<span class="description">
 						
 						<p>I built a wood fence this past summer, and the stain I used made a big deal about mill glaze.
 This was a new term for me, so I had to look it up.</p>
+<p>It seems to be something that stain manufacturers and many online sources talk about, but theres little evidence based research about it.</p>
+<blockquote>
+<p>Since the mid-1980s, a condition called “mill glaze” (also called planer’s glaze) has sometimes been blamed for the failure of a coating on smooth flat-grained siding and some other wood products. The exact cause of this problem has been a subject of controversy.</p>
 						
 					</span>
 				</div>
@@ -75,6 +91,8 @@ This was a new term for me, so I had to look it up.</p>
 					<span class="description">
 						
 						<p>For seeing what planes are overhead, I&rsquo;ve been using <a href="https://globe.adsbexchange.com/">ADS-B Exchange</a> since its a free-er version of the more commercial apps.</p>
+<p>However in writing this, I&rsquo;ve learned that they&rsquo;ve also <a href="https://old.reddit.com/r/ADSB/comments/10utxvi/hey_there_just_joined_because_i_noticed_that/">sold out</a>, and many folks have even moved on from it.
+According to the thread <a href="https://globe.adsb.fi/">globe.adsb.fi</a> now seems to have community support.</p>
 						
 					</span>
 				</div>
@@ -107,6 +125,12 @@ The multi-key shortcuts are the hardest to re-learn.</p>
 						
 						<p>Why am I trying an ergo keyboard?
 Was starting to feel some mild hand pain, and I&rsquo;ve never bought my own keyboard before, so this seemed like a good excuse to try something new.</p>
+<h2 id="testing-my-typing">Testing my typing</h2>
+<p>To gauge my typing abilities, I&rsquo;m using <a href="https://typetest.io/">TypeTest.io</a>.</p>
+<p>I&rsquo;ll use a 1 minute test, simple word list, punctuation and numbers off.</p>
+<h2 id="current-typing-speed">Current typing speed</h2>
+<p>My daily driver keyboard is the <a href="https://www.apple.com/shop/product/MQ052LL/A/magic-keyboard-with-numeric-keypad-us-english">Apple Magic Keyboard</a>.</p>
+<p>On TypeTest.io, I&rsquo;m around 64 words per minute.</p>
 						
 					</span>
 				</div>
@@ -117,6 +141,84 @@ Was starting to feel some mild hand pain, and I&rsquo;ve never bought my own key
 					<span class="description">
 						
 						<p>This is the first in a series of posts of my notes on the book <a href="https://web.stanford.edu/~ouster/cgi-bin/book.php">A Philosophy of Software Design</a> by John Ousterhout.</p>
+<p>Most of my notes are loosely copied quotes, paraphrases, or summaries of my understanding.
+I&rsquo;ve included the page number (from my edition) in parentheses.</p>
+<h2 id="intro">Intro</h2>
+<ol>
+<li>The greatest limitation in writing software is our ability to understand the systems we are creating. (1)</li>
+<li>There are two approaches to fighting complexity.
+<ol>
+<li>Eliminate complexity by making code simpler and more obvious. (2)</li>
+<li>Encapsulate it, so you can work on the system without being exposed to all the complexity at once (2)</li>
+</ol>
+</li>
+<li>Book as two goals: (3)
+<ol>
+<li>Describe the nature of software complexity, what does &ldquo;complexity&rdquo; mean, why does it matter, how can you recognize it?</li>
+<li>Present techniques you can use to help minimize complexity.</li>
+</ol>
+</li>
+<li>Best way to use this book is in conjunction with code reviews. (4)</li>
+<li>Good way to improve design skills to to learn go recognize red flags (4)</li>
+<li>Moderation and discretion is important. Everything has limits, don&rsquo;t take the ideas in this book to the extreme. (4)</li>
+</ol>
+<h2 id="chapter-2">Chapter 2</h2>
+<ol>
+<li>Complexity is anything related to the structure of a software system that makes it hard to understand and modify. (5)</li>
+<li>Complexity is more apparent to readers than writers. (6)</li>
+<li>Symptoms of complexity:
+<ol>
+<li>Change amplification: A seemingly simple change requires modifications in many places. (7)</li>
+<li>Cognitive load: An engineer needs to spend a lot more time learning and needs to hold much more info in their mind to make the change. Complexity isn&rsquo;t measured in the number of lines; sometimes the more verbose version of code is simpler because it&rsquo;s not trying to be clever. (7)</li>
+<li>Unknown unknowns: When it&rsquo;s not obvious what pieces of code must be modified to complete a task or even what info is needed to complete the task. This is the worst symptom, since you only find out about it after something unknown rears its head. (9)</li>
+</ol>
+</li>
+<li>Causes of complexity:
+<ol>
+<li>Dependencies
+<ol>
+<li>A dep exists when a piece of code can&rsquo;t be understood and modified in isolation. (9)</li>
+<li>Deps can&rsquo;t be eliminated, but we can be intentional.</li>
+<li>Two goals of software design: (10)
+1. Reduce the number of deps
+2. Make deps that remain simple and obvious</li>
+</ol>
+</li>
+<li>Obscurity
+<ol>
+<li>Occurs when important information is not obvious.</li>
+<li>Obscurity is often associated with deps, where it&rsquo;s not obvious that a dep exists. (10)</li>
+<li>Inconsistency is also a major contributor to obscurity.</li>
+<li>The need for extensive docs is often a red flag that the design isn&rsquo;t good.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Complexity isn&rsquo;t caused by a single terrible error, but accumulates in small chunks over time. (11)</li>
+<li>Once complexity has accumulated, it&rsquo;s hard to eliminate since fixing any one issue won&rsquo;t make a big difference. (11)</li>
+<li>In order to slow the growth of complexity, we must have a zero tolerance approach.</li>
+</ol>
+<h2 id="chapter-3">Chapter 3</h2>
+<ol>
+<li>Tactical programming is the mindset of only getting something working, nothing else is considered. (13)</li>
+<li>The problem with tactical programming is it&rsquo;s short sighted. The accumulation of just trying to introduce a new feature or fix a bug introduces complexity and kludges, which is how systems get complicated. (13)</li>
+<li>Once you start taking the tactical approach, it&rsquo;s difficult to change. (14)</li>
+<li>Tactical tornado: A prolific programmer who pumps out code faster than others but in a totally tactical fashion. They may be admired by management, but they leave a wake of destruction and messes that other engineers must clean up. (14)</li>
+<li>Strategic programming: Working code isn&rsquo;t enough. The most important thing is the long-term structure of the system. Your primary goal is to produce a great design which also happens to work. (14)</li>
+<li>Strategic programming requires an investment mindset. Rather than taking the shortest and fastest path to finishing something, you must invest time to improve the design of the system. (15)</li>
+<li>Continually make small improvements to system design: (15)
+<ol>
+<li>Iterate on a design, don&rsquo;t use the first one you think of.</li>
+<li>Imagine a few ways a system might need to be changed in the future and make sure the current design makes this easy.</li>
+<li>Write good documentation.</li>
+</ol>
+</li>
+<li>Big upfront investments in design don&rsquo;t work, this is waterfall. The best approach is lots of small investments on a continual basis. (15)</li>
+<li>Suggestion: spend 10%-20% of total development time on investments. While you make take 10-20% longer at first, these will pay off in the long-run and future changes will be easier. (15-16)</li>
+<li>Once a codebase is spaghetti, it&rsquo;s nearly impossible to fix. (17)</li>
+<li>The most important factor of success in a company is the quality of its engineers. The best engineers care deeply about good design. (17)</li>
+<li>Once you start delaying design improvements, it&rsquo;s easy for delays to become permanent and your culture will slip into the tactical approach. (18)</li>
+</ol>
 						
 					</span>
 				</div>
@@ -127,6 +229,7 @@ Was starting to feel some mild hand pain, and I&rsquo;ve never bought my own key
 					<span class="description">
 						
 						<p>We bought a house, it was built in the 1920s and the main floor uses hot water radiators as the primary heat source (boiler is a <a href="https://www.weil-mclain.com/sites/default/files/field-file/cgm-pcg-series-4-manual_1.pdf">Weil-McLain CG-4</a>). I also have a <a href="https://nonul.mylinkdrive.com/item/MXZ-3A30NA-1.html">three zone Mitsubishi mini-split system</a>, with two zones upstairs and one on the main floor. The upstairs also has electric baseboard heat in all rooms.</p>
+<p>Understanding which sources of heat to use this winter is a challenge. The mini-split can be an effective heat source compared to electric baseboard heat, but the efficiency depends on the outside temp and how much heat each indoor unit is requesting. My understanding is that mini-splits are most efficient when running on low. This means setting large setbacks temps at night could actually end up using more electricity than keeping the temp constant.</p>
 						
 					</span>
 				</div>
@@ -137,6 +240,7 @@ Was starting to feel some mild hand pain, and I&rsquo;ve never bought my own key
 					<span class="description">
 						
 						<p>I&rsquo;ve been dealing with intermittent packet loss at my current home connection. I initially wasn&rsquo;t sure if the issue was with my home router/switch or my ISP. With MTR, I found the issue wasn&rsquo;t with my home equipment, but somewhere after my ISP&rsquo;s router.</p>
+<p><a href="https://github.com/traviscross/mtr">MTR</a> has been around for a few decades now, but I discovered it in the past few years. It&rsquo;s a mashup of traceroute and ping and is useful for diagnosing network issues and quality. It essentially shows each hop between you and the endpoint, with packet loss percentage and ping information to each hop.</p>
 						
 					</span>
 				</div>
@@ -147,16 +251,11 @@ Was starting to feel some mild hand pain, and I&rsquo;ve never bought my own key
 					<span class="description">
 						
 						<p>When I need to focus in a distracting or noisy environment, I use a combination of <a href="https://www.bose.com/en_us/support/products/bose_headphones_support/bose_around_ear_headphones_support/quietcomfort-25-acoustic-noise-cancelling-headphones-apple-devices.html">noise canceling headphones</a> and <a href="https://en.wikipedia.org/wiki/Brownian_noise">brownian (brown) noise</a>.</p>
-						
-					</span>
-				</div>
-				
-				<div class="post">
-					<div class="meta">Jul 16, 2020</div>
-					<a class="title" href="/posts/2020-7-15-weather/">Where I get my weather forecasts</a>
-					<span class="description">
-						
-						<p>I&rsquo;ve been an Android user for the last 10 years, and for the last 3-4 years I&rsquo;ve been using the <a href="https://darksky.net/">Dark Sky</a> weather app.</p>
+<p>I find music and spoken word to be mostly distracting, but not listening to anything with noise canceling headphones doesn&rsquo;t work so well.
+The combination of a wall of random frequencies and the noise canceling does a great job of blocking and masking outside noises.</p>
+<p>Why not white noise?
+I find the frequencies too harsh; brown noise is more soothing, like an ocean wave.
+My current favorite noise generator is <a href="https://playnoise.com/">playnoise.com</a> which has white, grey, pink, and brown, plus an option to enable the noises in stereo.</p>
 						
 					</span>
 				</div>
