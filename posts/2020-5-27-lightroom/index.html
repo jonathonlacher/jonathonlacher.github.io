@@ -20,7 +20,9 @@ Lightroom seems to be the default choice, so I went with that. I know there are 
   <meta name="twitter:description" content="After I bought a mirrorless micro four thirds camera last year, I’ve entered the rabbit whole of media management.
 I started by shooting in JPEG and dumping the images I liked into Google Photos, simple enough, right? After a while, for various reasons, I started shooting in RAW. But after filling my first SD card full of RAW files, I realized I needed a way to process them.
 Lightroom seems to be the default choice, so I went with that. I know there are open source alternatives like Darktable, but I haven’t invested much time into exploring it.">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" as="style">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/styles.css" />
@@ -85,24 +87,24 @@ But in terms of order of operations, only after culling my photos through rating
 <p>After I&rsquo;ve developed my photos, I&rsquo;ll export them to a more usable format like JPEG.
 I found a great Lightroom plugin called <a href="http://regex.info/blog/lightroom-goodies/folder-publisher">Jeffrey’s “Folder Publisher” Lightroom Plugin</a> which can export JPEGs in the same directory hierarchy that you store your RAW files.</p>
 <p>For example, I store my RAW files as such:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>raw_photos/
-</span></span><span style="display:flex;"><span>├── 2020-5-20/
-</span></span><span style="display:flex;"><span>│   ├── img223.raw
-</span></span><span style="display:flex;"><span>│   ├── img224.raw
-</span></span><span style="display:flex;"><span>│   └── img225.raw
-</span></span><span style="display:flex;"><span>└──2020-5-23/
-</span></span><span style="display:flex;"><span>    ├── img228.raw
-</span></span><span style="display:flex;"><span>    └── img229.raw
-</span></span></code></pre></div><p>The plugin on execution will export JPEGs as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>exported_photos<span style="color:#719e07">/</span>
-</span></span><span style="display:flex;"><span>├── <span style="color:#2aa198">2020</span><span style="color:#719e07">-</span><span style="color:#2aa198">5</span><span style="color:#719e07">-</span><span style="color:#2aa198">20</span><span style="color:#719e07">/</span>
-</span></span><span style="display:flex;"><span>│   ├── img223<span style="color:#719e07">.</span>jpg
-</span></span><span style="display:flex;"><span>│   ├── img224<span style="color:#719e07">.</span>jpg
-</span></span><span style="display:flex;"><span>│   └── img225<span style="color:#719e07">.</span>jpg
-</span></span><span style="display:flex;"><span>└──<span style="color:#2aa198">2020</span><span style="color:#719e07">-</span><span style="color:#2aa198">5</span><span style="color:#719e07">-</span><span style="color:#2aa198">23</span><span style="color:#719e07">/</span>
-</span></span><span style="display:flex;"><span>    ├── img228<span style="color:#719e07">.</span>jpg
-</span></span><span style="display:flex;"><span>    └── img229<span style="color:#719e07">.</span>jpg
-</span></span></code></pre></div><p>I&rsquo;ll typically export to JPEG photos with 2 stars or higher.
+<pre tabindex="0"><code>raw_photos/
+├── 2020-5-20/
+│   ├── img223.raw
+│   ├── img224.raw
+│   └── img225.raw
+└──2020-5-23/
+    ├── img228.raw
+    └── img229.raw
+</code></pre><p>The plugin on execution will export JPEGs as follows:</p>
+<pre tabindex="0"><code>exported_photos/
+├── 2020-5-20/
+│   ├── img223.jpg
+│   ├── img224.jpg
+│   └── img225.jpg
+└──2020-5-23/
+    ├── img228.jpg
+    └── img229.jpg
+</code></pre><p>I&rsquo;ll typically export to JPEG photos with 2 stars or higher.
 At this point, they&rsquo;re ready for sharing.</p>
 
 	</div>

@@ -22,7 +22,9 @@ hybrid -truck -.com -ford -buick -dodge -chrysler -hyundai -lincoln -kia -cadill
 I found that Craigslist has surprising robust search operators.
 For example, I used this search:
 hybrid -truck -.com -ford -buick -dodge -chrysler -hyundai -lincoln -kia -cadillac I’m looking for a hybrid, and don’t want any post with truck or various manufacturers or .com (which is typically a dealer, I’m looking for a private seller).">
-<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" as="style">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/styles.css" />
@@ -71,8 +73,8 @@ hybrid -truck -.com -ford -buick -dodge -chrysler -hyundai -lincoln -kia -cadill
 I have <a href="https://www.craigslist.org/about/saved_searches_and_alerts">saved searches</a> set up, but was receiving a lot of false positives because nothing stops unrelated postings from keyword stuffing.</p>
 <p>I found that Craigslist has surprising robust <a href="https://www.craigslist.org/about/help/search">search operators</a>.</p>
 <p>For example, I used this search:</p>
-<div class="highlight"><pre tabindex="0" style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>hybrid -truck -.com -ford -buick -dodge -chrysler -hyundai -lincoln -kia -cadillac
-</span></span></code></pre></div><p>I&rsquo;m looking for a <code>hybrid</code>, and don&rsquo;t want any post with <code>truck</code> or various manufacturers or <code>.com</code> (which is typically a dealer, I&rsquo;m looking for a private seller).</p>
+<pre tabindex="0"><code>hybrid -truck -.com -ford -buick -dodge -chrysler -hyundai -lincoln -kia -cadillac
+</code></pre><p>I&rsquo;m looking for a <code>hybrid</code>, and don&rsquo;t want any post with <code>truck</code> or various manufacturers or <code>.com</code> (which is typically a dealer, I&rsquo;m looking for a private seller).</p>
 <p>I could explicitly look for <code>honda</code> or <code>toyota</code>, but I don&rsquo;t want to miss out on the small chance that someone misspells one of those brands.</p>
 <h2 id="other-operators">Other operators</h2>
 <p>From the Craigslist docs, other search operators include:</p>
