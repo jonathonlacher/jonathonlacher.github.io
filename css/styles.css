@@ -267,10 +267,13 @@ ul.flat li {
 blockquote {
   margin-left: 1rem;
   font-style: italic;
-  font-size: var(--text-xl);
+  font-size: var(--text-md); /* Changed from --text-xl to --text-md (1.125rem/18px) */
   font-family: Georgia, bitstream charter, serif;
   border-left: 3px solid var(--blockquote-border);
   padding-left: 20px;
+  line-height: 1.5; /* Added to improve readability */
+  color: var(--text-color); /* Ensuring proper color contrast */
+  opacity: 0.9; /* Slightly dimmed to differentiate from regular text */
 }
 
 blockquote cite {
