@@ -146,6 +146,10 @@ body {
   box-sizing: border-box; /* Include padding in width calculations */
 }
 
+html {
+  overflow-y: scroll;
+}
+
 html, button, input, select, textarea {
   color: var(--text-color);
 }
