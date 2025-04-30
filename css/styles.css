@@ -1,11 +1,14 @@
 /*
- * Consolidated CSS for jonathonlacher.com
- * Uses CSS variables for easy theme switching
- */
+
+Consolidated CSS for jonathonlacher.com
+
+Uses CSS variables for easy theme switching
+*/
 
 /* ==========================================================================
-   1. VARIABLES
-   ========================================================================== */
+
+VARIABLES
+========================================================================== */
 
 :root {
   /* Light mode (default) variables */
@@ -90,6 +93,7 @@
   --danger-color: var(--red-dark);
 }
 
+/* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark mode variables */
@@ -127,8 +131,8 @@
 }
 
 /* ==========================================================================
-   2. BASE & RESET
-   ========================================================================== */
+2. BASE & RESET
+========================================================================== */
 
 body {
   font-family: "inter", sans-serif;
@@ -191,8 +195,8 @@ textarea {
 }
 
 /* ==========================================================================
-   3. TYPOGRAPHY
-   ========================================================================== */
+3. TYPOGRAPHY
+========================================================================== */
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
@@ -292,8 +296,8 @@ blockquote em {
 }
 
 /* ==========================================================================
-   4. LAYOUT PRIMITIVES
-   ========================================================================== */
+4. LAYOUT PRIMITIVES
+========================================================================== */
 
 .wrapper {
   max-width: 760px;
@@ -316,8 +320,8 @@ blockquote em {
 }
 
 /* ==========================================================================
-   5. COMPONENTS
-   ========================================================================== */
+5. COMPONENTS
+========================================================================== */
 
 /* 5.1 Header */
 .header {
@@ -404,7 +408,7 @@ blockquote em {
 }
 
 .site-title a {
-  color: var(--gray-900);
+  color: var(--heading-color);
   font-size: var(--text-5xl);
   text-decoration: none !important;
   background-color: transparent;
@@ -413,7 +417,7 @@ blockquote em {
 
 /* Add a subtle yellow accent to keep some brand identity */
 .site-title a:hover {
-  color: var(--yellow-800);
+  color: var(--yellow-600);
   border-bottom: none;
 }
 
@@ -471,7 +475,7 @@ blockquote em {
   font-size: var(--text-xs);
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--gray-darker);
+  color: var(--meta-color);
   margin-bottom: 20px;
   letter-spacing: 1px;
 }
@@ -493,12 +497,12 @@ blockquote em {
 }
 
 .post .draft-label {
-  color: var(--tag-color);
+  color: var(--warning-color);
   text-decoration: none;
   padding: 2px 4px;
   border-radius: 4px;
   margin-left: 6px;
-  background-color: rgba(var(--tag-color), 0.1);
+  background-color: var(--warning-bg);
 }
 
 .post ul li {
@@ -531,7 +535,7 @@ blockquote em {
   margin-top: 8px;
   font-size: var(--text-sm);
   background-color: transparent;
-  color: var(--tag-color);
+  color: var(--link-color);
   padding: 0;
 }
 
@@ -581,8 +585,8 @@ table th, table td {
 }
 
 /* ==========================================================================
-   6. UTILITIES
-   ========================================================================== */
+6. UTILITIES
+========================================================================== */
 
 .align-center { text-align: center; }
 .align-left { text-align: left; }
@@ -596,115 +600,102 @@ img[src$='#responsive'] {
   height: auto;
 }
 
-/* Color utilities */
 /* Text colors */
-.text-white { color: var(--white); }
-.text-gray-lightest { color: var(--gray-lightest); }
-.text-gray-lighter { color: var(--gray-lighter); }
-.text-gray-light { color: var(--gray-light); }
-.text-gray { color: var(--gray); }
-.text-gray-dark { color: var(--gray-dark); }
-.text-gray-darker { color: var(--gray-darker); }
-.text-gray-darkest { color: var(--gray-darkest); }
-.text-black { color: var(--black); }
+.text-white { color: #ffffff; }
+.text-gray-lightest { color: var(--gray-50); }
+.text-gray-lighter { color: var(--gray-100); }
+.text-gray-light { color: var(--gray-300); }
+.text-gray { color: var(--gray-500); }
+.text-gray-dark { color: var(--gray-700); }
+.text-gray-darker { color: var(--gray-800); }
+.text-gray-darkest { color: var(--gray-900); }
+.text-black { color: #000000; }
 
-.text-brand-light { color: var(--brand-light); }
-.text-brand { color: var(--brand); }
-.text-brand-dark { color: var(--brand-dark); }
+.text-brand-light { color: var(--yellow-300); }
+.text-brand { color: var(--yellow-500); }
+.text-brand-dark { color: var(--yellow-700); }
 
-.text-cta-light { color: var(--cta-light); }
-.text-cta { color: var(--cta); }
-.text-cta-dark { color: var(--cta-dark); }
+.text-info-light { color: var(--blue-light); }
+.text-info { color: var(--blue); }
+.text-info-dark { color: var(--blue-dark); }
 
-.text-info-light { color: var(--info-light); }
-.text-info { color: var(--info); }
-.text-info-dark { color: var(--info-dark); }
+.text-warning-light { color: var(--yellow-100); }
+.text-warning { color: var(--yellow-500); }
+.text-warning-dark { color: var(--yellow-900); }
 
-.text-warning-light { color: var(--warning-light); }
-.text-warning { color: var(--warning); }
-.text-warning-dark { color: var(--warning-dark); }
+.text-success-light { color: var(--green-light); }
+.text-success { color: var(--green); }
+.text-success-dark { color: var(--green-dark); }
 
-.text-success-light { color: var(--success-light); }
-.text-success { color: var(--success); }
-.text-success-dark { color: var(--success-dark); }
-
-.text-danger-light { color: var(--danger-light); }
-.text-danger { color: var(--danger); }
-.text-danger-dark { color: var(--danger-dark); }
+.text-danger-light { color: var(--red-light); }
+.text-danger { color: var(--red); }
+.text-danger-dark { color: var(--red-dark); }
 
 /* Background colors */
-.bg-white { background-color: var(--white); }
-.bg-gray-lightest { background-color: var(--gray-lightest); }
-.bg-gray-lighter { background-color: var(--gray-lighter); }
-.bg-gray-light { background-color: var(--gray-light); }
-.bg-gray { background-color: var(--gray); }
-.bg-gray-dark { background-color: var(--gray-dark); }
-.bg-gray-darker { background-color: var(--gray-darker); }
-.bg-gray-darkest { background-color: var(--gray-darkest); }
-.bg-black { background-color: var(--black); }
+.bg-white { background-color: #ffffff; }
+.bg-gray-lightest { background-color: var(--gray-50); }
+.bg-gray-lighter { background-color: var(--gray-100); }
+.bg-gray-light { background-color: var(--gray-300); }
+.bg-gray { background-color: var(--gray-500); }
+.bg-gray-dark { background-color: var(--gray-700); }
+.bg-gray-darker { background-color: var(--gray-800); }
+.bg-gray-darkest { background-color: var(--gray-900); }
+.bg-black { background-color: #000000; }
 
-.bg-brand-light { background-color: var(--brand-light); }
-.bg-brand { background-color: var(--brand); }
-.bg-brand-dark { background-color: var(--brand-dark); }
+.bg-brand-light { background-color: var(--yellow-300); }
+.bg-brand { background-color: var(--yellow-500); }
+.bg-brand-dark { background-color: var(--yellow-700); }
 
-.bg-cta-light { background-color: var(--cta-light); }
-.bg-cta { background-color: var(--cta); }
-.bg-cta-dark { background-color: var(--cta-dark); }
+.bg-info-light { background-color: var(--blue-light); }
+.bg-info { background-color: var(--blue); }
+.bg-info-dark { background-color: var(--blue-dark); }
 
-.bg-info-light { background-color: var(--info-light); }
-.bg-info { background-color: var(--info); }
-.bg-info-dark { background-color: var(--info-dark); }
+.bg-warning-light { background-color: var(--warning-bg); }
+.bg-warning { background-color: var(--yellow-500); }
+.bg-warning-dark { background-color: var(--yellow-900); }
 
-.bg-warning-light { background-color: var(--warning-light); }
-.bg-warning { background-color: var(--warning); }
-.bg-warning-dark { background-color: var(--warning-dark); }
+.bg-success-light { background-color: var(--success-bg); }
+.bg-success { background-color: var(--green); }
+.bg-success-dark { background-color: var(--green-dark); }
 
-.bg-success-light { background-color: var(--success-light); }
-.bg-success { background-color: var(--success); }
-.bg-success-dark { background-color: var(--success-dark); }
-
-.bg-danger-light { background-color: var(--danger-light); }
-.bg-danger { background-color: var(--danger); }
-.bg-danger-dark { background-color: var(--danger-dark); }
+.bg-danger-light { background-color: var(--danger-bg); }
+.bg-danger { background-color: var(--red); }
+.bg-danger-dark { background-color: var(--red-dark); }
 
 /* Border colors */
-.border-white { border-color: var(--white); }
-.border-gray-lightest { border-color: var(--gray-lightest); }
-.border-gray-lighter { border-color: var(--gray-lighter); }
-.border-gray-light { border-color: var(--gray-light); }
-.border-gray { border-color: var(--gray); }
-.border-gray-dark { border-color: var(--gray-dark); }
-.border-gray-darker { border-color: var(--gray-darker); }
-.border-gray-darkest { border-color: var(--gray-darkest); }
-.border-black { border-color: var(--black); }
+.border-white { border-color: #ffffff; }
+.border-gray-lightest { border-color: var(--gray-50); }
+.border-gray-lighter { border-color: var(--gray-100); }
+.border-gray-light { border-color: var(--gray-300); }
+.border-gray { border-color: var(--gray-500); }
+.border-gray-dark { border-color: var(--gray-700); }
+.border-gray-darker { border-color: var(--gray-800); }
+.border-gray-darkest { border-color: var(--gray-900); }
+.border-black { border-color: #000000; }
 
-.border-brand-light { border-color: var(--brand-light); }
-.border-brand { border-color: var(--brand); }
-.border-brand-dark { border-color: var(--brand-dark); }
+.border-brand-light { border-color: var(--yellow-300); }
+.border-brand { border-color: var(--yellow-500); }
+.border-brand-dark { border-color: var(--yellow-700); }
 
-.border-cta-light { border-color: var(--cta-light); }
-.border-cta { border-color: var(--cta); }
-.border-cta-dark { border-color: var(--cta-dark); }
+.border-info-light { border-color: var(--blue-light); }
+.border-info { border-color: var(--blue); }
+.border-info-dark { border-color: var(--blue-dark); }
 
-.border-info-light { border-color: var(--info-light); }
-.border-info { border-color: var(--info); }
-.border-info-dark { border-color: var(--info-dark); }
+.border-warning-light { border-color: var(--yellow-100); }
+.border-warning { border-color: var(--yellow-500); }
+.border-warning-dark { border-color: var(--yellow-900); }
 
-.border-warning-light { border-color: var(--warning-light); }
-.border-warning { border-color: var(--warning); }
-.border-warning-dark { border-color: var(--warning-dark); }
+.border-success-light { border-color: var(--green-light); }
+.border-success { border-color: var(--green); }
+.border-success-dark { border-color: var(--green-dark); }
 
-.border-success-light { border-color: var(--success-light); }
-.border-success { border-color: var(--success); }
-.border-success-dark { border-color: var(--success-dark); }
-
-.border-danger-light { border-color: var(--danger-light); }
-.border-danger { border-color: var(--danger); }
-.border-danger-dark { border-color: var(--danger-dark); }
+.border-danger-light { border-color: var(--red-light); }
+.border-danger { border-color: var(--red); }
+.border-danger-dark { border-color: var(--red-dark); }
 
 /* ==========================================================================
-   7. MEDIA QUERIES / RESPONSIVE STYLES
-   ========================================================================== */
+7. MEDIA QUERIES / RESPONSIVE STYLES
+========================================================================== */
 
 @media (max-width: 767px) {
   body {
