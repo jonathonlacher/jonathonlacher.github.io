@@ -202,20 +202,148 @@ textarea {
 3. TYPOGRAPHY
 ========================================================================== */
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  font-family: raleway, sans-serif;
-  line-height: 1.2;
-  color: var(--heading-color);
-  font-weight: 200;
+/* Targeted Header Styles - Only affects article content */
+
+/* Preserve original heading styles for site header */
+.header h1, .header h2 {
+  /* Reset to original styles */
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  border: none;
+  background: none;
 }
 
-h1 { font-size: var(--text-4xl); }
-h2 { font-size: var(--text-3xl); }
-h3 { font-size: var(--text-2xl); }
-h4 { font-size: var(--text-xl); }
-h5 { font-size: var(--text-md); }
-h6 { font-size: var(--text-base); }
+/* Target only content headings */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6,
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+  line-height: 1.2;
+  color: var(--heading-color);
+  /* Compact vertical spacing */
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+/* H1 - Page/Post title */
+.markdown h1,
+.post h1,
+.post-header .title {
+  font-size: var(--text-4xl);
+  font-weight: 300; /* Light weight */
+  letter-spacing: -0.5px;
+  color: var(--heading-color);
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+}
+
+/* H2 - Major section headers */
+.markdown h2,
+.post h2 {
+  font-size: var(--text-3xl);
+  font-weight: 300; /* Light weight */
+  letter-spacing: -0.25px;
+  /* Simple bottom border */
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--border-color);
+  margin-top: 1em;
+}
+
+/* H3 - Sub-section headers */
+.markdown h3,
+.post h3 {
+  font-size: var(--text-2xl);
+  font-weight: 400; /* Medium weight - slightly heavier than h2 */
+  letter-spacing: -0.1px;
+  margin-top: 0.9em;
+}
+
+/* H4 - Minor section headers */
+.markdown h4,
+.post h4 {
+  font-size: var(--text-xl);
+  font-weight: 500; /* Semibold */
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+}
+
+/* H5 - Small headers */
+.markdown h5,
+.post h5 {
+  font-size: var(--text-md);
+  font-weight: 500; /* Semibold */
+  margin-top: 0.7em;
+  margin-bottom: 0.3em;
+}
+
+/* H6 - Smallest headers */
+.markdown h6,
+.post h6 {
+  font-size: var(--text-base);
+  font-weight: 500; /* Semibold */
+  margin-top: 0.7em;
+  margin-bottom: 0.3em;
+}
+
+/* Compact spacing after headers when followed by paragraph */
+.markdown h1 + p,
+.markdown h2 + p,
+.markdown h3 + p,
+.markdown h4 + p,
+.markdown h5 + p,
+.markdown h6 + p,
+.post h1 + p,
+.post h2 + p,
+.post h3 + p,
+.post h4 + p,
+.post h5 + p,
+.post h6 + p {
+  margin-top: 0.3em;
+}
+
+/* First heading in content should have minimal top margin */
+.markdown > h1:first-child,
+.post > h1:first-child {
+  margin-top: 0.3em;
+}
+
+.markdown > h2:first-child,
+.markdown > h3:first-child,
+.post > h2:first-child,
+.post > h3:first-child {
+  margin-top: 0.4em;
+}
+
+/* Paragraph spacing */
+.markdown p,
+.post p {
+  margin-bottom: 0.8em;
+}
+
+/* Make sure heading link icons work properly */
+.header-link-icon {
+  visibility: hidden;
+  color: var(--meta-color);
+  opacity: 0.7;
+}
+
+h1:hover .header-link-icon,
+h2:hover .header-link-icon,
+h3:hover .header-link-icon,
+h4:hover .header-link-icon,
+h5:hover .header-link-icon,
+h6:hover .header-link-icon {
+  visibility: visible;
+}
 
 /* Links */
 a, a:hover {
