@@ -29,6 +29,9 @@ Lightroom seems to be the default choice, so I went with that. I know there are 
 
 	
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="/js/linkable-headers.js" defer></script>
+	<script src="/js/toc.js" defer></script>
+	<script src="/js/scroll-to-toc.js" defer></script>
 </head>
 
 <body>
@@ -59,14 +62,31 @@ Lightroom seems to be the default choice, so I went with that. I know there are 
 
 		<main>
 			
-<div class="post">
-	<div class="post-header">
-		<h1 class="title">How I manage my Lightroom library</h1>
-		<div class="meta">Posted at &mdash; May 27, 2020</div>
-	</div>
+<div class="post-with-sidebar">
+	
+	<aside class="toc-sticky" id="toc">
+		<h2>Contents</h2>
+		<details open>
+			<summary>Table of Contents</summary>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#ratings">Ratings</a></li>
+    <li><a href="#developing">Developing</a></li>
+    <li><a href="#exporting">Exporting</a></li>
+  </ul>
+</nav>
+		</details>
+	</aside>
+	
 
-	<div class="markdown">
-		<p>After I bought a <a href="https://www.getolympus.com/us/en/e-m10-mark-ii.html">mirrorless micro four thirds camera</a> last year, I&rsquo;ve entered the rabbit whole of media management.</p>
+	<article class="post">
+		<div class="post-header">
+			<h1 class="title">How I manage my Lightroom library</h1>
+			<div class="meta">May 27, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>After I bought a <a href="https://www.getolympus.com/us/en/e-m10-mark-ii.html">mirrorless micro four thirds camera</a> last year, I&rsquo;ve entered the rabbit whole of media management.</p>
 <p>I started by shooting in JPEG and dumping the images I liked into Google Photos, simple enough, right?
 After a while, for various reasons, I started shooting in RAW.
 But after filling my first SD card full of RAW files, I realized I needed a way to process them.</p>
@@ -106,7 +126,8 @@ I found a great Lightroom plugin called <a href="http://regex.info/blog/lightroo
 </code></pre><p>I&rsquo;ll typically export to JPEG photos with 2 stars or higher.
 At this point, they&rsquo;re ready for sharing.</p>
 
-	</div>
+		</div>
+	</article>
 </div>
 
 		</main>

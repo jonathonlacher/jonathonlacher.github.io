@@ -289,6 +289,65 @@ blockquote em {
   font-weight: 600;
 }
 
+/* Add styles for details and summary elements */
+details > summary {
+  list-style: none; /* Remove default marker */
+  cursor: pointer;
+  padding: 1px 3px; /* Match link padding */
+  border-radius: 2px; /* Match link border-radius */
+  background-color: var(--link-bg); /* Match link background */
+  color: var(--link-color); /* Match link color */
+  display: inline-block;
+  transition: background-color 0.2s ease; /* Match link transition */
+}
+
+details > summary:hover {
+  background-color: var(--link-hover-bg); /* Match link hover background */
+  border-bottom: 1px solid var(--yellow-600); /* Match link hover border */
+  padding-bottom: 2px; /* Match link hover padding */
+}
+
+details > summary::-webkit-details-marker {
+  display: none; /* Hide Safari's default marker */
+}
+
+details > summary::before {
+  content: '\25B6\00a0'; /* Add a right-pointing triangle, followed by a non-breaking space */
+  /* Use a color that fits the link style, perhaps slightly darker or lighter than text */
+  color: var(--link-color);
+  font-size: 0.8em; /* Make the arrow slightly smaller than the surrounding text */
+}
+
+details[open] > summary::before {
+  content: '\25BC\00a0'; /* Change to a down-pointing triangle when open */
+  font-size: 0.8em; /* Keep the size consistent when open */
+}
+
+/* Style for code elements within summary to blend with link appearance */
+details > summary code {
+  background-color: transparent; /* Use the summary's background color */
+  color: inherit; /* Inherit text color from the summary (link color) */
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace; /* Monospace font stack */
+  font-size: inherit; /* Use the summary's font size */
+  padding: 0; /* Remove any default padding from inline code styles */
+  border-radius: 0; /* Remove any default border-radius from inline code styles */
+  vertical-align: baseline; /* Align with surrounding text */
+}
+
+/* Ensure the details/summary doesn't get global link styles that might conflict */
+details > summary a {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-bottom: none;
+}
+
+details > summary a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
 /* Code */
 .highlight pre {
   margin-bottom: 0;
@@ -435,6 +494,26 @@ blockquote em {
 .site-title a:hover {
   color: var(--yellow-600);
   border-bottom: none;
+}
+
+/* Header link icon */
+.header-link-icon {
+    visibility: hidden;
+    margin-left: 0.25em;
+    color: var(--text-color); /* Or your preferred link color */
+}
+
+h1:hover .header-link-icon,
+h2:hover .header-link-icon,
+h3:hover .header-link-icon,
+h4:hover .header-link-icon,
+h5:hover .header-link-icon,
+h6:hover .header-link-icon {
+    visibility: visible;
+}
+
+.header-link-icon svg {
+    vertical-align: middle;
 }
 
 /* 5.2 Footer */
@@ -761,5 +840,234 @@ img[src$='#responsive'] {
 
   body {
     padding: 20px; /* Keep consistent padding */
+  }
+}
+
+/* ==========================================================================
+8. TABLE OF CONTENTS
+========================================================================== */
+
+.post-with-sidebar {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Mobile TOC styles - collapsible at the top of content */
+.toc-sticky {
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background-color: var(--code-bg);
+  border-left: 3px solid var(--yellow-500);
+  font-size: var(--text-sm);
+  transition: all 0.3s ease;
+  scroll-margin-top: 20px; /* Adds space when scrolling to the TOC */
+}
+
+/* Mobile "back to contents" floating button */
+.toc-mobile-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--code-bg);
+  border: 2px solid var(--yellow-500);
+  color: var(--text-color);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.toc-mobile-button.visible {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.toc-mobile-button:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.toc-sticky details {
+  padding: 8px 12px;
+}
+
+.toc-sticky details summary {
+  cursor: pointer;
+  padding: 4px 0;
+  color: var(--meta-color);
+  font-weight: 600;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.toc-sticky details summary::before {
+  content: "📑"; /* Table of contents emoji when closed */
+  margin-right: 6px;
+  font-size: 0.9em;
+  transition: transform 0.2s ease;
+}
+
+.toc-sticky details[open] summary::before {
+  content: "📄"; /* Document emoji when open - shows content is visible */
+}
+
+.toc-sticky details[open] summary {
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* Make TOC heading look good */
+.toc-sticky h2 {
+  display: none; /* Hide heading on mobile, use summary instead */
+}
+
+/* Smooth animation for TOC expansion */
+.toc-sticky details > :not(summary) {
+  animation: toc-fade 0.25s ease-in-out;
+}
+
+@keyframes toc-fade {
+  0% { opacity: 0; transform: translateY(-5px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Base TOC list styling */
+.toc-sticky ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.toc-sticky li {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.toc-sticky ul ul {
+  padding-left: 15px;
+}
+
+/* TOC links should be clean */
+.toc-sticky a {
+  background: transparent;
+  padding: 0;
+  color: var(--text-color);
+  opacity: 0.9;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+}
+
+.toc-sticky a:hover {
+  opacity: 1;
+  border-bottom: 1px solid var(--yellow-600);
+  color: var(--link-color);
+}
+
+/* On large screens, position TOC outside the article */
+@media (min-width: 1200px) {
+  /* Container stays centered */
+  .post-with-sidebar {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    --toc-top-position: 0px; /* Default value, will be updated by JS */
+  }
+
+  /* Float TOC to the right of content with sticky scrolling */
+  .toc-sticky {
+    position: sticky; /* Use sticky positioning for natural scrolling behavior */
+    top: 20px; /* Small offset from top to give it breathing room */
+    float: right; /* Float to the right of the content */
+    margin-right: calc(-220px - 30px); /* Push it outside the content area (width + some spacing) */
+    width: 220px;
+    background: transparent;
+    padding: 0 0 0 15px;
+    border-left: 3px solid var(--yellow-500);
+    margin-top: 0; /* Align with the top of the content */
+    margin-bottom: 20px; /* Add some spacing at the bottom */
+    max-height: calc(100vh - 40px); /* Limit height to viewport minus minimal margins */
+    overflow-y: auto; /* Allow scrolling for very long TOCs */
+    z-index: 90; /* Ensure it's above content but still respects natural document flow */
+    opacity: 0.85; /* Slightly transparent by default */
+    transition: opacity 0.2s ease;
+  }
+
+  /* Make TOC more visible on hover */
+  .toc-sticky:hover {
+    opacity: 1;
+  }
+
+  /* Show the TOC content directly, not in details/summary */
+  .toc-sticky details {
+    padding: 0;
+  }
+
+  /* Hide the summary on desktop */
+  .toc-sticky details summary {
+    display: none;
+  }
+
+  /* Make details always open on desktop */
+  .toc-sticky details {
+    display: block;
+  }
+
+  /* Show the heading in wide screens */
+  .toc-sticky h2 {
+    display: block;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--meta-color);
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  /* Hide the details/summary in wide screens */
+  .toc-sticky details > summary {
+    display: none;
+  }
+
+  /* Always show content in wide screens */
+  .toc-sticky details {
+    padding: 0;
+  }
+
+  .toc-sticky details[open] {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .toc-sticky details {
+    display: block;
+  }
+}
+
+/* Adjust TOC margin for different screen sizes */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .toc-sticky {
+    margin-right: calc(-220px - 15px); /* Smaller spacing on medium-large screens */
+  }
+}
+
+/* Extra wide screens - position TOC even better */
+@media (min-width: 1600px) {
+  .toc-sticky {
+    margin-right: calc(-220px - 50px); /* More spacing on very wide screens */
   }
 }

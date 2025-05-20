@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Setting up my Mac - Jonathon Lacher</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:url" content="https://jonathonlacher.com/posts/2025-05-19-setting-up-mac/">
+  <meta property="og:site_name" content="Jonathon Lacher">
+  <meta property="og:title" content="Setting up my Mac">
+  <meta property="og:description" content="Mac Settings A post about how I set up my Mac. I’ll likely make minor updates as things change.
+However if I radically change how I do this, I’ll make a new post.
+Enable Time Machine I have at Synology NAS, which makes the backups easy. I highly recommend using Time Machine for backups, even to a external drive. It not only makes it easy to backup / restore files, but you can essentially restore your enire system to a previous state.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-19T07:51:20+00:00">
+    <meta property="article:modified_time" content="2025-05-19T07:51:20+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Setting up my Mac">
+  <meta name="twitter:description" content="Mac Settings A post about how I set up my Mac. I’ll likely make minor updates as things change.
+However if I radically change how I do this, I’ll make a new post.
+Enable Time Machine I have at Synology NAS, which makes the backups easy. I highly recommend using Time Machine for backups, even to a external drive. It not only makes it easy to backup / restore files, but you can essentially restore your enire system to a previous state.">
+
+	<link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" as="style">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/styles.css" />
+
+	
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="/js/linkable-headers.js" defer></script>
+	<script src="/js/toc.js" defer></script>
+	<script src="/js/scroll-to-toc.js" defer></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<header class="header">
+	<h1 class="site-title"><a href="https://jonathonlacher.com/">Jonathon Lacher</a></h1>
+	<div class="site-description"><h2>My little blog</h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/jonathonlacher" title="GitHub"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul><script>
+				feather.replace();
+			</script></nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+		</ul>
+	</nav>
+</header>
+
+
+		<main>
+			
+<div class="post-with-sidebar">
+	
+	<aside class="toc-sticky" id="toc">
+		<h2>Contents</h2>
+		<details open>
+			<summary>Table of Contents</summary>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#mac-settings">Mac Settings</a>
+      <ul>
+        <li><a href="#enable-time-machine">Enable Time Machine</a></li>
+        <li><a href="#three-finger-drag">Three Finger Drag</a></li>
+        <li><a href="#set-dock-to-the-side">Set Dock to the side</a></li>
+        <li><a href="#keyboard-repeat">Keyboard Repeat</a></li>
+      </ul>
+    </li>
+    <li><a href="#menubar">Menubar</a></li>
+    <li><a href="#backups">Backups</a></li>
+    <li><a href="#brew">brew</a></li>
+    <li><a href="#terminal">Terminal</a>
+      <ul>
+        <li><a href="#shell">Shell</a></li>
+        <li><a href="#zoxide">zoxide</a></li>
+        <li><a href="#fzf">fzf</a></li>
+        <li><a href="#vim">vim</a></li>
+      </ul>
+    </li>
+    <li><a href="#apps">Apps</a>
+      <ul>
+        <li><a href="#ice">Ice</a></li>
+        <li><a href="#1password">1Password</a></li>
+        <li><a href="#karabiner-elements">Karabiner-Elements</a></li>
+        <li><a href="#rectangle">Rectangle</a></li>
+        <li><a href="#bluesooze">bluesooze</a></li>
+        <li><a href="#tailscale">Tailscale</a></li>
+      </ul>
+    </li>
+    <li><a href="#search">Search</a></li>
+  </ul>
+</nav>
+		</details>
+	</aside>
+	
+
+	<article class="post">
+		<div class="post-header">
+			<h1 class="title">Setting up my Mac</h1>
+			<div class="meta">May 19, 2025</div>
+		</div>
+
+		<div class="markdown">
+			<h2 id="mac-settings">Mac Settings</h2>
+<p>A post about how I set up my Mac.
+I&rsquo;ll likely make minor updates as things change.</p>
+<p>However if I radically change how I do this, I&rsquo;ll make a new post.</p>
+<h3 id="enable-time-machine">Enable Time Machine</h3>
+<p>I have at Synology NAS, which makes the backups easy.
+I highly recommend using Time Machine for backups, even to a external drive.
+It not only makes it easy to backup / restore files, but you can essentially restore your enire system to a previous state.</p>
+<h3 id="three-finger-drag">Three Finger Drag</h3>
+<p>Three finger drag allows you to grab windows at the title bar and move them around with a three finger drag.</p>
+<p>How this isn&rsquo;t default is beyond me.</p>
+<p><a href="https://support.apple.com/en-us/102341">Docs</a></p>
+<h3 id="set-dock-to-the-side">Set Dock to the side</h3>
+<p>I&rsquo;ve gotten used to having the Dock on the side instead of the bottom of screen.
+I think my initial reasoning was that vertical space is more scarce than horizontal space, so put the dock on the side.</p>
+<h3 id="keyboard-repeat">Keyboard Repeat</h3>
+<p>I like my keyboard responsive.</p>
+<p>Set the keyboard <strong>Key repeat rate</strong> to <code>fast</code> and <strong>Delay until repeat</strong> to <code>short</code>.</p>
+<h2 id="menubar">Menubar</h2>
+<p>Since <a href="https://news.ycombinator.com/item?id=40584606">Bartender</a> is no longer widely recommended, I&rsquo;ve switched to <a href="https://github.com/jordanbaird/Ice">Ice</a>.</p>
+<h2 id="backups">Backups</h2>
+<p>While time machine is a full system backup that is stored on my NAS, I also want my home directory backed up in a different location.
+I use <a href="https://www.arqbackup.com/">ARQ</a> for this.</p>
+<h2 id="brew">brew</h2>
+<p>Most CLI things installed with <code>brew</code>.</p>
+<p>Below is a list of whatever packages I have installed on my personal machine.</p>
+<details>
+<summary>Installed packages</summary>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; brew leaves <span style="color:#000;font-weight:bold">|</span> sort
+</span></span><span style="display:flex;"><span>btop
+</span></span><span style="display:flex;"><span>chezmoi
+</span></span><span style="display:flex;"><span>colima
+</span></span><span style="display:flex;"><span>docker
+</span></span><span style="display:flex;"><span>fd
+</span></span><span style="display:flex;"><span>fish
+</span></span><span style="display:flex;"><span>fzf
+</span></span><span style="display:flex;"><span>golangci-lint
+</span></span><span style="display:flex;"><span>htop
+</span></span><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span>hurl
+</span></span><span style="display:flex;"><span>id3v2
+</span></span><span style="display:flex;"><span>mtr
+</span></span><span style="display:flex;"><span>node
+</span></span><span style="display:flex;"><span>noseyparker
+</span></span><span style="display:flex;"><span>rsync
+</span></span><span style="display:flex;"><span>rust
+</span></span><span style="display:flex;"><span>spek
+</span></span><span style="display:flex;"><span>tree
+</span></span><span style="display:flex;"><span>uv
+</span></span><span style="display:flex;"><span>vale
+</span></span><span style="display:flex;"><span>wget
+</span></span><span style="display:flex;"><span>yt-dlp
+</span></span><span style="display:flex;"><span>zoxide
+</span></span></code></pre></div></details>
+<h2 id="terminal">Terminal</h2>
+<p>Mainly using iTerm2.
+I don&rsquo;t try to configure it much.</p>
+<h3 id="shell">Shell</h3>
+<p>I use <a href="https://fishshell.com/">fish</a>.</p>
+<p>My <code>.config/fish/config.fish</code> file looks something like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fish" data-lang="fish"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Needed for brew to work on M4
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87">eval</span> <span style="color:#4e9a06">&#34;</span><span style="color:#000">$(</span><span style="color:#4e9a06">/opt/homebrew/bin/brew shellenv)&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default editor
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#c4a000">-gx</span> <span style="color:#000">EDITOR</span> vim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Better cd that remembers common dirs
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">zoxide</span> init <span style="color:#204a87">fish</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87">source</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Better searching through history and files
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">fzf</span> <span style="color:#c4a000">--fish</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#204a87">source</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># uv
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87">fish_add_path</span> <span style="color:#4e9a06">&#34;/Users/jonathon/.local/bin&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Rust
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87">fish_add_path</span> /Users/jonathon/.cargo/bin
+</span></span></code></pre></div><h3 id="zoxide">zoxide</h3>
+<p><a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> is a rust tool from the lineage of <code>autojump</code> and <code>z</code>.</p>
+<p>It&rsquo;s essentially a better <code>cd</code> that makes it easier to navigate the filesystem.
+I likely don&rsquo;t use it to its full potential.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fish" data-lang="fish"><span style="display:flex;"><span><span style="color:#000">brew</span> install zoxide
+</span></span></code></pre></div><h3 id="fzf">fzf</h3>
+<p><a href="https://github.com/junegunn/fzf">fzf</a> is a fuzzy finder; I use it mostly for easier searching through my terminal history.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fish" data-lang="fish"><span style="display:flex;"><span><span style="color:#000">brew</span> install fzf
+</span></span></code></pre></div><h3 id="vim">vim</h3>
+<p>I&rsquo;m not a power vim user, but I do know enough that there are simple quality of life config changes that I need.</p>
+<p>I don&rsquo;t like to use long vim configs full of plugins and settings that I don&rsquo;t understand.</p>
+<p>I think the most basic config for me is this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">backspace</span><span style="color:#000;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span>         <span style="color:#8f5902;font-style:italic">&#34; backspace in insert mode works like normal editor</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">syntax</span> <span style="color:#000">on</span>               <span style="color:#8f5902;font-style:italic">&#34; syntax highlighting</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">filetype</span> <span style="color:#000">indent</span> <span style="color:#000">on</span>      <span style="color:#8f5902;font-style:italic">&#34; activates indenting for files</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">autoindent</span>          <span style="color:#8f5902;font-style:italic">&#34; auto indenting</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">number</span>             <span style="color:#8f5902;font-style:italic">&#34; line numbers</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">nobackup</span>           <span style="color:#8f5902;font-style:italic">&#34; get rid of anoying ~file</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">mouse</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000">a</span>            <span style="color:#8f5902;font-style:italic">&#34; enable mouse support</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">set</span> <span style="color:#000">clipboard</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000">unnamed</span>  <span style="color:#8f5902;font-style:italic">&#34; use system clipboard</span>
+</span></span></code></pre></div><h2 id="apps">Apps</h2>
+<h3 id="ice">Ice</h3>
+<p><a href="https://github.com/jordanbaird/Ice">Ice</a> to keep the menubar small.</p>
+<h3 id="1password">1Password</h3>
+<p>I use <a href="https://1password.com/">1Password</a> for password management.</p>
+<h3 id="karabiner-elements">Karabiner-Elements</h3>
+<p>Because I have the Kinesis Advantage 2, I&rsquo;ve used <a href="https://karabiner-elements.pqrs.org/">Karabiner-Elements</a> to remap a few things that I couldn&rsquo;t do in the Kinesis software.</p>
+<h3 id="rectangle">Rectangle</h3>
+<p>This is likely my most used app, I actually paid for <a href="https://rectangleapp.com/pro">Pro</a> to support the developer.</p>
+<h3 id="bluesooze">bluesooze</h3>
+<p><a href="https://github.com/odlp/bluesnooze">bluesooze</a> disables bluetooth when the lid is closed.
+This is because Mac&rsquo;s seem to be able to connect to bluetooth devices even when the lid is closed.</p>
+<p>I have some headphones that can connect to multiple devices.
+And when I connect them to my phone, they often will then also connect to my Mac and cause issues.</p>
+<h3 id="tailscale">Tailscale</h3>
+<p><a href="https://tailscale.com/">Tailscale</a> to connect to my home network (I aint opening ports on my router).</p>
+<h2 id="search">Search</h2>
+<p>I&rsquo;ve been paying for <a href="https://kagi.com/">Kagi</a> for a few years now.
+I&rsquo;m on the $10/month plan.</p>
+<p>I have around 950 to 1100 searches a month.</p>
+
+		</div>
+	</article>
+</div>
+
+		</main>
+
+		<footer class="footer">
+  <div class="wrapper">
+    <div class="footer-content">
+      <div class="copyright">&copy; 2025 Jonathon Lacher</div>
+      <div class="footer-links">
+        <a href="/">Home</a> ·
+        <a href="/posts">Posts</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+	</div>
+</body>
+</html>

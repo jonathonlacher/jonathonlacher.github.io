@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Jonathon Lacher</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Apr 2025 22:59:41 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 May 2025 07:51:20 +0000</lastBuildDate>
     <atom:link href="https://jonathonlacher.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up my Mac</title>
+      <link>https://jonathonlacher.com/posts/2025-05-19-setting-up-mac/</link>
+      <pubDate>Mon, 19 May 2025 07:51:20 +0000</pubDate>
+      <guid>https://jonathonlacher.com/posts/2025-05-19-setting-up-mac/</guid>
+      <description>&lt;h2 id=&#34;mac-settings&#34;&gt;Mac Settings&lt;/h2&gt;&#xA;&lt;p&gt;A post about how I set up my Mac.&#xA;I&amp;rsquo;ll likely make minor updates as things change.&lt;/p&gt;&#xA;&lt;p&gt;However if I radically change how I do this, I&amp;rsquo;ll make a new post.&lt;/p&gt;&#xA;&lt;h3 id=&#34;enable-time-machine&#34;&gt;Enable Time Machine&lt;/h3&gt;&#xA;&lt;p&gt;I have at Synology NAS, which makes the backups easy.&#xA;I highly recommend using Time Machine for backups, even to a external drive.&#xA;It not only makes it easy to backup / restore files, but you can essentially restore your enire system to a previous state.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Linking to Apple Notes from another note</title>
       <link>https://jonathonlacher.com/posts/2025-4-28-link-apple-notes/</link>

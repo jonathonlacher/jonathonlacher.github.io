@@ -27,6 +27,9 @@ MTR has been around for a few decades now, but I discovered it in the past few y
 
 	
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="/js/linkable-headers.js" defer></script>
+	<script src="/js/toc.js" defer></script>
+	<script src="/js/scroll-to-toc.js" defer></script>
 </head>
 
 <body>
@@ -57,14 +60,17 @@ MTR has been around for a few decades now, but I discovered it in the past few y
 
 		<main>
 			
-<div class="post">
-	<div class="post-header">
-		<h1 class="title">Network debugging with MTR</h1>
-		<div class="meta">Posted at &mdash; Aug 4, 2020</div>
-	</div>
+<div class="post-with-sidebar">
+	
 
-	<div class="markdown">
-		<p>I&rsquo;ve been dealing with intermittent packet loss at my current home connection. I initially wasn&rsquo;t sure if the issue was with my home router/switch or my ISP. With MTR, I found the issue wasn&rsquo;t with my home equipment, but somewhere after my ISP&rsquo;s router.</p>
+	<article class="post">
+		<div class="post-header">
+			<h1 class="title">Network debugging with MTR</h1>
+			<div class="meta">Aug 4, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>I&rsquo;ve been dealing with intermittent packet loss at my current home connection. I initially wasn&rsquo;t sure if the issue was with my home router/switch or my ISP. With MTR, I found the issue wasn&rsquo;t with my home equipment, but somewhere after my ISP&rsquo;s router.</p>
 <p><a href="https://github.com/traviscross/mtr">MTR</a> has been around for a few decades now, but I discovered it in the past few years. It&rsquo;s a mashup of traceroute and ping and is useful for diagnosing network issues and quality. It essentially shows each hop between you and the endpoint, with packet loss percentage and ping information to each hop.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; sudo mtr jonathonlacher.com
 </span></span><span style="display:flex;"><span>                             My traceroute  <span style="color:#ce5c00;font-weight:bold">[</span>v0.93<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -89,7 +95,8 @@ X: Worst Jitter
 I: Interarrival Jitter
 </code></pre><p>To dig deeper, look at <a href="https://www.linode.com/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/">Linode&rsquo;s comprehensive article on MTR</a> which includes longer explanations of how MTR works, how to interpret test results, and how to use TCP mode.</p>
 
-	</div>
+		</div>
+	</article>
 </div>
 
 		</main>

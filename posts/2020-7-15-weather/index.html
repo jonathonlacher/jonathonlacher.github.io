@@ -29,6 +29,9 @@ For near-term weather (the next 12-120 hours) I use the National Weather Service
 
 	
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<script src="/js/linkable-headers.js" defer></script>
+	<script src="/js/toc.js" defer></script>
+	<script src="/js/scroll-to-toc.js" defer></script>
 </head>
 
 <body>
@@ -59,14 +62,29 @@ For near-term weather (the next 12-120 hours) I use the National Weather Service
 
 		<main>
 			
-<div class="post">
-	<div class="post-header">
-		<h1 class="title">Where I get my weather forecasts</h1>
-		<div class="meta">Posted at &mdash; Jul 16, 2020</div>
-	</div>
+<div class="post-with-sidebar">
+	
+	<aside class="toc-sticky" id="toc">
+		<h2>Contents</h2>
+		<details open>
+			<summary>Table of Contents</summary>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#forecast-accuracy">Forecast accuracy</a></li>
+  </ul>
+</nav>
+		</details>
+	</aside>
+	
 
-	<div class="markdown">
-		<p>I&rsquo;ve been an Android user for the last 10 years, and for the last 3-4 years I&rsquo;ve been using the <a href="https://darksky.net/">Dark Sky</a> weather app.</p>
+	<article class="post">
+		<div class="post-header">
+			<h1 class="title">Where I get my weather forecasts</h1>
+			<div class="meta">Jul 16, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<p>I&rsquo;ve been an Android user for the last 10 years, and for the last 3-4 years I&rsquo;ve been using the <a href="https://darksky.net/">Dark Sky</a> weather app.</p>
 <p>However they recently announce they&rsquo;re <a href="https://blog.darksky.net/dark-sky-has-a-new-home/">shutting down the Android app</a>, so I&rsquo;ve been researching which weather services will fit my needs.</p>
 <p>For near-term weather (the next 12-120 hours) I use the <a href="https://forecast.weather.gov/">National Weather Service</a>, I especially like the <a href="https://forecast.weather.gov/product.php?site=MPX&amp;issuedby=MPX&amp;product=AFD&amp;format=CI&amp;version=1&amp;glossary=1">Area Forcast Discussion</a> which is written a human, and gives insight and more color into the weather than just reading a 5 day forecast.</p>
 <p>I&rsquo;ve set a shortcut on my homescreen to the <a href="https://mobile.weather.gov/">mobile version of the National Weather Service</a>.
@@ -78,7 +96,8 @@ In my area there are 10 different services with distinct forecasts ranging from 
 In my area persistence accuracy is 43%, but in places like Los Angeles it&rsquo;s 67%.
 Hopefully the weather service you choose is better than that.</p>
 
-	</div>
+		</div>
+	</article>
 </div>
 
 		</main>
