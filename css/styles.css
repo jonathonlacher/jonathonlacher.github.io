@@ -12,7 +12,7 @@ VARIABLES
   --bg-color: #fff;
   --text-color: #333;
   --heading-color: #333;
-  --meta-color: #777;
+  --meta-color: #595959; /* Improved from #777 to #595959 for better contrast */
   --border-color: #eaeaea;
   --border-color-rgb: 234, 234, 234; /* RGB version of border color for transparency */
   --code-bg: #f5f7fa;
@@ -74,6 +74,7 @@ VARIABLES
   --link-bg: var(--yellow-50);
   --link-color: var(--gray-900);
   --link-hover-bg: var(--yellow-100);
+  --link-underline: 1px solid rgba(0, 0, 0, 0.3); /* Add underline to links for better accessibility */
 
   --header-bg: #f8f5f0; /* Changed from #f4f3ea to a warmer, less green tone */
   --header-accent: var(--yellow-500);
@@ -105,7 +106,7 @@ VARIABLES
     --bg-color: #121212;
     --text-color: #e0e0e0;
     --heading-color: #f5f5f5;
-    --meta-color: #9e9e9e;
+    --meta-color: #bdbdbd; /* Improved from #9e9e9e to #bdbdbd for better contrast */
     --border-color: #333;
     --border-color-rgb: 51, 51, 51; /* RGB version of dark mode border color */
     --code-bg: #1a1d21;
@@ -117,8 +118,9 @@ VARIABLES
 
     /* Adjusted semantic colors for dark mode */
     --link-bg: rgba(255, 235, 59, 0.1);
-    --link-color: var(--yellow-300);
+    --link-color: var(--yellow-200); /* Changed from yellow-300 to yellow-200 for better contrast on dark backgrounds */
     --link-hover-bg: rgba(255, 235, 59, 0.2);
+    --link-underline: 1px solid rgba(255, 235, 59, 0.5); /* Add underline to links for better accessibility */
 
     --header-bg: #1e1e1e;
     --header-accent: var(--yellow-600);
@@ -372,6 +374,14 @@ a {
   padding: 1px 3px;
   border-radius: 2px;
   transition: background-color 0.2s ease;
+  border-bottom: var(--link-underline); /* Add underline for better accessibility */
+  text-decoration: none; /* We're using border-bottom instead */
+}
+
+/* Explicitly exempt site title from underline */
+.site-title a, .site-title a:hover {
+  border-bottom: none;
+  text-decoration: none;
 }
 
 a:hover {
@@ -657,6 +667,7 @@ li code {
   background-color: var(--nav-link-bg);
   border-radius: 4px;
   padding: 6px 12px;
+  {{/* border-bottom: none; /* Exempt navigation links from general link underlines */ */}}
 }
 
 .header nav ul.flat li a:hover {
@@ -725,16 +736,25 @@ li code {
   align-items: center;
 }
 
+.copyright {
+  font-size: var(--text-xs);
+  color: var(--text-color); /* Using text-color instead of meta-color for better contrast */
+  font-weight: 500; /* Added for better visibility */
+  padding: 5px 0;
+}
+
 .footer a {
   background-color: transparent;
   color: var(--text-color);
   padding: 0;
   opacity: 0.8;
   transition: opacity 0.2s ease;
+  border-bottom: none; /* Exempt footer links from general link underlines */
 }
 
 .footer a:hover {
   opacity: 1;
+  border-bottom: 1px solid var(--border-color); /* Add subtle bottom border on hover for accessibility */
   background-color: transparent;
   border-bottom: 1px dotted var(--text-color);
   padding-bottom: 0;
@@ -760,9 +780,9 @@ li code {
 .section-header,
 .section .section-header {
   font-size: var(--text-xs);
-  font-weight: 100;
+  font-weight: 500; /* Increased from 100 for better visibility */
   text-transform: uppercase;
-  color: var(--meta-color);
+  color: var(--text-color); /* Changed from var(--meta-color) for better contrast */
   margin-bottom: 20px;
   letter-spacing: 1px;
 }
@@ -784,7 +804,8 @@ li code {
   display: block;
   margin-top: 0.5rem;
   font-size: var(--text-sm);
-  color: var(--meta-color);
+  color: var(--text-color); /* Changed from var(--meta-color) for better contrast */
+  font-weight: 500;
 }
 
 .post .draft-label {
@@ -812,7 +833,8 @@ li code {
 .recent-posts .posts .post .meta,
 .list .posts .post .meta {
   font-size: var(--text-base);
-  color: var(--meta-color);
+  color: var(--text-color); /* Changed from var(--meta-color) for better contrast */
+  font-weight: 500;
   margin-bottom: 4px;
 }
 
@@ -831,8 +853,7 @@ li code {
 }
 
 .recent-posts .posts .post a.read-more:hover {
-  text-decoration: underline;
-  border-bottom: none;
+  border-bottom: 1px solid var(--yellow-600);
   padding-bottom: 0;
 }
 
