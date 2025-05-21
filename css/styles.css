@@ -595,7 +595,7 @@ li code {
 ========================================================================== */
 
 .wrapper {
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -978,7 +978,7 @@ img[src$="#responsive"] {
 ========================================================================== */
 
 .post-with-sidebar {
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto;
   position: relative;
 }
@@ -1116,7 +1116,7 @@ img[src$="#responsive"] {
 /* On large screens, position TOC outside the article */
 @media (min-width: 1200px) {
   .post-with-sidebar {
-    max-width: 760px;
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
     --toc-top-position: 0px;
