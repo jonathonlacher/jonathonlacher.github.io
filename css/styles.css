@@ -1,12 +1,9 @@
 /*
-
 Consolidated CSS for jonathonlacher.com
-
 Uses CSS variables for easy theme switching
 */
 
 /* ==========================================================================
-
 VARIABLES
 ========================================================================== */
 
@@ -17,6 +14,7 @@ VARIABLES
   --heading-color: #333;
   --meta-color: #777;
   --border-color: #eaeaea;
+  --border-color-rgb: 234, 234, 234; /* RGB version of border color for transparency */
   --code-bg: #f5f7fa;
   --code-border: #e2e8f0;
   --code-color: #2a3646;
@@ -24,16 +22,16 @@ VARIABLES
   --highlight-bg: #fffde7;
 
   /* Font sizes - using a modular scale with 1rem base */
-  --text-xs: 0.75rem;    /* 12px - small text, footer, meta */
-  --text-sm: 0.875rem;   /* 14px - small UI elements */
-  --text-base: 1rem;     /* 16px - base reference size */
-  --text-md: 1.125rem;   /* 18px - slightly larger text */
-  --text-lg: 1.25rem;    /* 20px - body text */
-  --text-xl: 1.5rem;     /* 24px - h4 */
-  --text-2xl: 1.75rem;   /* 28px - h3 */
-  --text-3xl: 2rem;      /* 32px - h2 */
-  --text-4xl: 2.5rem;    /* 40px - h1 */
-  --text-5xl: 3rem;      /* 48px - site title */
+  --text-xs: 0.75rem; /* 12px - small text, footer, meta */
+  --text-sm: 0.875rem; /* 14px - small UI elements */
+  --text-base: 1rem; /* 16px - base reference size */
+  --text-md: 1.125rem; /* 18px - slightly larger text */
+  --text-lg: 1.25rem; /* 20px - body text */
+  --text-xl: 1.5rem; /* 24px - h4 */
+  --text-2xl: 1.75rem; /* 28px - h3 */
+  --text-3xl: 2rem; /* 32px - h2 */
+  --text-4xl: 2.5rem; /* 40px - h1 */
+  --text-5xl: 3rem; /* 48px - site title */
 
   /* Primary color palette */
   --yellow-50: #fffde7;
@@ -41,7 +39,7 @@ VARIABLES
   --yellow-200: #fff59d;
   --yellow-300: #fff176;
   --yellow-400: #ffee58;
-  --yellow-500: #ffeb3b;  /* Main brand yellow */
+  --yellow-500: #ffeb3b; /* Main brand yellow */
   --yellow-600: #fdd835;
   --yellow-700: #fbc02d;
   --yellow-800: #f9a825;
@@ -79,7 +77,12 @@ VARIABLES
 
   --header-bg: #f8f5f0; /* Changed from #f4f3ea to a warmer, less green tone */
   --header-accent: var(--yellow-500);
-  --nav-link-bg: rgba(253, 216, 53, 0.15); /* Semi-transparent yellow for nav buttons */
+  --nav-link-bg: rgba(
+    253,
+    216,
+    53,
+    0.15
+  ); /* Semi-transparent yellow for nav buttons */
   --nav-link-hover-bg: var(--yellow-200);
 
   --info-bg: var(--blue-light);
@@ -104,11 +107,13 @@ VARIABLES
     --heading-color: #f5f5f5;
     --meta-color: #9e9e9e;
     --border-color: #333;
+    --border-color-rgb: 51, 51, 51; /* RGB version of dark mode border color */
     --code-bg: #1a1d21;
     --code-border: #2c313a;
     --code-color: #e2e6ed;
     --blockquote-border: #cc0000;
     --highlight-bg: #333;
+    --gray-100: #2d2d2d;
 
     /* Adjusted semantic colors for dark mode */
     --link-bg: rgba(255, 235, 59, 0.1);
@@ -154,7 +159,11 @@ html {
   overflow-y: scroll;
 }
 
-html, button, input, select, textarea {
+html,
+button,
+input,
+select,
+textarea {
   color: var(--text-color);
 }
 
@@ -178,7 +187,7 @@ hr {
 }
 
 img {
-  margin: 10px auto 10px auto;
+  margin: 10px auto;
   max-width: 100%;
   display: block;
 }
@@ -206,11 +215,9 @@ textarea {
 3. TYPOGRAPHY
 ========================================================================== */
 
-/* Targeted Header Styles - Only affects article content */
-
 /* Preserve original heading styles for site header */
-.header h1, .header h2 {
-  /* Reset to original styles */
+.header h1,
+.header h2 {
   margin: 0;
   padding: 0;
   font-weight: inherit;
@@ -233,67 +240,65 @@ textarea {
 .post h6 {
   line-height: 1.2;
   color: var(--heading-color);
-  /* Compact vertical spacing */
   margin-top: 1.2em;
   margin-bottom: 0.5em;
 }
 
-/* H1 - Page/Post title */
+/* H1 - Content heading (not post title) */
 .markdown h1,
-.post h1,
-.post-header .title {
-  font-size: var(--text-4xl);
-  font-weight: 300; /* Light weight */
-  letter-spacing: -0.5px;
+.post .markdown h1 {
+  font-size: var(--text-3xl);
+  font-weight: 500;
   color: var(--heading-color);
-  margin-top: 0.8em;
-  margin-bottom: 0.4em;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* H2 - Major section headers */
 .markdown h2,
-.post h2 {
-  font-size: var(--text-3xl);
-  font-weight: 300; /* Light weight */
+.post .markdown h2 {
+  font-size: calc(var(--text-2xl) * 1.1);
+  font-weight: 500;
   letter-spacing: -0.25px;
-  /* Simple bottom border */
   padding-bottom: 0.2em;
   border-bottom: 1px solid var(--border-color);
-  margin-top: 1em;
+  margin-top: 1.2em;
 }
 
 /* H3 - Sub-section headers */
 .markdown h3,
-.post h3 {
+.post .markdown h3 {
   font-size: var(--text-2xl);
-  font-weight: 400; /* Medium weight - slightly heavier than h2 */
+  font-weight: 400;
   letter-spacing: -0.1px;
   margin-top: 0.9em;
 }
 
 /* H4 - Minor section headers */
 .markdown h4,
-.post h4 {
+.post .markdown h4 {
   font-size: var(--text-xl);
-  font-weight: 500; /* Semibold */
+  font-weight: 400;
   margin-top: 0.8em;
   margin-bottom: 0.4em;
 }
 
 /* H5 - Small headers */
 .markdown h5,
-.post h5 {
+.post .markdown h5 {
   font-size: var(--text-md);
-  font-weight: 500; /* Semibold */
+  font-weight: 400;
   margin-top: 0.7em;
   margin-bottom: 0.3em;
 }
 
 /* H6 - Smallest headers */
 .markdown h6,
-.post h6 {
+.post .markdown h6 {
   font-size: var(--text-base);
-  font-weight: 500; /* Semibold */
+  font-weight: 400;
   margin-top: 0.7em;
   margin-bottom: 0.3em;
 }
@@ -305,25 +310,25 @@ textarea {
 .markdown h4 + p,
 .markdown h5 + p,
 .markdown h6 + p,
-.post h1 + p,
-.post h2 + p,
-.post h3 + p,
-.post h4 + p,
-.post h5 + p,
-.post h6 + p {
+.post .markdown h1 + p,
+.post .markdown h2 + p,
+.post .markdown h3 + p,
+.post .markdown h4 + p,
+.post .markdown h5 + p,
+.post .markdown h6 + p {
   margin-top: 0.3em;
 }
 
 /* First heading in content should have minimal top margin */
 .markdown > h1:first-child,
-.post > h1:first-child {
+.post .markdown > h1:first-child {
   margin-top: 0.3em;
 }
 
 .markdown > h2:first-child,
 .markdown > h3:first-child,
-.post > h2:first-child,
-.post > h3:first-child {
+.post .markdown > h2:first-child,
+.post .markdown > h3:first-child {
   margin-top: 0.4em;
 }
 
@@ -333,11 +338,12 @@ textarea {
   margin-bottom: 0.8em;
 }
 
-/* Make sure heading link icons work properly */
+/* Header link icon styling */
 .header-link-icon {
   visibility: hidden;
   color: var(--meta-color);
   opacity: 0.7;
+  margin-left: 0.25em;
 }
 
 h1:hover .header-link-icon,
@@ -349,8 +355,13 @@ h6:hover .header-link-icon {
   visibility: visible;
 }
 
+.header-link-icon svg {
+  vertical-align: middle;
+}
+
 /* Links */
-a, a:hover {
+a,
+a:hover {
   text-decoration: none;
   word-break: break-word;
 }
@@ -367,19 +378,6 @@ a:hover {
   background-color: var(--link-hover-bg);
   border-bottom: 1px solid var(--yellow-600);
   padding-bottom: 2px;
-}
-
-/* Links with transparent background - used for special cases */
-.transparent-link {
-  background-color: transparent;
-  color: inherit;
-  padding: 0;
-}
-
-.transparent-link:hover {
-  text-decoration: underline;
-  border-bottom: none;
-  padding-bottom: 0;
 }
 
 /* Lists */
@@ -403,18 +401,18 @@ ul.flat li {
 blockquote {
   margin-left: 1rem;
   font-style: italic;
-  font-size: var(--text-md); /* Changed from --text-xl to --text-md (1.125rem/18px) */
+  font-size: var(--text-md);
   font-family: Georgia, bitstream charter, serif;
   border-left: 3px solid var(--blockquote-border);
   padding-left: 20px;
-  line-height: 1.5; /* Added to improve readability */
-  color: var(--text-color); /* Ensuring proper color contrast */
-  opacity: 0.9; /* Slightly dimmed to differentiate from regular text */
+  line-height: 1.5;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
 blockquote cite {
   font-size: var(--text-xs);
-  opacity: .8;
+  opacity: 0.8;
 }
 
 blockquote em {
@@ -425,48 +423,50 @@ blockquote em {
 details > summary {
   list-style: none; /* Remove default marker */
   cursor: pointer;
-  padding: 1px 3px; /* Match link padding */
-  border-radius: 2px; /* Match link border-radius */
-  background-color: var(--link-bg); /* Match link background */
-  color: var(--link-color); /* Match link color */
+  padding: 1px 3px;
+  border-radius: 2px;
+  background-color: var(--link-bg);
+  color: var(--link-color);
   display: inline-block;
-  transition: background-color 0.2s ease; /* Match link transition */
+  transition: background-color 0.2s ease;
 }
 
 details > summary:hover {
-  background-color: var(--link-hover-bg); /* Match link hover background */
-  border-bottom: 1px solid var(--yellow-600); /* Match link hover border */
-  padding-bottom: 2px; /* Match link hover padding */
+  background-color: var(--link-hover-bg);
+  border-bottom: 1px solid var(--yellow-600);
+  padding-bottom: 2px;
 }
 
 details > summary::-webkit-details-marker {
-  display: none; /* Hide Safari's default marker */
+  display: none;
 }
 
 details > summary::before {
-  content: '\25B6\00a0'; /* Add a right-pointing triangle, followed by a non-breaking space */
-  /* Use a color that fits the link style, perhaps slightly darker or lighter than text */
+  content: "\25B6\00a0";
   color: var(--link-color);
-  font-size: 0.8em; /* Make the arrow slightly smaller than the surrounding text */
+  font-size: 0.8em;
 }
 
 details[open] > summary::before {
-  content: '\25BC\00a0'; /* Change to a down-pointing triangle when open */
-  font-size: 0.8em; /* Keep the size consistent when open */
+  content: "\25BC\00a0";
+  font-size: 0.8em;
 }
 
-/* Style for code elements within summary to blend with link appearance */
+/* Style for code elements within summary */
 details > summary code {
-  background-color: transparent; /* Use the summary's background color */
-  color: inherit; /* Inherit text color from the summary (link color) */
-  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace; /* Monospace font stack */
-  font-size: inherit; /* Use the summary's font size */
-  padding: 0; /* Remove any default padding from inline code styles */
-  border-radius: 0; /* Remove any default border-radius from inline code styles */
-  vertical-align: baseline; /* Align with surrounding text */
+  background-color: transparent;
+  color: inherit;
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+    "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+    "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
+    monospace;
+  font-size: inherit;
+  padding: 0;
+  border-radius: 0;
+  vertical-align: baseline;
 }
 
-/* Ensure the details/summary doesn't get global link styles that might conflict */
+/* Ensure the details/summary doesn't get global link styles */
 details > summary a {
   background-color: transparent;
   color: inherit;
@@ -479,11 +479,11 @@ details > summary a:hover {
   text-decoration: underline;
 }
 
-
 /* Code */
 /* Inline code styling */
 :not(pre) > code {
-  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   font-size: 85%;
   background-color: var(--code-bg);
   color: var(--code-color);
@@ -520,7 +520,8 @@ details > summary a:hover {
   padding: 1.25rem;
   background-color: transparent !important;
   overflow-x: auto;
-  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   font-size: 90%;
   line-height: 1.5;
   tab-size: 4;
@@ -586,21 +587,16 @@ li code {
 .wrapper {
   max-width: 760px;
   margin: 0 auto;
-  position: relative; /* Add positioning context */
-  width: 100%; /* Ensure full width for consistent centering */
-  box-sizing: border-box; /* Include padding in width calculations */
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container {
   max-width: 800px;
-  margin: 0 auto; /* Center the container */
-  margin-top: 30px; /* Reduced from 50px for better balance with header */
-  width: 100%; /* Ensure container takes full available width */
-  box-sizing: border-box; /* Include padding in width calculations */
-}
-
-.prevent-collapse {
-  min-height: .1rem
+  margin: 30px auto 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -613,7 +609,7 @@ li code {
   padding: 30px 25px 25px;
   background-color: var(--header-bg);
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   width: 100%;
   box-sizing: border-box;
   left: 0;
@@ -631,11 +627,11 @@ li code {
 
 .header h2 {
   font-size: var(--text-md);
-  margin-top: 5px; /* Added to create better spacing below title */
+  margin-top: 5px;
 }
 
 .header nav {
-  margin-top: 15px; /* Increased from 20px */
+  margin-top: 15px;
   border-top: 1px solid var(--border-color);
 }
 
@@ -652,28 +648,28 @@ li code {
   display: inline-block;
   list-style: none;
   margin-left: 0;
-  margin-right: 12px; /* Increased from 10px */
-  margin-top: 12px; /* Increased from 10px */
+  margin-right: 12px;
+  margin-top: 12px;
   text-transform: capitalize;
 }
 
 .header nav ul.flat li a {
   background-color: var(--nav-link-bg);
   border-radius: 4px;
-  padding: 6px 12px; /* Increased from 4px 10px */
+  padding: 6px 12px;
 }
 
 .header nav ul.flat li a:hover {
   background-color: var(--nav-link-hover-bg);
   border-bottom: none;
-  padding-bottom: 6px; /* Updated to match the new padding */
+  padding-bottom: 6px;
 }
 
 .header .site-description {
   display: flex;
-  justify-content: flex-start; /* Changed from space-between */
+  justify-content: flex-start;
   align-items: center;
-  gap: 30px; /* Added to create consistent spacing */
+  gap: 30px;
 }
 
 .header .site-description nav {
@@ -685,17 +681,16 @@ li code {
 }
 
 .header .site-description h2 {
-  flex: 1; /* Takes available space */
+  flex: 1;
 }
-
 
 .header .site-description nav ul svg {
   max-height: 15px;
-  margin: 0 4px; /* Added spacing between social icons */
+  margin: 0 4px;
 }
 
 .header .site-description nav ul.flat li {
-  margin-right: 8px; /* Better spacing for social icons */
+  margin-right: 8px;
 }
 
 .site-title a {
@@ -703,35 +698,14 @@ li code {
   font-size: var(--text-5xl);
   text-decoration: none !important;
   background-color: transparent;
-  padding: 0; /* Reset padding to avoid misalignment */
-  font-weight: 300; /* Add this line - makes title more prominent */
-  letter-spacing: -0.5px; /* Optional - improves readability of large text */
+  padding: 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
-/* Add a subtle yellow accent to keep some brand identity */
 .site-title a:hover {
   color: var(--yellow-600);
   border-bottom: none;
-}
-
-/* Header link icon */
-.header-link-icon {
-    visibility: hidden;
-    margin-left: 0.25em;
-    color: var(--text-color); /* Or your preferred link color */
-}
-
-h1:hover .header-link-icon,
-h2:hover .header-link-icon,
-h3:hover .header-link-icon,
-h4:hover .header-link-icon,
-h5:hover .header-link-icon,
-h6:hover .header-link-icon {
-    visibility: visible;
-}
-
-.header-link-icon svg {
-    vertical-align: middle;
 }
 
 /* 5.2 Footer */
@@ -786,7 +760,7 @@ h6:hover .header-link-icon {
 .section-header,
 .section .section-header {
   font-size: var(--text-xs);
-  font-weight: 600;
+  font-weight: 100;
   text-transform: uppercase;
   color: var(--meta-color);
   margin-bottom: 20px;
@@ -795,17 +769,21 @@ h6:hover .header-link-icon {
 
 /* 5.4 Post Styling */
 .post .post-header {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 
 .post .post-header .title {
   margin: 0;
+  font-size: var(--text-4xl);
+  line-height: 1.1;
+  font-weight: 600;
+  color: var(--heading-color);
 }
 
 .post .post-header .meta {
-  padding-left: 5px;
-  margin-top: 10px;
-  font-size: var(--text-base);
+  display: block;
+  margin-top: 0.5rem;
+  font-size: var(--text-sm);
   color: var(--meta-color);
 }
 
@@ -892,7 +870,8 @@ table th {
   background-color: var(--code-bg);
 }
 
-table th, table td {
+table th,
+table td {
   padding: 10px 20px;
   border: 1px solid var(--border-color);
 }
@@ -901,163 +880,75 @@ table th, table td {
 6. UTILITIES
 ========================================================================== */
 
-.align-center { text-align: center; }
-.align-left { text-align: left; }
-.align-right { text-align: right; }
-.page-title { margin: 0; }
-.smaller { font-size: var(--text-xs); }
+.align-center {
+  text-align: center;
+}
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+.page-title {
+  margin: 0;
+}
+.smaller {
+  font-size: var(--text-xs);
+}
 
 /* Responsive images */
-img[src$='#responsive'] {
+img[src$="#responsive"] {
   width: 50%;
   height: auto;
 }
-
-/* Text colors */
-.text-white { color: #ffffff; }
-.text-gray-lightest { color: var(--gray-50); }
-.text-gray-lighter { color: var(--gray-100); }
-.text-gray-light { color: var(--gray-300); }
-.text-gray { color: var(--gray-500); }
-.text-gray-dark { color: var(--gray-700); }
-.text-gray-darker { color: var(--gray-800); }
-.text-gray-darkest { color: var(--gray-900); }
-.text-black { color: #000000; }
-
-.text-brand-light { color: var(--yellow-300); }
-.text-brand { color: var(--yellow-500); }
-.text-brand-dark { color: var(--yellow-700); }
-
-.text-info-light { color: var(--blue-light); }
-.text-info { color: var(--blue); }
-.text-info-dark { color: var(--blue-dark); }
-
-.text-warning-light { color: var(--yellow-100); }
-.text-warning { color: var(--yellow-500); }
-.text-warning-dark { color: var(--yellow-900); }
-
-.text-success-light { color: var(--green-light); }
-.text-success { color: var(--green); }
-.text-success-dark { color: var(--green-dark); }
-
-.text-danger-light { color: var(--red-light); }
-.text-danger { color: var(--red); }
-.text-danger-dark { color: var(--red-dark); }
-
-/* Background colors */
-.bg-white { background-color: #ffffff; }
-.bg-gray-lightest { background-color: var(--gray-50); }
-.bg-gray-lighter { background-color: var(--gray-100); }
-.bg-gray-light { background-color: var(--gray-300); }
-.bg-gray { background-color: var(--gray-500); }
-.bg-gray-dark { background-color: var(--gray-700); }
-.bg-gray-darker { background-color: var(--gray-800); }
-.bg-gray-darkest { background-color: var(--gray-900); }
-.bg-black { background-color: #000000; }
-
-.bg-brand-light { background-color: var(--yellow-300); }
-.bg-brand { background-color: var(--yellow-500); }
-.bg-brand-dark { background-color: var(--yellow-700); }
-
-.bg-info-light { background-color: var(--blue-light); }
-.bg-info { background-color: var(--blue); }
-.bg-info-dark { background-color: var(--blue-dark); }
-
-.bg-warning-light { background-color: var(--warning-bg); }
-.bg-warning { background-color: var(--yellow-500); }
-.bg-warning-dark { background-color: var(--yellow-900); }
-
-.bg-success-light { background-color: var(--success-bg); }
-.bg-success { background-color: var(--green); }
-.bg-success-dark { background-color: var(--green-dark); }
-
-.bg-danger-light { background-color: var(--danger-bg); }
-.bg-danger { background-color: var(--red); }
-.bg-danger-dark { background-color: var(--red-dark); }
-
-/* Border colors */
-.border-white { border-color: #ffffff; }
-.border-gray-lightest { border-color: var(--gray-50); }
-.border-gray-lighter { border-color: var(--gray-100); }
-.border-gray-light { border-color: var(--gray-300); }
-.border-gray { border-color: var(--gray-500); }
-.border-gray-dark { border-color: var(--gray-700); }
-.border-gray-darker { border-color: var(--gray-800); }
-.border-gray-darkest { border-color: var(--gray-900); }
-.border-black { border-color: #000000; }
-
-.border-brand-light { border-color: var(--yellow-300); }
-.border-brand { border-color: var(--yellow-500); }
-.border-brand-dark { border-color: var(--yellow-700); }
-
-.border-info-light { border-color: var(--blue-light); }
-.border-info { border-color: var(--blue); }
-.border-info-dark { border-color: var(--blue-dark); }
-
-.border-warning-light { border-color: var(--yellow-100); }
-.border-warning { border-color: var(--yellow-500); }
-.border-warning-dark { border-color: var(--yellow-900); }
-
-.border-success-light { border-color: var(--green-light); }
-.border-success { border-color: var(--green); }
-.border-success-dark { border-color: var(--green-dark); }
-
-.border-danger-light { border-color: var(--red-light); }
-.border-danger { border-color: var(--red); }
-.border-danger-dark { border-color: var(--red-dark); }
 
 /* ==========================================================================
 7. MEDIA QUERIES / RESPONSIVE STYLES
 ========================================================================== */
 
 @media (max-width: 767px) {
-  /* Keep essential text size adjustments */
   body {
     padding: 15px;
     font-size: var(--text-md);
   }
 
-  /* Keep standard header structure */
   .header {
     padding: 20px 15px;
   }
 
-  /* Preserve the horizontal layout but make it more compact */
   .header .site-description {
-    /* No flex-direction change to keep horizontal layout */
     align-items: center;
-    gap: 15px; /* Tighter spacing */
+    gap: 15px;
   }
 
-  /* Slightly smaller title for better fit */
   .site-title a {
     font-size: var(--text-4xl);
   }
 
-  /* Tighter navigation spacing */
+  .post-header .title {
+    font-size: var(--text-3xl);
+  }
+
+  .post-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .markdown h1,
+  .post h1 {
+    font-size: var(--text-2xl);
+    margin-top: 1.5em;
+  }
+
   .header nav {
     margin-top: 15px;
   }
 
-  /* Space navigation buttons appropriately */
   .header nav:not(.social) ul.flat li {
     margin-right: 10px;
   }
 
-  /* Slightly larger touch targets */
   .header nav:not(.social) ul.flat li a {
     padding: 8px 12px;
-  }
-}
-
-/* Extra-wide screen support */
-@media (min-width: 1440px) {
-  .wrapper {
-    max-width: 760px; /* Keep max-width consistent across all screens */
-  }
-
-  body {
-    padding: 20px; /* Keep consistent padding */
   }
 }
 
@@ -1079,7 +970,7 @@ img[src$='#responsive'] {
   border-left: 3px solid var(--yellow-500);
   font-size: var(--text-sm);
   transition: all 0.3s ease;
-  scroll-margin-top: 20px; /* Adds space when scrolling to the TOC */
+  scroll-margin-top: 20px;
 }
 
 /* Mobile "back to contents" floating button */
@@ -1097,7 +988,7 @@ img[src$='#responsive'] {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -1132,14 +1023,14 @@ img[src$='#responsive'] {
 }
 
 .toc-sticky details summary::before {
-  content: "📑"; /* Table of contents emoji when closed */
+  content: "📑";
   margin-right: 6px;
   font-size: 0.9em;
   transition: transform 0.2s ease;
 }
 
 .toc-sticky details[open] summary::before {
-  content: "📄"; /* Document emoji when open - shows content is visible */
+  content: "📄";
 }
 
 .toc-sticky details[open] summary {
@@ -1150,7 +1041,7 @@ img[src$='#responsive'] {
 
 /* Make TOC heading look good */
 .toc-sticky h2 {
-  display: none; /* Hide heading on mobile, use summary instead */
+  display: none;
 }
 
 /* Smooth animation for TOC expansion */
@@ -1159,8 +1050,14 @@ img[src$='#responsive'] {
 }
 
 @keyframes toc-fade {
-  0% { opacity: 0; transform: translateY(-5px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Base TOC list styling */
@@ -1197,54 +1094,47 @@ img[src$='#responsive'] {
 
 /* On large screens, position TOC outside the article */
 @media (min-width: 1200px) {
-  /* Container stays centered */
   .post-with-sidebar {
     max-width: 760px;
     margin: 0 auto;
     position: relative;
-    --toc-top-position: 0px; /* Default value, will be updated by JS */
+    --toc-top-position: 0px;
   }
 
-  /* Float TOC to the right of content with sticky scrolling */
   .toc-sticky {
-    position: sticky; /* Use sticky positioning for natural scrolling behavior */
-    top: 20px; /* Small offset from top to give it breathing room */
-    float: right; /* Float to the right of the content */
-    margin-right: calc(-220px - 30px); /* Push it outside the content area (width + some spacing) */
+    position: sticky;
+    top: 20px;
+    float: right;
+    margin-right: calc(-220px - 30px);
     width: 220px;
     background: transparent;
     padding: 0 0 0 15px;
     border-left: 3px solid var(--yellow-500);
-    margin-top: 0; /* Align with the top of the content */
-    margin-bottom: 20px; /* Add some spacing at the bottom */
-    max-height: calc(100vh - 40px); /* Limit height to viewport minus minimal margins */
-    overflow-y: auto; /* Allow scrolling for very long TOCs */
-    z-index: 90; /* Ensure it's above content but still respects natural document flow */
-    opacity: 0.85; /* Slightly transparent by default */
+    margin-top: 0;
+    margin-bottom: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    z-index: 90;
+    opacity: 0.85;
     transition: opacity 0.2s ease;
   }
 
-  /* Make TOC more visible on hover */
   .toc-sticky:hover {
     opacity: 1;
   }
 
-  /* Show the TOC content directly, not in details/summary */
   .toc-sticky details {
     padding: 0;
   }
 
-  /* Hide the summary on desktop */
   .toc-sticky details summary {
     display: none;
   }
 
-  /* Make details always open on desktop */
   .toc-sticky details {
     display: block;
   }
 
-  /* Show the heading in wide screens */
   .toc-sticky h2 {
     display: block;
     font-size: 1.1rem;
@@ -1256,12 +1146,10 @@ img[src$='#responsive'] {
     border-bottom: 1px solid var(--border-color);
   }
 
-  /* Hide the details/summary in wide screens */
   .toc-sticky details > summary {
     display: none;
   }
 
-  /* Always show content in wide screens */
   .toc-sticky details {
     padding: 0;
   }
@@ -1279,14 +1167,14 @@ img[src$='#responsive'] {
 /* Adjust TOC margin for different screen sizes */
 @media (min-width: 1200px) and (max-width: 1400px) {
   .toc-sticky {
-    margin-right: calc(-220px - 15px); /* Smaller spacing on medium-large screens */
+    margin-right: calc(-220px - 15px);
   }
 }
 
 /* Extra wide screens - position TOC even better */
 @media (min-width: 1600px) {
   .toc-sticky {
-    margin-right: calc(-220px - 50px); /* More spacing on very wide screens */
+    margin-right: calc(-220px - 50px);
   }
 }
 
@@ -1305,35 +1193,94 @@ img[src$='#responsive'] {
   text-transform: uppercase;
 }
 
-/* Parse out just the language name */
-.highlight.language-javascript::after { content: "JS"; }
-.highlight.language-js::after { content: "JS"; }
-.highlight.language-typescript::after { content: "TS"; }
-.highlight.language-ts::after { content: "TS"; }
-.highlight.language-python::after { content: "PY"; }
-.highlight.language-py::after { content: "PY"; }
-.highlight.language-bash::after { content: "SH"; }
-.highlight.language-sh::after { content: "SH"; }
-.highlight.language-html::after { content: "HTML"; }
-.highlight.language-css::after { content: "CSS"; }
-.highlight.language-go::after { content: "GO"; }
-.highlight.language-ruby::after { content: "RB"; }
-.highlight.language-java::after { content: "JAVA"; }
-.highlight.language-c::after { content: "C"; }
-.highlight.language-cpp::after { content: "C++"; }
-.highlight.language-csharp::after { content: "C#"; }
-.highlight.language-php::after { content: "PHP"; }
-.highlight.language-swift::after { content: "SWIFT"; }
-.highlight.language-rust::after { content: "RUST"; }
-.highlight.language-kotlin::after { content: "KOTLIN"; }
-.highlight.language-sql::after { content: "SQL"; }
-.highlight.language-markdown::after { content: "MD"; }
-.highlight.language-md::after { content: "MD"; }
-.highlight.language-json::after { content: "JSON"; }
-.highlight.language-yaml::after { content: "YAML"; }
-.highlight.language-yml::after { content: "YAML"; }
-.highlight.language-toml::after { content: "TOML"; }
-.highlight.language-xml::after { content: "XML"; }
+/* Language-specific badges */
+.highlight.language-javascript::after {
+  content: "JS";
+}
+.highlight.language-js::after {
+  content: "JS";
+}
+.highlight.language-typescript::after {
+  content: "TS";
+}
+.highlight.language-ts::after {
+  content: "TS";
+}
+.highlight.language-python::after {
+  content: "PY";
+}
+.highlight.language-py::after {
+  content: "PY";
+}
+.highlight.language-bash::after {
+  content: "SH";
+}
+.highlight.language-sh::after {
+  content: "SH";
+}
+.highlight.language-html::after {
+  content: "HTML";
+}
+.highlight.language-css::after {
+  content: "CSS";
+}
+.highlight.language-go::after {
+  content: "GO";
+}
+.highlight.language-ruby::after {
+  content: "RB";
+}
+.highlight.language-java::after {
+  content: "JAVA";
+}
+.highlight.language-c::after {
+  content: "C";
+}
+.highlight.language-cpp::after {
+  content: "C++";
+}
+.highlight.language-csharp::after {
+  content: "C#";
+}
+.highlight.language-php::after {
+  content: "PHP";
+}
+.highlight.language-swift::after {
+  content: "SWIFT";
+}
+.highlight.language-rust::after {
+  content: "RUST";
+}
+.highlight.language-kotlin::after {
+  content: "KOTLIN";
+}
+.highlight.language-sql::after {
+  content: "SQL";
+}
+.highlight.language-markdown::after {
+  content: "MD";
+}
+.highlight.language-md::after {
+  content: "MD";
+}
+.highlight.language-json::after {
+  content: "JSON";
+}
+.highlight.language-yaml::after {
+  content: "YAML";
+}
+.highlight.language-yml::after {
+  content: "YAML";
+}
+.highlight.language-toml::after {
+  content: "TOML";
+}
+.highlight.language-xml::after {
+  content: "XML";
+}
+.highlight.language-text::after {
+  content: "output";
+}
 
 /* Special styling for shell commands */
 .highlight.language-bash pre code::before,
@@ -1341,18 +1288,15 @@ img[src$='#responsive'] {
   content: "$ ";
   color: var(--meta-color);
   opacity: 0.7;
-  user-select: none; /* Make the prompt non-selectable for easy copying */
+  user-select: none;
 }
 
 /* Style for output blocks in shell code */
 .highlight.language-text pre {
-  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
   color: var(--meta-color);
   font-size: 85%;
-}
-
-.highlight.language-text::after {
-  content: "output";
 }
 
 /* Styling for keyboard shortcuts */

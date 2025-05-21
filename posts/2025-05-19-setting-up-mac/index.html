@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Setting up my Mac - Jonathon Lacher</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="http://localhost:1313/posts/2025-05-19-setting-up-mac/">
+	<meta property="og:url" content="https://jonathonlacher.com/posts/2025-05-19-setting-up-mac/">
   <meta property="og:site_name" content="Jonathon Lacher">
   <meta property="og:title" content="Setting up my Mac">
   <meta property="og:description" content="Mac Settings A post about how I set up my Mac. I’ll likely make minor updates as things change.
 However if I radically change how I do this, I’ll make a new post.
-Enable Time Machine I have at Synology NAS, which makes the backups easy. I highly recommend using Time Machine for backups, even to a external drive. It not only makes it easy to backup / restore files, but you can essentially restore your enire system to a previous state.">
+Enable Time Machine I have at Synology NAS, which makes the backups easy. I highly recommend using Time Machine for backups, even to a external drive. It not only makes it easy to backup / restore files, but you can essentially restore your entire system to a previous state.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -19,13 +19,13 @@ Enable Time Machine I have at Synology NAS, which makes the backups easy. I high
   <meta name="twitter:title" content="Setting up my Mac">
   <meta name="twitter:description" content="Mac Settings A post about how I set up my Mac. I’ll likely make minor updates as things change.
 However if I radically change how I do this, I’ll make a new post.
-Enable Time Machine I have at Synology NAS, which makes the backups easy. I highly recommend using Time Machine for backups, even to a external drive. It not only makes it easy to backup / restore files, but you can essentially restore your enire system to a previous state.">
+Enable Time Machine I have at Synology NAS, which makes the backups easy. I highly recommend using Time Machine for backups, even to a external drive. It not only makes it easy to backup / restore files, but you can essentially restore your entire system to a previous state.">
 
 	<link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" as="style">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300,400,500,600" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/styles.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/styles.css" />
 
 	
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -37,7 +37,7 @@ Enable Time Machine I have at Synology NAS, which makes the backups easy. I high
 <body>
 	<div class="container wrapper">
 		<header class="header">
-	<h1 class="site-title"><a href="http://localhost:1313/">Jonathon Lacher</a></h1>
+	<h1 class="site-title"><a href="https://jonathonlacher.com/">Jonathon Lacher</a></h1>
 	<div class="site-description"><h2>My little blog</h2><nav class="nav social">
 			<ul class="flat"><a href="https://github.com/jonathonlacher" title="GitHub"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul><script>
 				feather.replace();
@@ -92,11 +92,16 @@ Enable Time Machine I have at Synology NAS, which makes the backups easy. I high
     <li><a href="#apps">Apps</a>
       <ul>
         <li><a href="#ice">Ice</a></li>
+        <li><a href="#itsycal">Itsycal</a></li>
         <li><a href="#1password">1Password</a></li>
         <li><a href="#karabiner-elements">Karabiner-Elements</a></li>
         <li><a href="#rectangle">Rectangle</a></li>
         <li><a href="#bluesooze">bluesooze</a></li>
         <li><a href="#tailscale">Tailscale</a></li>
+        <li><a href="#iina">iina</a></li>
+        <li><a href="#google-drive">Google Drive</a></li>
+        <li><a href="#keepingyouawake">KeepingYouAwake</a></li>
+        <li><a href="#notes">Notes</a></li>
       </ul>
     </li>
     <li><a href="#search">Search</a></li>
@@ -107,10 +112,10 @@ Enable Time Machine I have at Synology NAS, which makes the backups easy. I high
 	
 
 	<article class="post">
-		<div class="post-header">
+		<header class="post-header">
 			<h1 class="title">Setting up my Mac</h1>
-			<div class="meta">May 19, 2025</div>
-		</div>
+			<time class="meta" datetime="2025-05-19">May 19, 2025</time>
+		</header>
 
 		<div class="markdown">
 			<h2 id="mac-settings">Mac Settings</h2>
@@ -120,11 +125,10 @@ I&rsquo;ll likely make minor updates as things change.</p>
 <h3 id="enable-time-machine">Enable Time Machine</h3>
 <p>I have at Synology NAS, which makes the backups easy.
 I highly recommend using Time Machine for backups, even to a external drive.
-It not only makes it easy to backup / restore files, but you can essentially restore your enire system to a previous state.</p>
+It not only makes it easy to backup / restore files, but you can essentially restore your entire system to a previous state.</p>
 <h3 id="three-finger-drag">Three Finger Drag</h3>
-<p>Three finger drag allows you to grab windows at the title bar and move them around with a three finger drag.</p>
+<p><a href="https://support.apple.com/en-us/102341">Three finger drag</a> allows you to grab windows at the title bar and move them around with a three finger drag.</p>
 <p>How this isn&rsquo;t default is beyond me.</p>
-<p><a href="https://support.apple.com/en-us/102341">Docs</a></p>
 <h3 id="set-dock-to-the-side">Set Dock to the side</h3>
 <p>I&rsquo;ve gotten used to having the Dock on the side instead of the bottom of screen.
 I think my initial reasoning was that vertical space is more scarce than horizontal space, so put the dock on the side.</p>
@@ -213,6 +217,8 @@ I likely don&rsquo;t use it to its full potential.</p>
 </span></span></code></pre></div><h2 id="apps">Apps</h2>
 <h3 id="ice">Ice</h3>
 <p><a href="https://github.com/jordanbaird/Ice">Ice</a> to keep the menubar small.</p>
+<h3 id="itsycal">Itsycal</h3>
+<p><a href="https://github.com/sfsam/Itsycal">Itsycal</a> is tremendous and a must for me.</p>
 <h3 id="1password">1Password</h3>
 <p>I use <a href="https://1password.com/">1Password</a> for password management.</p>
 <h3 id="karabiner-elements">Karabiner-Elements</h3>
@@ -226,6 +232,14 @@ This is because Mac&rsquo;s seem to be able to connect to bluetooth devices even
 And when I connect them to my phone, they often will then also connect to my Mac and cause issues.</p>
 <h3 id="tailscale">Tailscale</h3>
 <p><a href="https://tailscale.com/">Tailscale</a> to connect to my home network (I aint opening ports on my router).</p>
+<h3 id="iina">iina</h3>
+<p><a href="https://github.com/iina/iina">iina</a> seems to be a better fit than VLC for me.</p>
+<h3 id="google-drive">Google Drive</h3>
+<p>I use it still.</p>
+<h3 id="keepingyouawake">KeepingYouAwake</h3>
+<p><a href="https://github.com/newmarcel/KeepingYouAwake">KeepingYouAwake</a> for when I need to keep it awake.</p>
+<h3 id="notes">Notes</h3>
+<p>I&rsquo;ve tried Obsidian, but I really find it too much and just use Apple Notes.</p>
 <h2 id="search">Search</h2>
 <p>I&rsquo;ve been paying for <a href="https://kagi.com/">Kagi</a> for a few years now.
 I&rsquo;m on the $10/month plan.</p>
