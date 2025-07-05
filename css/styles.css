@@ -155,7 +155,6 @@
 /* Base elements */
 html {
   overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 
 * {
@@ -334,6 +333,7 @@ h6:hover .header-link-icon {
   .header-link-icon {
     visibility: visible;
     opacity: 0.5;
+
     /* Ensure minimum 44px touch target for accessibility */
     min-width: 44px;
     min-height: 44px;
