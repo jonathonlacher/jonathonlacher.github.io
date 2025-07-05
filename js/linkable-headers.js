@@ -28,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
         linkIcon.style.fontSize = "14px";
       }
 
-      linkIcon.addEventListener("click", (event) => {
+      // Handle both click and touch events
+      const handleCopyLink = (event) => {
         event.preventDefault();
         const url =
           window.location.origin + window.location.pathname + "#" + header.id;
@@ -48,7 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
           // Fallback for older browsers
           fallbackCopyTextToClipboard(url, linkIcon);
         }
-      });
+      };
+
+      linkIcon.addEventListener("click", handleCopyLink);
+      linkIcon.addEventListener("touchend", handleCopyLink);
 
       header.style.position = "relative"; // To position the icon relative to the header
       header.appendChild(linkIcon);
