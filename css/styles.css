@@ -1,114 +1,116 @@
-/*
-Consolidated CSS for jonathonlacher.com
-Uses CSS variables for easy theme switching
-*/
-
-/* ==========================================================================
-VARIABLES
-========================================================================== */
+/* CSS Variables */
 
 :root {
-  /* Light mode (default) variables */
+  /* Base colors */
   --bg-color: #fff;
   --text-color: #333;
   --heading-color: #333;
-  --meta-color: #595959; /* Improved from #777 to #595959 for better contrast */
+  --meta-color: #595959;
   --border-color: #eaeaea;
-  --border-color-rgb: 234, 234, 234; /* RGB version of border color for transparency */
+  --border-color-rgb: 234, 234, 234;
+  --text-color-rgb: 51, 51, 51;
   --code-bg: #f5f7fa;
   --code-border: #e2e8f0;
   --code-color: #2a3646;
   --blockquote-border: #a00;
   --highlight-bg: #fffde7;
 
-  /* Font sizes - using a modular scale with 1rem base */
-  --text-xs: 0.75rem; /* 12px - small text, footer, meta */
-  --text-sm: 0.875rem; /* 14px - small UI elements */
-  --text-base: 1rem; /* 16px - base reference size */
-  --text-md: 1.125rem; /* 18px - slightly larger text */
-  --text-lg: 1.25rem; /* 20px - body text */
-  --text-xl: 1.5rem; /* 24px - h4 */
-  --text-2xl: 1.75rem; /* 28px - h3 */
-  --text-3xl: 2rem; /* 32px - h2 */
-  --text-4xl: 2.5rem; /* 40px - h1 */
-  --text-5xl: 3rem; /* 48px - site title */
+  /* Typography scale */
+  --text-small: 0.75rem;
+  --text-base: 1rem;
+  --text-large: 1.25rem;
+  --text-xlarge: 1.5rem;
+  --text-2xlarge: 2rem;
+  --text-3xlarge: 2.5rem;
+  --text-4xlarge: 3rem;
+  --text-code: 0.85rem;
+  --text-code-block: 0.9rem;
 
-  /* Primary color palette */
+  /* Essential colors only */
   --yellow-50: #fffde7;
   --yellow-100: #fff9c4;
   --yellow-200: #fff59d;
-  --yellow-300: #fff176;
-  --yellow-400: #ffee58;
-  --yellow-500: #ffeb3b; /* Main brand yellow */
+  --yellow-500: #ffeb3b;
+  --yellow-500-rgb: 255, 235, 59;
   --yellow-600: #fdd835;
-  --yellow-700: #fbc02d;
-  --yellow-800: #f9a825;
   --yellow-900: #f57f17;
 
-  /* Complementary & accent colors */
   --blue-light: #e3f2fd;
-  --blue: #2196f3;
   --blue-dark: #1565c0;
-
   --green-light: #e8f5e9;
-  --green: #4caf50;
   --green-dark: #2e7d32;
-
   --red-light: #ffebee;
-  --red: #f44336;
   --red-dark: #b71c1c;
 
-  /* Neutral colors */
-  --gray-50: #fafafa;
   --gray-100: #f5f5f5;
-  --gray-200: #eeeeee;
-  --gray-300: #e0e0e0;
-  --gray-400: #bdbdbd;
-  --gray-500: #9e9e9e;
-  --gray-600: #757575;
   --gray-700: #616161;
-  --gray-800: #424242;
   --gray-900: #212121;
 
-  /* Semantic colors */
+  /* Spacing system */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 3rem;
+  --space-4xl: 4rem;
+
+  /* Border radius scale */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 50%;
+
+  /* Animation durations */
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+
+  /* Breakpoints */
+  --breakpoint-mobile: 768px;
+  --breakpoint-desktop: 1200px;
+  --breakpoint-desktop-lg: 1400px;
+  --breakpoint-desktop-xl: 1600px;
+
+  /* Fonts */
+  --font-family:
+    "Inter", -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+    "Helvetica Neue", arial, sans-serif;
+  --font-mono:
+    "SF Mono", consolas, monaco, "Andale Mono", "Ubuntu Mono", monospace;
+
+  /* Component colors */
   --link-bg: var(--yellow-50);
   --link-color: var(--gray-900);
   --link-hover-bg: var(--yellow-100);
-  --link-underline: 1px solid rgba(0, 0, 0, 0.3); /* Add underline to links for better accessibility */
+  --link-underline: 1px solid rgba(var(--text-color-rgb), 0.3);
 
-  --header-bg: #f8f5f0; /* Changed from #f4f3ea to a warmer, less green tone */
+  --header-bg: #f8f5f0;
   --header-accent: var(--yellow-500);
-  --nav-link-bg: rgba(
-    253,
-    216,
-    53,
-    0.15
-  ); /* Semi-transparent yellow for nav buttons */
+  --nav-link-bg: rgba(var(--yellow-500-rgb), 0.15);
   --nav-link-hover-bg: var(--yellow-200);
 
   --info-bg: var(--blue-light);
   --info-color: var(--blue-dark);
-
   --success-bg: var(--green-light);
   --success-color: var(--green-dark);
-
   --warning-bg: var(--yellow-100);
   --warning-color: var(--yellow-900);
-
   --danger-bg: var(--red-light);
   --danger-color: var(--red-dark);
 }
 
-/* Dark mode styles */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Dark mode variables */
     --bg-color: #121212;
     --text-color: #e0e0e0;
     --heading-color: #f5f5f5;
-    --meta-color: #bdbdbd; /* Improved from #9e9e9e to #bdbdbd for better contrast */
+    --meta-color: #a0a0a0;
     --border-color: #333;
-    --border-color-rgb: 51, 51, 51; /* RGB version of dark mode border color */
+    --border-color-rgb: 51, 51, 51;
+    --text-color-rgb: 224, 224, 224;
     --code-bg: #1a1d21;
     --code-border: #2c313a;
     --code-color: #e2e6ed;
@@ -116,16 +118,15 @@ VARIABLES
     --highlight-bg: #333;
     --gray-100: #2d2d2d;
 
-    /* Adjusted semantic colors for dark mode */
     --link-bg: rgba(255, 235, 59, 0.1);
-    --link-color: var(--yellow-200); /* Changed from yellow-300 to yellow-200 for better contrast on dark backgrounds */
+    --link-color: var(--yellow-100);
     --link-hover-bg: rgba(255, 235, 59, 0.2);
-    --link-underline: 1px solid rgba(255, 235, 59, 0.5); /* Add underline to links for better accessibility */
+    --link-underline: 1px solid rgba(var(--yellow-500-rgb), 0.5);
 
     --header-bg: #1e1e1e;
     --header-accent: var(--yellow-600);
     --nav-link-bg: #2d2d2d;
-    --nav-link-hover-bg: rgba(255, 235, 59, 0.15);
+    --nav-link-hover-bg: rgba(var(--yellow-500-rgb), 0.15);
 
     --info-bg: rgba(33, 150, 243, 0.1);
     --info-color: #90caf9;
@@ -133,7 +134,7 @@ VARIABLES
     --success-bg: rgba(76, 175, 80, 0.1);
     --success-color: #a5d6a7;
 
-    --warning-bg: rgba(255, 235, 59, 0.1);
+    --warning-bg: rgba(var(--yellow-500-rgb), 0.1);
     --warning-color: #fff59d;
 
     --danger-bg: rgba(244, 67, 54, 0.1);
@@ -141,24 +142,35 @@ VARIABLES
   }
 }
 
-/* ==========================================================================
-2. BASE & RESET
-========================================================================== */
+/* Base styles */
 
-body {
-  font-family: "inter", sans-serif;
-  font-weight: 500;
-  color: var(--text-color);
-  line-height: 1.6;
-  font-size: var(--text-lg);
-  background-color: var(--bg-color);
-  margin: 0; /* Reset default margin */
-  padding: 20px; /* Add consistent padding */
-  box-sizing: border-box; /* Include padding in width calculations */
+/* Font optimization */
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 400 600;
+  src: url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 }
 
+/* Base elements */
 html {
   overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: var(--text-large);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 20px;
 }
 
 html,
@@ -169,16 +181,28 @@ textarea {
   color: var(--text-color);
 }
 
-::-moz-selection {
-  background: var(--highlight-bg);
-  text-shadow: none;
-}
-
+/* Selection styles */
+::-moz-selection,
 ::selection {
   background: var(--highlight-bg);
   text-shadow: none;
 }
 
+/* Focus indicators */
+*:focus-visible {
+  outline: 2px solid var(--yellow-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* Remove outlines when focus-visible is supported */
+@supports selector(:focus-visible) {
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* Basic elements */
 hr {
   display: block;
   height: 1px;
@@ -213,55 +237,33 @@ textarea {
   resize: vertical;
 }
 
-/* ==========================================================================
-3. TYPOGRAPHY
-========================================================================== */
+/* Typography */
 
-/* Preserve original heading styles for site header */
-.header h1,
-.header h2 {
-  margin: 0;
-  padding: 0;
-  font-weight: inherit;
-  border: none;
-  background: none;
-}
-
-/* Target only content headings */
+/* Content headings */
 .markdown h1,
 .markdown h2,
 .markdown h3,
 .markdown h4,
 .markdown h5,
-.markdown h6,
-.post h1,
-.post h2,
-.post h3,
-.post h4,
-.post h5,
-.post h6 {
+.markdown h6 {
   line-height: 1.2;
   color: var(--heading-color);
   margin-top: 1.2em;
   margin-bottom: 0.5em;
 }
 
-/* H1 - Content heading (not post title) */
-.markdown h1,
-.post .markdown h1 {
-  font-size: var(--text-3xl);
+/* Specific heading sizes */
+.markdown h1 {
+  font-size: var(--text-2xlarge);
   font-weight: 500;
-  color: var(--heading-color);
   margin-top: 1.8em;
   margin-bottom: 0.6em;
   padding-bottom: 0.3em;
   border-bottom: 1px solid var(--border-color);
 }
 
-/* H2 - Major section headers */
-.markdown h2,
-.post .markdown h2 {
-  font-size: calc(var(--text-2xl) * 1.1);
+.markdown h2 {
+  font-size: calc(var(--text-2xlarge) * 0.9);
   font-weight: 500;
   letter-spacing: -0.25px;
   padding-bottom: 0.2em;
@@ -269,78 +271,48 @@ textarea {
   margin-top: 1.2em;
 }
 
-/* H3 - Sub-section headers */
-.markdown h3,
-.post .markdown h3 {
-  font-size: var(--text-2xl);
+.markdown h3 {
+  font-size: var(--text-xlarge);
   font-weight: 400;
   letter-spacing: -0.1px;
   margin-top: 0.9em;
 }
 
-/* H4 - Minor section headers */
-.markdown h4,
-.post .markdown h4 {
-  font-size: var(--text-xl);
+.markdown h4 {
+  font-size: var(--text-large);
   font-weight: 400;
   margin-top: 0.8em;
   margin-bottom: 0.4em;
 }
 
-/* H5 - Small headers */
 .markdown h5,
-.post .markdown h5 {
-  font-size: var(--text-md);
-  font-weight: 400;
-  margin-top: 0.7em;
-  margin-bottom: 0.3em;
-}
-
-/* H6 - Smallest headers */
-.markdown h6,
-.post .markdown h6 {
+.markdown h6 {
   font-size: var(--text-base);
   font-weight: 400;
   margin-top: 0.7em;
   margin-bottom: 0.3em;
 }
 
-/* Compact spacing after headers when followed by paragraph */
+/* Heading spacing adjustments */
 .markdown h1 + p,
 .markdown h2 + p,
 .markdown h3 + p,
 .markdown h4 + p,
 .markdown h5 + p,
-.markdown h6 + p,
-.post .markdown h1 + p,
-.post .markdown h2 + p,
-.post .markdown h3 + p,
-.post .markdown h4 + p,
-.post .markdown h5 + p,
-.post .markdown h6 + p {
+.markdown h6 + p {
   margin-top: 0.3em;
 }
 
-/* First heading in content should have minimal top margin */
-.markdown > h1:first-child,
-.post .markdown > h1:first-child {
+.markdown > h1:first-child {
   margin-top: 0.3em;
 }
 
 .markdown > h2:first-child,
-.markdown > h3:first-child,
-.post .markdown > h2:first-child,
-.post .markdown > h3:first-child {
+.markdown > h3:first-child {
   margin-top: 0.4em;
 }
 
-/* Paragraph spacing */
-.markdown p,
-.post p {
-  margin-bottom: 0.8em;
-}
-
-/* Header link icon styling */
+/* Header anchors */
 .header-link-icon {
   visibility: hidden;
   color: var(--meta-color);
@@ -361,33 +333,40 @@ h6:hover .header-link-icon {
   vertical-align: middle;
 }
 
-/* Links */
-a,
-a:hover {
-  text-decoration: none;
-  word-break: break-word;
+/* Paragraphs */
+.markdown p {
+  margin-bottom: 0.8em;
 }
 
+/* Links */
 a {
   background-color: var(--link-bg);
   color: var(--link-color);
   padding: 1px 3px;
-  border-radius: 2px;
-  transition: background-color 0.2s ease;
-  border-bottom: var(--link-underline); /* Add underline for better accessibility */
-  text-decoration: none; /* We're using border-bottom instead */
-}
-
-/* Explicitly exempt site title from underline */
-.site-title a, .site-title a:hover {
-  border-bottom: none;
+  border-radius: var(--radius-xs);
+  transition: all var(--duration-fast) ease;
+  border-bottom: var(--link-underline);
   text-decoration: none;
+  word-break: break-word;
 }
 
 a:hover {
   background-color: var(--link-hover-bg);
   border-bottom: 1px solid var(--yellow-600);
   padding-bottom: 2px;
+  text-decoration: none;
+}
+
+a:focus {
+  background-color: var(--link-hover-bg);
+  border-bottom: 1px solid var(--yellow-600);
+}
+
+/* Link exceptions */
+.site-title a,
+.site-title a:hover {
+  border-bottom: none;
+  text-decoration: none;
 }
 
 /* Lists */
@@ -407,12 +386,12 @@ ul.flat li {
   margin-left: 0;
 }
 
-/* Blockquote */
+/* Blockquotes */
 blockquote {
   margin-left: 1rem;
   font-style: italic;
-  font-size: var(--text-md);
-  font-family: Georgia, bitstream charter, serif;
+  font-size: var(--text-large);
+  font-family: Georgia, serif;
   border-left: 3px solid var(--blockquote-border);
   padding-left: 20px;
   line-height: 1.5;
@@ -421,7 +400,7 @@ blockquote {
 }
 
 blockquote cite {
-  font-size: var(--text-xs);
+  font-size: var(--text-small);
   opacity: 0.8;
 }
 
@@ -429,16 +408,16 @@ blockquote em {
   font-weight: 600;
 }
 
-/* Add styles for details and summary elements */
+/* Details/Summary elements */
 details > summary {
-  list-style: none; /* Remove default marker */
+  list-style: none;
   cursor: pointer;
   padding: 1px 3px;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   background-color: var(--link-bg);
   color: var(--link-color);
   display: inline-block;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--duration-fast) ease;
 }
 
 details > summary:hover {
@@ -462,21 +441,16 @@ details[open] > summary::before {
   font-size: 0.8em;
 }
 
-/* Style for code elements within summary */
 details > summary code {
   background-color: transparent;
   color: inherit;
-  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
-    "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
-    "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
-    monospace;
+  font-family: var(--font-mono);
   font-size: inherit;
   padding: 0;
   border-radius: 0;
   vertical-align: baseline;
 }
 
-/* Ensure the details/summary doesn't get global link styles */
 details > summary a {
   background-color: transparent;
   color: inherit;
@@ -489,32 +463,29 @@ details > summary a:hover {
   text-decoration: underline;
 }
 
-/* Code */
-/* Inline code styling */
+/* Code styling */
 :not(pre) > code {
-  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
-  font-size: 85%;
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
   background-color: var(--code-bg);
   color: var(--code-color);
   padding: 0.2em 0.4em;
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   border-bottom: 1px solid var(--code-border);
   white-space: nowrap;
 }
 
-/* Code blocks styling */
+/* Code blocks */
 .highlight {
   margin: 1.5rem 0;
   overflow: auto;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   background-color: var(--code-bg);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--code-border);
   position: relative;
 }
 
-/* Add a subtle indicator at the top of code blocks */
 .highlight::before {
   content: "";
   display: block;
@@ -530,31 +501,27 @@ details > summary a:hover {
   padding: 1.25rem;
   background-color: transparent !important;
   overflow-x: auto;
-  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
-  font-size: 90%;
+  font-family: var(--font-mono);
+  font-size: var(--text-code-block);
   line-height: 1.5;
   tab-size: 4;
 }
 
-/* Basic code block styling */
 .highlight pre code {
   display: block;
 }
 
-/* For code blocks without language specification */
 .highlight:not([class*="language-"]) pre code > span {
   display: block;
   position: relative;
   line-height: 1.6;
 }
 
-/* Remove the yellow bottom border from inline code within links */
 a code {
   border-bottom: none;
 }
 
-/* Scrollbar styling for code blocks */
+/* Code block scrollbars */
 .highlight::-webkit-scrollbar {
   height: 8px;
   width: 8px;
@@ -562,84 +529,174 @@ a code {
 
 .highlight::-webkit-scrollbar-thumb {
   background: var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .highlight::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Adjust scrollbar colors for dark mode */
 @media (prefers-color-scheme: dark) {
   .highlight::-webkit-scrollbar-thumb {
     background: var(--gray-700);
   }
 }
 
-/* Better handling of code in list items */
 li code {
   word-break: break-word;
   white-space: normal;
 }
 
-/* Make inline code wrap better on mobile */
 @media (max-width: 767px) {
   :not(pre) > code {
-    white-space: normal;
+    white-space: pre-wrap;
     word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
 
-/* ==========================================================================
-4. LAYOUT PRIMITIVES
-========================================================================== */
+/* Keyboard shortcuts */
+kbd {
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--code-border);
+  box-shadow: 0 1px 0 var(--code-border);
+  background-color: var(--bg-color);
+  color: var(--code-color);
+  margin: 0 0.1em;
+}
 
-.wrapper {
+kbd.combo kbd {
+  margin: 0 0.1em;
+  box-shadow: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--code-border);
+}
+
+kbd.combo .combo-plus {
+  margin: 0 0.2em;
+  color: var(--meta-color);
+}
+
+/* Tables */
+table th {
+  background-color: var(--code-bg);
+}
+
+table th,
+table td {
+  padding: 10px 20px;
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 767px) {
+  table {
+    font-size: var(--text-base);
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+/* Components */
+
+/* Layout containers */
+.wrapper,
+.container {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .container {
-  max-width: 800px;
-  margin: 30px auto 0;
-  width: 100%;
-  box-sizing: border-box;
+  margin-top: 30px;
 }
 
-/* ==========================================================================
-5. COMPONENTS
-========================================================================== */
-
-/* 5.1 Header */
+/* Site header */
 .header {
   margin-bottom: 30px;
   padding: 30px 25px 25px;
   background-color: var(--header-bg);
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    inset 0 -2px 0 var(--border-color);
   width: 100%;
-  box-sizing: border-box;
   left: 0;
   right: 0;
-  box-shadow: inset 0 -2px 0 var(--border-color);
 }
 
 .header h1,
 .header h2 {
   margin: 0;
   padding: 0;
-  font-size: var(--text-3xl);
+  font-weight: inherit;
+  border: none;
+  background: none;
+}
+
+.header h1 {
+  font-size: var(--text-2xlarge);
   line-height: 1.3em;
 }
 
 .header h2 {
-  font-size: var(--text-md);
+  font-size: var(--text-large);
   margin-top: 5px;
 }
 
+.site-title a {
+  color: var(--heading-color);
+  font-size: var(--text-4xlarge);
+  text-decoration: none !important;
+  background-color: transparent;
+  padding: 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.site-title a:hover {
+  color: var(--yellow-600);
+  border-bottom: none;
+}
+
+.header .site-description {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+
+.header .site-description h2 {
+  flex: 1;
+}
+
+.header .site-description nav {
+  margin: 0;
+  padding: 0 10px;
+  border: none;
+  min-width: 50px;
+  margin-left: 0;
+}
+
+.header .site-description nav ul svg {
+  max-height: 15px;
+  margin: 0 4px;
+}
+
+.header .site-description nav ul.flat li {
+  margin-right: 8px;
+}
+
+/* Header navigation */
 .header nav {
   margin-top: 15px;
   border-top: 1px solid var(--border-color);
@@ -665,9 +722,9 @@ li code {
 
 .header nav ul.flat li a {
   background-color: var(--nav-link-bg);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 6px 12px;
-  {{/* border-bottom: none; /* Exempt navigation links from general link underlines */ */}}
+  border-bottom: none;
 }
 
 .header nav ul.flat li a:hover {
@@ -676,53 +733,10 @@ li code {
   padding-bottom: 6px;
 }
 
-.header .site-description {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 30px;
-}
-
-.header .site-description nav {
-  margin: 0;
-  padding: 0 10px;
-  border: none;
-  min-width: 50px;
-  margin-left: 0;
-}
-
-.header .site-description h2 {
-  flex: 1;
-}
-
-.header .site-description nav ul svg {
-  max-height: 15px;
-  margin: 0 4px;
-}
-
-.header .site-description nav ul.flat li {
-  margin-right: 8px;
-}
-
-.site-title a {
-  color: var(--heading-color);
-  font-size: var(--text-5xl);
-  text-decoration: none !important;
-  background-color: transparent;
-  padding: 0;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.site-title a:hover {
-  color: var(--yellow-600);
-  border-bottom: none;
-}
-
-/* 5.2 Footer */
+/* Footer */
 .footer {
   text-align: center;
-  font-size: var(--text-xs);
+  font-size: var(--text-small);
   color: var(--meta-color);
   border-top: 1px solid var(--border-color);
   padding: 20px 0;
@@ -737,9 +751,9 @@ li code {
 }
 
 .copyright {
-  font-size: var(--text-xs);
-  color: var(--text-color); /* Using text-color instead of meta-color for better contrast */
-  font-weight: 500; /* Added for better visibility */
+  font-size: var(--text-small);
+  color: var(--text-color);
+  font-weight: 500;
   padding: 5px 0;
 }
 
@@ -748,15 +762,14 @@ li code {
   color: var(--text-color);
   padding: 0;
   opacity: 0.8;
-  transition: opacity 0.2s ease;
-  border-bottom: none; /* Exempt footer links from general link underlines */
+  transition: opacity var(--duration-fast) ease;
+  border-bottom: none;
 }
 
 .footer a:hover {
   opacity: 1;
-  border-bottom: 1px solid var(--border-color); /* Add subtle bottom border on hover for accessibility */
-  background-color: transparent;
   border-bottom: 1px dotted var(--text-color);
+  background-color: transparent;
   padding-bottom: 0;
 }
 
@@ -776,25 +789,14 @@ li code {
   }
 }
 
-/* 5.3 Section Styling */
-.section-header,
-.section .section-header {
-  font-size: var(--text-xs);
-  font-weight: 500; /* Increased from 100 for better visibility */
-  text-transform: uppercase;
-  color: var(--text-color); /* Changed from var(--meta-color) for better contrast */
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-/* 5.4 Post Styling */
+/* Post styling */
 .post .post-header {
   margin-bottom: 2rem;
 }
 
 .post .post-header .title {
   margin: 0;
-  font-size: var(--text-4xl);
+  font-size: var(--text-3xlarge);
   line-height: 1.1;
   font-weight: 600;
   color: var(--heading-color);
@@ -803,8 +805,8 @@ li code {
 .post .post-header .meta {
   display: block;
   margin-top: 0.5rem;
-  font-size: var(--text-sm);
-  color: var(--text-color); /* Changed from var(--meta-color) for better contrast */
+  font-size: var(--text-base);
+  color: var(--text-color);
   font-weight: 500;
 }
 
@@ -812,7 +814,7 @@ li code {
   color: var(--warning-color);
   text-decoration: none;
   padding: 2px 4px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   margin-left: 6px;
   background-color: var(--warning-bg);
 }
@@ -825,7 +827,7 @@ li code {
   display: inline;
 }
 
-/* 5.5 Recent Posts */
+/* Recent posts */
 .recent-posts .posts .post {
   margin-bottom: 30px;
 }
@@ -833,7 +835,7 @@ li code {
 .recent-posts .posts .post .meta,
 .list .posts .post .meta {
   font-size: var(--text-base);
-  color: var(--text-color); /* Changed from var(--meta-color) for better contrast */
+  color: var(--text-color);
   font-weight: 500;
   margin-bottom: 4px;
 }
@@ -846,7 +848,7 @@ li code {
 .recent-posts .posts .post a.read-more {
   display: inline-block;
   margin-top: 8px;
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   background-color: transparent;
   color: var(--link-color);
   padding: 0;
@@ -857,7 +859,17 @@ li code {
   padding-bottom: 0;
 }
 
-/* 5.7 Pagination */
+/* Section headers */
+.section-header {
+  font-size: var(--text-small);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Pagination */
 .pagination {
   margin: 0;
   padding: 0;
@@ -886,35 +898,27 @@ li code {
   text-align: right;
 }
 
-/* 5.9 Tables */
-table th {
-  background-color: var(--code-bg);
-}
+/* Layout & utilities */
 
-table th,
-table td {
-  padding: 10px 20px;
-  border: 1px solid var(--border-color);
-}
-
-/* ==========================================================================
-6. UTILITIES
-========================================================================== */
-
+/* Utility classes */
 .align-center {
   text-align: center;
 }
+
 .align-left {
   text-align: left;
 }
+
 .align-right {
   text-align: right;
 }
+
 .page-title {
   margin: 0;
 }
+
 .smaller {
-  font-size: var(--text-xs);
+  font-size: var(--text-small);
 }
 
 /* Responsive images */
@@ -923,14 +927,13 @@ img[src$="#responsive"] {
   height: auto;
 }
 
-/* ==========================================================================
-7. MEDIA QUERIES / RESPONSIVE STYLES
-========================================================================== */
+/* Responsive */
 
+/* Mobile styles */
 @media (max-width: 767px) {
   body {
     padding: 15px;
-    font-size: var(--text-md);
+    font-size: var(--text-large);
   }
 
   .header {
@@ -943,25 +946,20 @@ img[src$="#responsive"] {
   }
 
   .site-title a {
-    font-size: var(--text-4xl);
+    font-size: var(--text-3xlarge);
   }
 
   .post-header .title {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xlarge);
   }
 
   .post-header {
     margin-bottom: 1.5rem;
   }
 
-  .markdown h1,
-  .post h1 {
-    font-size: var(--text-2xl);
+  .markdown h1 {
+    font-size: var(--text-xlarge);
     margin-top: 1.5em;
-  }
-
-  .header nav {
-    margin-top: 15px;
   }
 
   .header nav:not(.social) ul.flat li {
@@ -973,60 +971,23 @@ img[src$="#responsive"] {
   }
 }
 
-/* ==========================================================================
-8. TABLE OF CONTENTS
-========================================================================== */
-
+/* Table of Contents */
 .post-with-sidebar {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
 }
 
-/* Mobile TOC styles - collapsible at the top of content */
 .toc-sticky {
   margin-bottom: 20px;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   background-color: var(--code-bg);
   border-left: 3px solid var(--yellow-500);
-  font-size: var(--text-sm);
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  font-size: var(--text-base);
+  transition: all var(--duration-normal) ease;
   scroll-margin-top: 20px;
-}
-
-/* Mobile "back to contents" floating button */
-.toc-mobile-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--code-bg);
-  border: 2px solid var(--yellow-500);
-  color: var(--text-color);
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  z-index: 99;
-}
-
-.toc-mobile-button.visible {
-  opacity: 0.9;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.toc-mobile-button:hover {
-  opacity: 1;
-  transform: translateY(-2px);
+  box-shadow: 0 1px 3px rgba(var(--border-color-rgb), 0.1);
 }
 
 .toc-sticky details {
@@ -1035,39 +996,55 @@ img[src$="#responsive"] {
 
 .toc-sticky details summary {
   cursor: pointer;
-  padding: 4px 0;
-  color: var(--meta-color);
+  padding: 8px 4px;
+  color: var(--text-color);
   font-weight: 600;
   user-select: none;
   display: flex;
   align-items: center;
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) ease;
+  position: relative;
+}
+
+.toc-sticky details summary:hover {
+  background-color: var(--link-bg);
+  color: var(--link-color);
 }
 
 .toc-sticky details summary::before {
-  content: "📑";
-  margin-right: 6px;
-  font-size: 0.9em;
-  transition: transform 0.2s ease;
+  content: "📋";
+  margin-right: 8px;
+  font-size: 1em;
+  transition: none;
 }
 
-.toc-sticky details[open] summary::before {
-  content: "📄";
+.toc-sticky details summary::after {
+  content: "▶";
+  margin-left: auto;
+  font-size: 0.8em;
+  color: var(--meta-color);
+  transition: transform var(--duration-fast) ease;
+  transform-origin: center;
+}
+
+.toc-sticky details[open] summary::after {
+  transform: rotate(90deg);
 }
 
 .toc-sticky details[open] summary {
   margin-bottom: 8px;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 8px;
+  background-color: var(--link-bg);
 }
 
-/* Make TOC heading look good */
 .toc-sticky h2 {
   display: none;
 }
 
-/* Smooth animation for TOC expansion */
 .toc-sticky details > :not(summary) {
-  animation: toc-fade 0.25s ease-in-out;
+  animation: toc-fade var(--duration-fast) ease-in-out;
 }
 
 @keyframes toc-fade {
@@ -1081,7 +1058,6 @@ img[src$="#responsive"] {
   }
 }
 
-/* Base TOC list styling */
 .toc-sticky ul {
   list-style: none;
   margin: 0;
@@ -1097,7 +1073,6 @@ img[src$="#responsive"] {
   padding-left: 15px;
 }
 
-/* TOC links should be clean */
 .toc-sticky a {
   background: transparent;
   padding: 0;
@@ -1113,7 +1088,42 @@ img[src$="#responsive"] {
   color: var(--link-color);
 }
 
-/* On large screens, position TOC outside the article */
+/* Mobile TOC button */
+.toc-mobile-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--code-bg);
+  border: 2px solid var(--yellow-500);
+  color: var(--text-color);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--duration-normal) ease;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.toc-mobile-button.visible {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.toc-mobile-button:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Desktop TOC positioning */
 @media (min-width: 1200px) {
   .post-with-sidebar {
     max-width: 800px;
@@ -1131,13 +1141,16 @@ img[src$="#responsive"] {
     background: transparent;
     padding: 0 0 0 15px;
     border-left: 3px solid var(--yellow-500);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     margin-top: 0;
     margin-bottom: 20px;
     max-height: calc(100vh - 40px);
     overflow-y: auto;
     z-index: 90;
     opacity: 0.85;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--duration-fast) ease;
   }
 
   .toc-sticky:hover {
@@ -1146,14 +1159,16 @@ img[src$="#responsive"] {
 
   .toc-sticky details {
     padding: 0;
+    display: block;
   }
 
   .toc-sticky details summary {
     display: none;
   }
 
-  .toc-sticky details {
-    display: block;
+  .toc-sticky details[open] {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
   .toc-sticky h2 {
@@ -1166,40 +1181,21 @@ img[src$="#responsive"] {
     padding-bottom: 5px;
     border-bottom: 1px solid var(--border-color);
   }
-
-  .toc-sticky details > summary {
-    display: none;
-  }
-
-  .toc-sticky details {
-    padding: 0;
-  }
-
-  .toc-sticky details[open] {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .toc-sticky details {
-    display: block;
-  }
 }
 
-/* Adjust TOC margin for different screen sizes */
-@media (min-width: 1200px) and (max-width: 1400px) {
+@media (min-width: 1200px) and (max-width: 1399px) {
   .toc-sticky {
     margin-right: calc(-220px - 15px);
   }
 }
 
-/* Extra wide screens - position TOC even better */
 @media (min-width: 1600px) {
   .toc-sticky {
     margin-right: calc(-220px - 50px);
   }
 }
 
-/* Add language identifier badge to code blocks */
+/* Code language badges and special styling */
 .highlight[class*="language-"]::after {
   position: absolute;
   top: 0;
@@ -1214,96 +1210,106 @@ img[src$="#responsive"] {
   text-transform: uppercase;
 }
 
-/* Language-specific badges */
-.highlight.language-javascript::after {
-  content: "JS";
-}
+/* Language badges */
+.highlight.language-javascript::after,
 .highlight.language-js::after {
   content: "JS";
 }
-.highlight.language-typescript::after {
-  content: "TS";
-}
+
+.highlight.language-typescript::after,
 .highlight.language-ts::after {
   content: "TS";
 }
-.highlight.language-python::after {
-  content: "PY";
-}
+
+.highlight.language-python::after,
 .highlight.language-py::after {
   content: "PY";
 }
-.highlight.language-bash::after {
-  content: "SH";
-}
+
+.highlight.language-bash::after,
 .highlight.language-sh::after {
   content: "SH";
 }
+
 .highlight.language-html::after {
   content: "HTML";
 }
+
 .highlight.language-css::after {
   content: "CSS";
 }
+
 .highlight.language-go::after {
   content: "GO";
 }
+
 .highlight.language-ruby::after {
   content: "RB";
 }
+
 .highlight.language-java::after {
   content: "JAVA";
 }
+
 .highlight.language-c::after {
   content: "C";
 }
+
 .highlight.language-cpp::after {
   content: "C++";
 }
+
 .highlight.language-csharp::after {
   content: "C#";
 }
+
 .highlight.language-php::after {
   content: "PHP";
 }
+
 .highlight.language-swift::after {
   content: "SWIFT";
 }
+
 .highlight.language-rust::after {
   content: "RUST";
 }
+
 .highlight.language-kotlin::after {
   content: "KOTLIN";
 }
+
 .highlight.language-sql::after {
   content: "SQL";
 }
-.highlight.language-markdown::after {
-  content: "MD";
-}
+
+.highlight.language-markdown::after,
 .highlight.language-md::after {
   content: "MD";
 }
+
 .highlight.language-json::after {
   content: "JSON";
 }
-.highlight.language-yaml::after {
-  content: "YAML";
-}
+
+.highlight.language-yaml::after,
 .highlight.language-yml::after {
   content: "YAML";
 }
+
 .highlight.language-toml::after {
   content: "TOML";
 }
+
 .highlight.language-xml::after {
   content: "XML";
 }
+
 .highlight.language-text::after {
   content: "output";
 }
 
-/* Special styling for shell commands */
+/* Shell command prompts */
 .highlight.language-bash pre code::before,
 .highlight.language-sh pre code::before {
   content: "$ ";
@@ -1312,41 +1318,34 @@ img[src$="#responsive"] {
   user-select: none;
 }
 
-/* Style for output blocks in shell code */
+/* Output styling */
 .highlight.language-text pre {
-  font-family: "SF Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
+  font-family: var(--font-mono);
   color: var(--meta-color);
-  font-size: 85%;
+  font-size: var(--text-code);
 }
 
-/* Styling for keyboard shortcuts */
-kbd {
-  display: inline-block;
-  padding: 0.2em 0.4em;
-  font-family: "SF Mono", Consolas, Monaco, monospace;
-  font-size: 80%;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 3px;
-  border: 1px solid var(--code-border);
-  box-shadow: 0 1px 0 var(--code-border);
-  background-color: var(--bg-color);
-  color: var(--code-color);
-  margin: 0 0.1em;
-}
+/* Print styles */
+@media print {
+  .header nav,
+  .footer,
+  .toc-sticky,
+  .toc-mobile-button {
+    display: none !important;
+  }
 
-/* Special combo styling for key combinations */
-kbd.combo kbd {
-  margin: 0 0.1em;
-  box-shadow: none;
-  border-radius: 3px;
-  border: 1px solid var(--code-border);
-}
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+  }
 
-kbd.combo .combo-plus {
-  margin: 0 0.2em;
-  color: var(--meta-color);
+  a {
+    color: inherit;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    padding: 0;
+  }
 }

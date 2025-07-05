@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>How I manage my Lightroom library - Jonathon Lacher</title><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,12 +14,6 @@
 
 
 
-  
-
-
-
-
-  
 
 
 
@@ -85,8 +79,16 @@ I started by shooting in JPEG and …">
 }
 </script>
 
-	<link rel="preload" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" as="style">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300,400,500,600" rel="stylesheet">
+	
+	
+	<link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+	
+	<link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+	
+	<link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400%3b500%3b600%3b700%3b800&display=optional" rel="stylesheet">
+	
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="https://jonathonlacher.com/css/styles.css" />
@@ -102,10 +104,26 @@ I started by shooting in JPEG and …">
 	<div class="container wrapper">
 		<header class="header">
 	<h1 class="site-title"><a href="https://jonathonlacher.com/">Jonathon Lacher</a></h1>
-	<div class="site-description"><h2>My little blog</h2><nav class="nav social">
-			<ul class="flat"><a href="https://github.com/jonathonlacher" title="GitHub"><i data-feather="github"></i></a><a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a><a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a></ul><script>
+	<div class="site-description">
+		
+		<h2>My little blog</h2>
+		
+		
+		<nav class="nav social">
+			<ul class="flat">
+				
+					<a href="https://github.com/jonathonlacher" title="GitHub"><i data-feather="github"></i></a>
+				
+					<a href="https://twitter.com/jonathon" title="Twitter"><i data-feather="twitter"></i></a>
+				
+					<a href="https://www.linkedin.com/in/jonathonlacher" title="LinkedIn"><i data-feather="linkedin"></i></a>
+				
+			</ul>
+			<script>
 				feather.replace();
-			</script></nav>
+			</script>
+		</nav>
+		
 	</div>
 
 	<nav class="nav">
@@ -128,20 +146,22 @@ I started by shooting in JPEG and …">
 			
 <div class="post-with-sidebar">
 	
-	<aside class="toc-sticky" id="toc">
-		<h2>Contents</h2>
-		<details open>
-			<summary>Table of Contents</summary>
-			<nav id="TableOfContents">
+
+<aside class="toc-sticky" id="toc">
+    <h2>Contents</h2>
+    <details>
+        <summary>Table of Contents</summary>
+        <nav id="TableOfContents">
   <ul>
     <li><a href="#ratings">Ratings</a></li>
     <li><a href="#developing">Developing</a></li>
     <li><a href="#exporting">Exporting</a></li>
   </ul>
 </nav>
-		</details>
-	</aside>
-	
+    </details>
+</aside>
+
+
 
 	<article class="post">
 		<header class="post-header">
@@ -170,24 +190,24 @@ But in terms of order of operations, only after culling my photos through rating
 <p>After I&rsquo;ve developed my photos, I&rsquo;ll export them to a more usable format like JPEG.
 I found a great Lightroom plugin called <a href="http://regex.info/blog/lightroom-goodies/folder-publisher">Jeffrey’s “Folder Publisher” Lightroom Plugin</a> which can export JPEGs in the same directory hierarchy that you store your RAW files.</p>
 <p>For example, I store my RAW files as such:</p>
-<pre tabindex="0"><code>raw_photos/
-├── 2020-5-20/
-│   ├── img223.raw
-│   ├── img224.raw
-│   └── img225.raw
-└──2020-5-23/
-    ├── img228.raw
-    └── img229.raw
-</code></pre><p>The plugin on execution will export JPEGs as follows:</p>
-<pre tabindex="0"><code>exported_photos/
-├── 2020-5-20/
-│   ├── img223.jpg
-│   ├── img224.jpg
-│   └── img225.jpg
-└──2020-5-23/
-    ├── img228.jpg
-    └── img229.jpg
-</code></pre><p>I&rsquo;ll typically export to JPEG photos with 2 stars or higher.
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>raw_photos/
+</span></span><span style="display:flex;"><span>├── 2020-5-20/
+</span></span><span style="display:flex;"><span>│   ├── img223.raw
+</span></span><span style="display:flex;"><span>│   ├── img224.raw
+</span></span><span style="display:flex;"><span>│   └── img225.raw
+</span></span><span style="display:flex;"><span>└──2020-5-23/
+</span></span><span style="display:flex;"><span>    ├── img228.raw
+</span></span><span style="display:flex;"><span>    └── img229.raw
+</span></span></code></pre></div><p>The plugin on execution will export JPEGs as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>exported_photos/
+</span></span><span style="display:flex;"><span>├── 2020-5-20/
+</span></span><span style="display:flex;"><span>│   ├── img223.jpg
+</span></span><span style="display:flex;"><span>│   ├── img224.jpg
+</span></span><span style="display:flex;"><span>│   └── img225.jpg
+</span></span><span style="display:flex;"><span>└──2020-5-23/
+</span></span><span style="display:flex;"><span>    ├── img228.jpg
+</span></span><span style="display:flex;"><span>    └── img229.jpg
+</span></span></code></pre></div><p>I&rsquo;ll typically export to JPEG photos with 2 stars or higher.
 At this point, they&rsquo;re ready for sharing.</p>
 
 		</div>
