@@ -1509,25 +1509,64 @@ img[src$="#responsive"] {
 
 /* Print styles */
 @media print {
+  /* Hide navigation and UI elements */
   .header nav,
   .footer,
   .toc-sticky,
-  .toc-mobile-button {
+  .toc-mobile-button,
+  .search-widget {
     display: none !important;
   }
 
+  /* Basic print setup */
   body {
     font-size: 12pt;
-    line-height: 1.4;
+    line-height: 1.6;
     color: #000;
     background: #fff;
+    max-width: 100%;
   }
 
+  /* Clean up header */
+  .header {
+    margin-bottom: 30px;
+    background: none;
+    box-shadow: none;
+  }
+
+  /* Links */
   a {
-    color: inherit;
+    color: #000;
     text-decoration: underline;
     background: none;
     border: none;
     padding: 0;
+  }
+
+  /* Code blocks */
+  .highlight {
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .highlight pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+
+  /* Prevent awkward page breaks */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
   }
 }
