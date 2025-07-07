@@ -655,7 +655,8 @@ table td {
   max-width: 100%;
   left: 0;
   right: 0;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 }
 
 .header h1,
@@ -724,6 +725,8 @@ table td {
 .header nav {
   margin-top: 15px;
   border-top: 1px solid var(--border-color);
+  overflow: visible;
+  position: relative;
 }
 
 .header nav ul,
@@ -733,6 +736,8 @@ table td {
 
 .header nav ul.flat {
   padding: 0;
+  overflow: visible;
+  position: relative;
 }
 
 .header nav ul.flat li {
