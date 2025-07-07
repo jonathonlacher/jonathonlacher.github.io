@@ -156,7 +156,7 @@
 
 /* Base elements */
 html {
-  overflow-y: scroll;
+  overflow: hidden scroll;
 }
 
 * {
@@ -172,6 +172,8 @@ body {
   background-color: var(--bg-color);
   margin: 0;
   padding: 20px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 html,
@@ -216,6 +218,7 @@ hr {
 img {
   margin: 10px auto;
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -501,6 +504,7 @@ details > summary a:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--code-border);
   position: relative;
+  max-width: 100%;
 }
 
 .highlight::before {
@@ -631,6 +635,7 @@ table td {
   margin: 0 auto;
   position: relative;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .container {
@@ -647,8 +652,10 @@ table td {
     0 1px 3px rgba(0, 0, 0, 0.05),
     inset 0 -2px 0 var(--border-color);
   width: 100%;
+  max-width: 100%;
   left: 0;
   right: 0;
+  overflow: hidden;
 }
 
 .header h1,
@@ -947,7 +954,7 @@ table td {
 .search-input {
   width: 140px;
   padding: 6px 12px;
-  font-size: var(--text-base);
+  font-size: 16px; /* Prevents zoom on iOS */
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   background-color: var(--input-background);
@@ -956,6 +963,7 @@ table td {
   transition:
     width 0.2s ease,
     border-color 0.2s ease;
+  -webkit-appearance: none; /* Remove iOS styling */
 }
 
 .search-input:focus {
@@ -974,10 +982,10 @@ table td {
   border-radius: var(--radius-lg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   max-height: 300px;
-  overflow-y: auto;
+  overflow: hidden auto;
   z-index: 1000;
   min-width: 280px;
-  max-width: 400px;
+  max-width: min(400px, calc(100vw - 40px));
 }
 
 .search-dropdown.hidden {
@@ -1071,12 +1079,21 @@ img[src$="#responsive"] {
 /* Mobile styles */
 @media (max-width: 767px) {
   body {
-    padding: 15px;
+    padding: 10px;
     font-size: var(--text-large);
+    max-width: 100vw;
+  }
+
+  .wrapper,
+  .container {
+    padding: 0 5px;
   }
 
   .header {
     padding: 20px 15px;
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 0;
   }
 
   .header .site-description {
@@ -1115,7 +1132,7 @@ img[src$="#responsive"] {
 
   .search-input {
     width: 110px;
-    font-size: var(--text-small);
+    font-size: 16px; /* Prevents zoom on iOS */
     padding: 6px 10px;
   }
 
@@ -1127,7 +1144,7 @@ img[src$="#responsive"] {
     right: 0;
     left: auto;
     min-width: 240px;
-    max-width: 280px;
+    max-width: min(280px, calc(100vw - 30px));
   }
 }
 
