@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Jonathon Lacher - My little blog </title><meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	
-	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 	<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
@@ -71,13 +71,6 @@
 </script>
 
 	
-	
-	<link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
-	
-	<link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
-	
-	<link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
-	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400%3b500%3b600%3b700%3b800&display=optional" rel="stylesheet">
 	
 
@@ -128,6 +121,10 @@
 				<a href="/posts">All posts</a>
 			</li>
 			
+			<li class="search-widget">
+				<input type="text" id="search-input" placeholder="Search..." class="search-input" autocomplete="off">
+				<div id="search-dropdown" class="search-dropdown hidden"></div>
+			</li>
 		</ul>
 	</nav>
 </header>
@@ -439,5 +436,8 @@ This Quartz article elaborates ...
 </footer>
 
 	</div>
+	
+	<script src="https://unpkg.com/lunr/lunr.js" integrity="sha384-Mrc0XsDxndfJgV5jLnEeThch4j9dNEXAE1vbWeyzmERxSvF8siQfuEczzgUelQQH" crossorigin="anonymous"></script>
+	<script type="module" src="/js/search-dropdown.js"></script>
 </body>
 </html>
