@@ -157,6 +157,7 @@
 /* Base elements */
 html {
   overflow: hidden scroll;
+  background-color: var(--bg-color);
 }
 
 * {
@@ -172,7 +173,6 @@ body {
   background-color: var(--bg-color);
   margin: 0;
   padding: 20px;
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -635,7 +635,18 @@ table td {
   margin: 0 auto;
   position: relative;
   width: 100%;
-  overflow-x: hidden;
+}
+
+/* Only hide horizontal overflow on mobile to prevent scroll issues */
+@media (max-width: 1199px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .wrapper,
+  .container {
+    overflow-x: hidden;
+  }
 }
 
 .container {
@@ -1087,6 +1098,7 @@ img[src$="#responsive"] {
     padding: 10px;
     font-size: var(--text-large);
     max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .wrapper,
@@ -1164,8 +1176,8 @@ img[src$="#responsive"] {
   margin-bottom: 20px;
   border-radius: var(--radius-md);
   background-color: var(--code-bg);
-  border-left: 3px solid var(--yellow-500);
   border: 1px solid var(--border-color);
+  border-left: 3px solid var(--yellow-500);
   font-size: var(--text-base);
   transition: all var(--duration-normal) ease;
   scroll-margin-top: 20px;
@@ -1322,8 +1334,8 @@ img[src$="#responsive"] {
     width: 220px;
     background: transparent;
     padding: 0 0 0 15px;
-    border-left: 3px solid var(--yellow-500);
     border: none;
+    border-left: 3px solid var(--yellow-500);
     border-radius: 0;
     box-shadow: none;
     margin-top: 0;

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Runner Cost Comparison</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>CI/CD Runner Cost Comparison</h1>
+                <p class="subtitle">Compare self-hosted vs SaaS runners</p>
+            </div>
+
+            <div class="sidebar-content">
+                <!-- Hero Input: Monthly Minutes -->
+                <div class="input-section input-section--hero">
+                    <label class="input-label-hero" for="monthlyMinutes">Monthly CI/CD Minutes</label>
+                    <input type="number" id="monthlyMinutes" class="input-hero" value="500000" step="100000" min="0">
+                </div>
+
+                <!-- Your Infrastructure -->
+                <details class="input-accordion" open>
+                    <summary class="accordion-header">
+                        <span class="accordion-title">Your Infrastructure</span>
+                        <span class="accordion-summary" id="infraSummary">$18K/mo</span>
+                    </summary>
+                    <div class="accordion-content">
+                        <div class="input-row">
+                            <label for="infraCost">
+                                Monthly Infra Cost ($)
+                                <span class="help-icon" data-tooltip="Monthly cloud spend for runner infrastructure">?</span>
+                            </label>
+                            <input type="number" id="infraCost" value="10000" step="100" min="0">
+                        </div>
+                        <div class="input-row">
+                            <label for="fteCount">
+                                FTE Count
+                                <span class="help-icon" data-tooltip="Headcount maintaining runner infrastructure">?</span>
+                            </label>
+                            <input type="number" id="fteCount" value="1" step="0.1" min="0">
+                        </div>
+                        <div class="input-row">
+                            <label for="fteSalary">
+                                FTE Annual Salary ($)
+                                <span class="help-icon" data-tooltip="Fully-loaded annual cost per FTE (salary + benefits + overhead)">?</span>
+                            </label>
+                            <input type="number" id="fteSalary" value="100000" step="1000" min="0">
+                        </div>
+                        <div class="input-row slider-row">
+                            <label for="optimizationPct">
+                                Optimization Potential
+                                <span class="help-icon" data-tooltip="Potential infra cost reduction. Only affects infrastructure cost.">?</span>
+                            </label>
+                            <div class="slider-container">
+                                <input type="range" id="optimizationPct" min="0" max="80" value="25">
+                                <span class="slider-value" id="optimizationPctValue">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Runner Size Mix -->
+                <details class="input-accordion" open>
+                    <summary class="accordion-header">
+                        <span class="accordion-title">Runner Size Mix</span>
+                        <span class="accordion-summary" id="mixTotal">100%</span>
+                    </summary>
+                    <div class="accordion-content">
+                        <div class="input-row">
+                            <label for="smallPct">Small (%)</label>
+                            <input type="number" id="smallPct" value="50" min="0" max="100" step="1">
+                        </div>
+                        <div class="input-row">
+                            <label for="mediumPct">Medium (%)</label>
+                            <input type="number" id="mediumPct" value="35" min="0" max="100" step="1">
+                        </div>
+                        <div class="input-row">
+                            <label for="largePct">Large (%)</label>
+                            <input type="number" id="largePct" value="15" min="0" max="100" step="1">
+                        </div>
+                        <div class="mix-validation" id="mixValidation"></div>
+                    </div>
+                </details>
+
+                <!-- Pricing Rates -->
+                <details class="input-accordion">
+                    <summary class="accordion-header">
+                        <span class="accordion-title">Pricing Rates</span>
+                        <span class="accordion-badge">Reference</span>
+                    </summary>
+                    <div class="accordion-content">
+                        <div class="input-row">
+                            <label for="adminFee">
+                                Admin Fee per Minute ($)
+                                <span class="help-icon" data-tooltip="Per-minute platform fee for self-hosted runner usage">?</span>
+                            </label>
+                            <input type="number" id="adminFee" value="0.005" step="0.0001" min="0">
+                        </div>
+                        <div class="input-row">
+                            <label for="saasSmallRate">
+                                SaaS Small Rate ($)
+                                <span class="help-icon" data-tooltip="Per-minute cost for small hosted runners">?</span>
+                            </label>
+                            <input type="number" id="saasSmallRate" value="0.01" step="0.0001" min="0">
+                        </div>
+                        <div class="input-row">
+                            <label for="saasMediumRate">
+                                SaaS Medium Rate ($)
+                                <span class="help-icon" data-tooltip="Per-minute cost for medium hosted runners">?</span>
+                            </label>
+                            <input type="number" id="saasMediumRate" value="0.02" step="0.0001" min="0">
+                        </div>
+                        <div class="input-row">
+                            <label for="saasLargeRate">
+                                SaaS Large Rate ($)
+                                <span class="help-icon" data-tooltip="Per-minute cost for large hosted runners">?</span>
+                            </label>
+                            <input type="number" id="saasLargeRate" value="0.04" step="0.0001" min="0">
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Executive Summary -->
+            <div class="executive-summary" id="executiveSummary">
+                <div class="summary-recommendation" id="recommendation">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="summary-costs" id="summaryCosts">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div class="chart-header">
+                    <h2>Cost Comparison</h2>
+                    <div class="quick-stats" id="quickStats">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Break-Even Analysis -->
+            <details class="detail-section">
+                <summary class="detail-header">
+                    <h3>Break-Even Analysis</h3>
+                    <span class="detail-preview" id="crossoverPreview">Loading...</span>
+                </summary>
+                <div class="detail-content">
+                    <div id="crossoverPoints" class="crossover-container"></div>
+                </div>
+            </details>
+
+            <!-- Detailed Cost Breakdown -->
+            <details class="detail-section">
+                <summary class="detail-header">
+                    <h3>Detailed Cost Breakdown</h3>
+                    <span class="detail-preview">View component costs</span>
+                </summary>
+                <div class="detail-content">
+                    <div class="table-wrapper">
+                        <table id="breakdownTable">
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>Current Self-Hosted</th>
+                                    <th>Optimized Self-Hosted</th>
+                                    <th>SaaS Hosted</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdownBody">
+                            </tbody>
+                            <tfoot id="breakdownFooter">
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </details>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
