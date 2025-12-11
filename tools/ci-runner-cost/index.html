@@ -18,10 +18,15 @@
             </div>
 
             <div class="sidebar-content">
-                <!-- Hero Input: Monthly Minutes -->
+                <!-- Hero Input: Total Minutes -->
                 <div class="input-section input-section--hero">
-                    <label class="input-label-hero" for="monthlyMinutes">Monthly CI/CD Minutes</label>
-                    <input type="number" id="monthlyMinutes" class="input-hero" value="500000" step="100000" min="0">
+                    <label class="input-label-hero" for="totalMinutes">Total CI/CD Minutes</label>
+                    <input type="number" id="totalMinutes" class="input-hero" value="500000" step="100000" min="0">
+                    <div class="time-period-row">
+                        <label for="timePeriodMonths">over</label>
+                        <input type="number" id="timePeriodMonths" value="1" min="1" max="12" step="1">
+                        <span>month(s)</span>
+                    </div>
                 </div>
 
                 <!-- Your Infrastructure -->
@@ -33,8 +38,8 @@
                     <div class="accordion-content">
                         <div class="input-row">
                             <label for="infraCost">
-                                Monthly Infra Cost ($)
-                                <span class="help-icon" data-tooltip="Monthly cloud spend for runner infrastructure">?</span>
+                                Total Infra Cost ($)
+                                <span class="help-icon" data-tooltip="Total cloud spend for runner infrastructure over the time period above">?</span>
                             </label>
                             <input type="number" id="infraCost" value="10000" step="100" min="0">
                         </div>

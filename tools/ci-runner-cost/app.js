@@ -4,7 +4,8 @@ const inputs = {
     fteCount: document.getElementById('fteCount'),
     fteSalary: document.getElementById('fteSalary'),
     adminFee: document.getElementById('adminFee'),
-    monthlyMinutes: document.getElementById('monthlyMinutes'),
+    totalMinutes: document.getElementById('totalMinutes'),
+    timePeriodMonths: document.getElementById('timePeriodMonths'),
     smallPct: document.getElementById('smallPct'),
     mediumPct: document.getElementById('mediumPct'),
     largePct: document.getElementById('largePct'),
@@ -95,8 +96,8 @@ function getCostStructure(values) {
     const norm = getNormalizedPercentages(values.smallPct, values.mediumPct, values.largePct);
 
     // Self-hosted: fixed costs + variable admin fee per minute
-    const currentFixed = values.infraCost + (values.fteCount * values.fteSalary) / 12;
-    const optimizedFixed = values.infraCost * (1 - values.optimizationPct / 100) + (values.fteCount * values.fteSalary) / 12;
+    const currentFixed = values.monthlyInfraCost + (values.fteCount * values.fteSalary) / 12;
+    const optimizedFixed = values.monthlyInfraCost * (1 - values.optimizationPct / 100) + (values.fteCount * values.fteSalary) / 12;
     const selfHostedVarRate = values.adminFee;
 
     // SaaS: no fixed costs, weighted variable rate per minute (with discount)
@@ -117,8 +118,8 @@ function calculateCrossoverPoints(values) {
     const crossovers = [];
 
     // Fixed costs for self-hosted scenarios
-    const currentFixed = values.infraCost + (values.fteCount * values.fteSalary) / 12;
-    const optimizedFixed = values.infraCost * (1 - values.optimizationPct / 100) + (values.fteCount * values.fteSalary) / 12;
+    const currentFixed = values.monthlyInfraCost + (values.fteCount * values.fteSalary) / 12;
+    const optimizedFixed = values.monthlyInfraCost * (1 - values.optimizationPct / 100) + (values.fteCount * values.fteSalary) / 12;
 
     // Variable cost per minute for self-hosted
     const selfHostedVarRate = values.adminFee;
@@ -167,12 +168,18 @@ function calculateCrossoverPoints(values) {
 
 // Get Input Values
 function getInputValues() {
+    const totalMinutes = parseFloat(inputs.totalMinutes.value) || 0;
+    const timePeriodMonths = parseFloat(inputs.timePeriodMonths.value) || 1;
+    const infraCost = parseFloat(inputs.infraCost.value) || 0;
     return {
-        infraCost: parseFloat(inputs.infraCost.value) || 0,
+        infraCost,
+        monthlyInfraCost: infraCost / timePeriodMonths,
         fteCount: parseFloat(inputs.fteCount.value) || 0,
         fteSalary: parseFloat(inputs.fteSalary.value) || 0,
         adminFee: parseFloat(inputs.adminFee.value) || 0,
-        monthlyMinutes: parseFloat(inputs.monthlyMinutes.value) || 0,
+        totalMinutes,
+        timePeriodMonths,
+        monthlyMinutes: totalMinutes / timePeriodMonths,
         smallPct: parseFloat(inputs.smallPct.value) || 0,
         mediumPct: parseFloat(inputs.mediumPct.value) || 0,
         largePct: parseFloat(inputs.largePct.value) || 0,
@@ -288,10 +295,10 @@ function generateLineChartData(values) {
     for (let i = 0; i <= numPoints; i++) {
         const minutes = i * step;
         const current = calculateCurrentSelfHosted(
-            minutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee
+            minutes, values.monthlyInfraCost, values.fteCount, values.fteSalary, values.adminFee
         );
         const optimized = calculateOptimizedSelfHosted(
-            minutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee, values.optimizationPct
+            minutes, values.monthlyInfraCost, values.fteCount, values.fteSalary, values.adminFee, values.optimizationPct
         );
         const saas = calculateSaaSHosted(
             minutes, values.smallPct, values.mediumPct, values.largePct,
@@ -523,10 +530,10 @@ function updateDataTable() {
 
     // Calculate costs
     const current = calculateCurrentSelfHosted(
-        values.monthlyMinutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee
+        values.monthlyMinutes, values.monthlyInfraCost, values.fteCount, values.fteSalary, values.adminFee
     );
     const optimized = calculateOptimizedSelfHosted(
-        values.monthlyMinutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee, values.optimizationPct
+        values.monthlyMinutes, values.monthlyInfraCost, values.fteCount, values.fteSalary, values.adminFee, values.optimizationPct
     );
     const saas = calculateSaaSHosted(
         values.monthlyMinutes, values.smallPct, values.mediumPct, values.largePct,
@@ -534,8 +541,8 @@ function updateDataTable() {
     );
 
     // Component breakdown
-    const currentInfra = values.infraCost;
-    const optimizedInfra = values.infraCost * (1 - values.optimizationPct / 100);
+    const currentInfra = values.monthlyInfraCost;
+    const optimizedInfra = values.monthlyInfraCost * (1 - values.optimizationPct / 100);
     const adminFees = values.monthlyMinutes * values.adminFee;
     const labor = (values.fteCount * values.fteSalary) / 12;
 
@@ -557,7 +564,7 @@ function updateDataTable() {
             <td><span class="cost-value">${formatCurrency(currentInfra)}</span></td>
             <td>
                 <span class="cost-value">${formatCurrency(optimizedInfra)}</span>
-                <div class="formula">${formatCurrency(values.infraCost)} × ${(1 - values.optimizationPct / 100).toFixed(2)}</div>
+                <div class="formula">${formatCurrency(values.monthlyInfraCost)} × ${(1 - values.optimizationPct / 100).toFixed(2)}</div>
             </td>
             <td>—</td>
         </tr>
@@ -664,10 +671,10 @@ function updateExecutiveSummary() {
     const minutes = values.monthlyMinutes;
 
     const current = calculateCurrentSelfHosted(
-        minutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee
+        minutes, values.monthlyInfraCost, values.fteCount, values.fteSalary, values.adminFee
     );
     const optimized = calculateOptimizedSelfHosted(
-        minutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee, values.optimizationPct
+        minutes, values.monthlyInfraCost, values.fteCount, values.fteSalary, values.adminFee, values.optimizationPct
     );
     const saas = calculateSaaSHosted(
         minutes, values.smallPct, values.mediumPct, values.largePct,
@@ -687,7 +694,7 @@ function updateExecutiveSummary() {
     const labor = (values.fteCount * values.fteSalary) / 12;
     const adminFees = minutes * values.adminFee;
     const targetInfra = saas - adminFees - labor;
-    const requiredReduction = values.infraCost > 0 ? ((values.infraCost - targetInfra) / values.infraCost) * 100 : 0;
+    const requiredReduction = values.monthlyInfraCost > 0 ? ((values.monthlyInfraCost - targetInfra) / values.monthlyInfraCost) * 100 : 0;
 
     // Update recommendation text
     const recommendationEl = document.getElementById('recommendation');
@@ -730,7 +737,7 @@ function updateExecutiveSummary() {
         } else {
             costsHtml += `
                 <div class="summary-insight">
-                    To match SaaS costs, reduce infrastructure by <strong>${formatPercent(requiredReduction)}</strong> (from ${formatCurrency(values.infraCost)} to ${formatCurrency(targetInfra)}/month).
+                    To match SaaS costs, reduce infrastructure by <strong>${formatPercent(requiredReduction)}</strong> (from ${formatCurrency(values.monthlyInfraCost)} to ${formatCurrency(targetInfra)}/month).
                 </div>
             `;
         }
@@ -768,7 +775,7 @@ function updateAccordionSummaries() {
 
     // Infrastructure summary
     const labor = (values.fteCount * values.fteSalary) / 12;
-    const totalInfra = values.infraCost + labor;
+    const totalInfra = values.monthlyInfraCost + labor;
     const infraSummary = document.getElementById('infraSummary');
     if (infraSummary) {
         if (totalInfra >= 1000) {
