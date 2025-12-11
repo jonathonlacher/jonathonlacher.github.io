@@ -707,6 +707,56 @@ input[type="range"]::-moz-range-thumb {
     font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
 }
 
+/* ========== Rate Comparison Section ========== */
+.rate-comparison-section {
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.rate-comparison-section h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+}
+
+.section-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem;
+}
+
+#rate-comparison-table .baseline-row {
+    background: rgba(59, 130, 246, 0.05);
+    border-top: 2px solid var(--border-color);
+}
+
+#rate-comparison-table .baseline-row td {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+#rate-comparison-table .baseline {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+#rate-comparison-table .rate-note {
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+#rate-comparison-table .no-data {
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
 /* ========== Crossover Formula ========== */
 .crossover-formula {
     font-size: 0.6875rem;

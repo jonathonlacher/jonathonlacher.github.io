@@ -66,11 +66,18 @@ function calculateOptimizedSelfHosted(minutes, infraCost, fteCount, fteSalary, a
 function calculateSaaSHosted(minutes, smallPct, mediumPct, largePct, smallRate, mediumRate, largeRate, discount = 0) {
     // Normalize percentages to ensure they sum to 100%
     const total = smallPct + mediumPct + largePct;
-    if (total === 0) return 0;
 
-    const normSmall = smallPct / total;
-    const normMedium = mediumPct / total;
-    const normLarge = largePct / total;
+    // If all zero, use equal split (matches getNormalizedPercentages behavior)
+    let normSmall, normMedium, normLarge;
+    if (total === 0) {
+        normSmall = 1 / 3;
+        normMedium = 1 / 3;
+        normLarge = 1 / 3;
+    } else {
+        normSmall = smallPct / total;
+        normMedium = mediumPct / total;
+        normLarge = largePct / total;
+    }
 
     const smallCost = (minutes * normSmall) * smallRate;
     const mediumCost = (minutes * normMedium) * mediumRate;
@@ -477,6 +484,77 @@ function updateCostStructure() {
     `;
 }
 
+// Update Rate Comparison Table
+function updateRateComparison() {
+    const values = getInputValues();
+    const tbody = document.getElementById('rate-comparison-body');
+    if (!tbody) return;
+
+    const minutes = values.monthlyMinutes;
+    if (minutes === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="no-data">Enter minutes to see rate comparison</td></tr>';
+        return;
+    }
+
+    // Calculate current self-hosted total and effective rate
+    const currentTotal = calculateCurrentSelfHosted(
+        minutes, values.monthlyInfraCost, values.fteCount, values.fteSalary, values.adminFee
+    );
+    const effectiveRate = currentTotal / minutes;
+
+    // Calculate SaaS costs for each tier at 100% usage (with discount)
+    const discountMultiplier = 1 - values.saasDiscount / 100;
+    const tiers = [
+        {
+            name: 'If all Small runners',
+            rate: values.saasSmallRate * discountMultiplier,
+            cost: minutes * values.saasSmallRate * discountMultiplier
+        },
+        {
+            name: 'If all Medium runners',
+            rate: values.saasMediumRate * discountMultiplier,
+            cost: minutes * values.saasMediumRate * discountMultiplier
+        },
+        {
+            name: 'If all Large runners',
+            rate: values.saasLargeRate * discountMultiplier,
+            cost: minutes * values.saasLargeRate * discountMultiplier
+        }
+    ];
+
+    let html = '';
+
+    // Add SaaS tier rows
+    tiers.forEach(tier => {
+        const diff = tier.cost - currentTotal;
+        const diffPct = (diff / currentTotal) * 100;
+        const isCheaper = diff < 0;
+
+        html += `
+            <tr>
+                <td>${tier.name}</td>
+                <td>$${tier.rate.toFixed(4)}/min</td>
+                <td>${formatCurrency(tier.cost)}</td>
+                <td class="${isCheaper ? 'diff-negative' : 'diff-positive'}">
+                    ${isCheaper ? '' : '+'}${formatPercent(diffPct)}
+                </td>
+            </tr>
+        `;
+    });
+
+    // Add current self-hosted row (baseline)
+    html += `
+        <tr class="baseline-row">
+            <td><strong>Your current (self-hosted)</strong></td>
+            <td><strong>$${effectiveRate.toFixed(4)}/min</strong> <span class="rate-note">effective</span></td>
+            <td><strong>${formatCurrency(currentTotal)}</strong></td>
+            <td class="baseline">baseline</td>
+        </tr>
+    `;
+
+    tbody.innerHTML = html;
+}
+
 // Update Crossover Points Display
 function updateCrossoverPoints() {
     const values = getInputValues();
@@ -793,6 +871,7 @@ function updateAll() {
     updateCharts();
     updateExecutiveSummary();
     updateCostStructure();
+    updateRateComparison();
     updateCrossoverPoints();
     updateDataTable();
     updateCrossoverPreview();
@@ -816,6 +895,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLineChart();
     updateExecutiveSummary();
     updateCostStructure();
+    updateRateComparison();
     updateCrossoverPoints();
     updateDataTable();
     updateCrossoverPreview();
