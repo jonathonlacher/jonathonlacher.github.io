@@ -467,6 +467,26 @@ input[type="range"]::-moz-range-thumb {
     font-weight: 600;
 }
 
+.summary-insight {
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--info-bg, #eff6ff);
+    border-left: 3px solid var(--info-color, #3b82f6);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.summary-insight.warning {
+    background: var(--warning-bg, #fef3c7);
+    border-left-color: var(--warning-color, #f59e0b);
+}
+
+.summary-insight strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 /* ========== Chart Section ========== */
 .chart-section {
     background: var(--surface-color);
@@ -492,39 +512,6 @@ input[type="range"]::-moz-range-thumb {
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
-}
-
-/* ========== Quick Stats ========== */
-.quick-stats {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.quick-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.quick-stat-label {
-    color: var(--text-muted);
-    font-size: 0.6875rem;
-    font-weight: 500;
-}
-
-.quick-stat-value {
-    font-weight: 600;
-    font-size: 0.875rem;
-    color: var(--text-primary);
-}
-
-.quick-stat-value.cheapest {
-    color: var(--success-color);
-}
-
-.quick-stat-value.savings {
-    color: var(--success-color);
 }
 
 /* ========== Chart Container ========== */
@@ -825,15 +812,6 @@ tfoot td {
 
     .chart-header {
         flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .quick-stats {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    .quick-stat {
         align-items: flex-start;
     }
 }

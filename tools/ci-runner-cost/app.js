@@ -628,11 +628,6 @@ function updateDataTable() {
         ` : ''}
     `;
 
-    // Calculate per-minute costs
-    const currentPerMin = values.monthlyMinutes > 0 ? current / values.monthlyMinutes : 0;
-    const optimizedPerMin = values.monthlyMinutes > 0 ? optimized / values.monthlyMinutes : 0;
-    const saasPerMin = values.monthlyMinutes > 0 ? saas / values.monthlyMinutes : 0;
-
     // Calculate differences
     const optimizedDiff = optimized - current;
     const optimizedDiffPct = current > 0 ? (optimizedDiff / current) * 100 : 0;
@@ -647,12 +642,6 @@ function updateDataTable() {
             <td><strong>${formatCurrency(current)}</strong></td>
             <td><strong>${formatCurrency(optimized)}</strong></td>
             <td><strong>${formatCurrency(saas)}</strong></td>
-        </tr>
-        <tr>
-            <td><strong>Cost per Minute</strong></td>
-            <td><strong>$${currentPerMin.toFixed(4)}</strong></td>
-            <td><strong>$${optimizedPerMin.toFixed(4)}</strong></td>
-            <td><strong>$${saasPerMin.toFixed(4)}</strong></td>
         </tr>
         <tr>
             <td><strong>Difference vs. Current</strong></td>
@@ -694,6 +683,12 @@ function updateExecutiveSummary() {
     const cheapest = scenarios.reduce((a, b) => a.cost < b.cost ? a : b);
     const savings = current - cheapest.cost;
 
+    // Calculate required infra reduction to match SaaS
+    const labor = (values.fteCount * values.fteSalary) / 12;
+    const adminFees = minutes * values.adminFee;
+    const targetInfra = saas - adminFees - labor;
+    const requiredReduction = values.infraCost > 0 ? ((values.infraCost - targetInfra) / values.infraCost) * 100 : 0;
+
     // Update recommendation text
     const recommendationEl = document.getElementById('recommendation');
     if (cheapest.key === 'current') {
@@ -721,58 +716,27 @@ function updateExecutiveSummary() {
         `;
     }
 
-    costsEl.innerHTML = costsHtml;
-}
-
-// Update Quick Stats
-function updateQuickStats() {
-    const values = getInputValues();
-    const minutes = values.monthlyMinutes;
-
-    const current = calculateCurrentSelfHosted(
-        minutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee
-    );
-    const optimized = calculateOptimizedSelfHosted(
-        minutes, values.infraCost, values.fteCount, values.fteSalary, values.adminFee, values.optimizationPct
-    );
-    const saas = calculateSaaSHosted(
-        minutes, values.smallPct, values.mediumPct, values.largePct,
-        values.saasSmallRate, values.saasMediumRate, values.saasLargeRate, values.saasDiscount
-    );
-
-    const costs = [
-        { name: 'Current', value: current },
-        { name: 'Optimized', value: optimized },
-        { name: 'SaaS', value: saas }
-    ];
-
-    const cheapest = costs.reduce((a, b) => a.value < b.value ? a : b);
-    const savings = current - cheapest.value;
-
-    const statsContainer = document.getElementById('quickStats');
-    if (!statsContainer) return;
-
-    let html = `
-        <div class="quick-stat">
-            <span class="quick-stat-label">At ${formatNumber(minutes)} min</span>
-            <span class="quick-stat-value">Current: ${formatCurrency(current)}</span>
-        </div>
-        <div class="quick-stat">
-            <span class="quick-stat-label">Cheapest Option</span>
-            <span class="quick-stat-value cheapest">${cheapest.name}: ${formatCurrency(cheapest.value)}</span>
-        </div>
-    `;
-
-    if (savings > 0) {
-        html += `
-            <div class="quick-stat">
-                <span class="quick-stat-label">Potential Savings</span>
-                <span class="quick-stat-value savings">${formatCurrency(savings)}/mo</span>
-            </div>
-        `;
+    // Add required infra reduction insight when SaaS is cheaper than current self-hosted
+    if (saas < current && cheapest.key === 'saas') {
+        if (targetInfra < 0) {
+            // Even with $0 infra, self-hosted would still cost more
+            const minSelfHosted = adminFees + labor;
+            const excess = minSelfHosted - saas;
+            costsHtml += `
+                <div class="summary-insight warning">
+                    Even with <strong>$0 infrastructure</strong>, self-hosted would cost <strong>${formatCurrency(excess)}/month more</strong> than SaaS due to labor + admin fees.
+                </div>
+            `;
+        } else {
+            costsHtml += `
+                <div class="summary-insight">
+                    To match SaaS costs, reduce infrastructure by <strong>${formatPercent(requiredReduction)}</strong> (from ${formatCurrency(values.infraCost)} to ${formatCurrency(targetInfra)}/month).
+                </div>
+            `;
+        }
     }
 
-    statsContainer.innerHTML = html;
+    costsEl.innerHTML = costsHtml;
 }
 
 // Update Crossover Preview
@@ -824,7 +788,6 @@ function updateAll() {
     updateCostStructure();
     updateCrossoverPoints();
     updateDataTable();
-    updateQuickStats();
     updateCrossoverPreview();
     updateAccordionSummaries();
     saveToLocalStorage();
@@ -848,7 +811,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCostStructure();
     updateCrossoverPoints();
     updateDataTable();
-    updateQuickStats();
     updateCrossoverPreview();
     updateAccordionSummaries();
 });
