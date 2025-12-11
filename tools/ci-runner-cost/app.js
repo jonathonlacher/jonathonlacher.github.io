@@ -11,6 +11,7 @@ const inputs = {
     saasSmallRate: document.getElementById('saasSmallRate'),
     saasMediumRate: document.getElementById('saasMediumRate'),
     saasLargeRate: document.getElementById('saasLargeRate'),
+    saasDiscount: document.getElementById('saasDiscount'),
     optimizationPct: document.getElementById('optimizationPct')
 };
 
@@ -61,7 +62,7 @@ function calculateOptimizedSelfHosted(minutes, infraCost, fteCount, fteSalary, a
     return optimizedInfra + adminFees + labor;
 }
 
-function calculateSaaSHosted(minutes, smallPct, mediumPct, largePct, smallRate, mediumRate, largeRate) {
+function calculateSaaSHosted(minutes, smallPct, mediumPct, largePct, smallRate, mediumRate, largeRate, discount = 0) {
     // Normalize percentages to ensure they sum to 100%
     const total = smallPct + mediumPct + largePct;
     if (total === 0) return 0;
@@ -73,7 +74,8 @@ function calculateSaaSHosted(minutes, smallPct, mediumPct, largePct, smallRate, 
     const smallCost = (minutes * normSmall) * smallRate;
     const mediumCost = (minutes * normMedium) * mediumRate;
     const largeCost = (minutes * normLarge) * largeRate;
-    return smallCost + mediumCost + largeCost;
+    const baseCost = smallCost + mediumCost + largeCost;
+    return baseCost * (1 - discount / 100);
 }
 
 // Get normalized percentages
@@ -88,6 +90,28 @@ function getNormalizedPercentages(smallPct, mediumPct, largePct) {
     };
 }
 
+// Calculate cost structure (fixed + variable) for each scenario
+function getCostStructure(values) {
+    const norm = getNormalizedPercentages(values.smallPct, values.mediumPct, values.largePct);
+
+    // Self-hosted: fixed costs + variable admin fee per minute
+    const currentFixed = values.infraCost + (values.fteCount * values.fteSalary) / 12;
+    const optimizedFixed = values.infraCost * (1 - values.optimizationPct / 100) + (values.fteCount * values.fteSalary) / 12;
+    const selfHostedVarRate = values.adminFee;
+
+    // SaaS: no fixed costs, weighted variable rate per minute (with discount)
+    const saasBaseRate = (norm.small / 100 * values.saasSmallRate) +
+                         (norm.medium / 100 * values.saasMediumRate) +
+                         (norm.large / 100 * values.saasLargeRate);
+    const saasVarRate = saasBaseRate * (1 - values.saasDiscount / 100);
+
+    return {
+        current: { fixed: currentFixed, varRate: selfHostedVarRate },
+        optimized: { fixed: optimizedFixed, varRate: selfHostedVarRate },
+        saas: { fixed: 0, varRate: saasVarRate, baseRate: saasBaseRate, discount: values.saasDiscount }
+    };
+}
+
 // Calculate crossover points between scenarios
 function calculateCrossoverPoints(values) {
     const crossovers = [];
@@ -99,11 +123,12 @@ function calculateCrossoverPoints(values) {
     // Variable cost per minute for self-hosted
     const selfHostedVarRate = values.adminFee;
 
-    // Variable cost per minute for SaaS (weighted average based on mix)
+    // Variable cost per minute for SaaS (weighted average based on mix, with discount)
     const norm = getNormalizedPercentages(values.smallPct, values.mediumPct, values.largePct);
-    const saasVarRate = (norm.small / 100 * values.saasSmallRate) +
-                        (norm.medium / 100 * values.saasMediumRate) +
-                        (norm.large / 100 * values.saasLargeRate);
+    const saasBaseRate = (norm.small / 100 * values.saasSmallRate) +
+                         (norm.medium / 100 * values.saasMediumRate) +
+                         (norm.large / 100 * values.saasLargeRate);
+    const saasVarRate = saasBaseRate * (1 - values.saasDiscount / 100);
 
     // Current Self-Hosted vs SaaS: currentFixed + minutes * selfHostedVarRate = minutes * saasVarRate
     // currentFixed = minutes * (saasVarRate - selfHostedVarRate)
@@ -115,7 +140,7 @@ function calculateCrossoverPoints(values) {
                 label: 'Current Self-Hosted vs SaaS',
                 minutes: crossoverCurrentVsSaas,
                 cost: calculateSaaSHosted(crossoverCurrentVsSaas, values.smallPct, values.mediumPct, values.largePct,
-                                          values.saasSmallRate, values.saasMediumRate, values.saasLargeRate),
+                                          values.saasSmallRate, values.saasMediumRate, values.saasLargeRate, values.saasDiscount),
                 cheaper_below: saasVarRate > selfHostedVarRate ? 'SaaS' : 'Current Self-Hosted',
                 cheaper_above: saasVarRate > selfHostedVarRate ? 'Current Self-Hosted' : 'SaaS'
             });
@@ -130,7 +155,7 @@ function calculateCrossoverPoints(values) {
                 label: 'Optimized Self-Hosted vs SaaS',
                 minutes: crossoverOptimizedVsSaas,
                 cost: calculateSaaSHosted(crossoverOptimizedVsSaas, values.smallPct, values.mediumPct, values.largePct,
-                                          values.saasSmallRate, values.saasMediumRate, values.saasLargeRate),
+                                          values.saasSmallRate, values.saasMediumRate, values.saasLargeRate, values.saasDiscount),
                 cheaper_below: saasVarRate > selfHostedVarRate ? 'SaaS' : 'Optimized Self-Hosted',
                 cheaper_above: saasVarRate > selfHostedVarRate ? 'Optimized Self-Hosted' : 'SaaS'
             });
@@ -154,6 +179,7 @@ function getInputValues() {
         saasSmallRate: parseFloat(inputs.saasSmallRate.value) || 0,
         saasMediumRate: parseFloat(inputs.saasMediumRate.value) || 0,
         saasLargeRate: parseFloat(inputs.saasLargeRate.value) || 0,
+        saasDiscount: parseFloat(inputs.saasDiscount.value) || 0,
         optimizationPct: parseFloat(inputs.optimizationPct.value) || 0
     };
 }
@@ -229,6 +255,9 @@ function updateSliderDisplays() {
     // Update optimization slider display
     document.getElementById('optimizationPctValue').textContent = `${values.optimizationPct}%`;
 
+    // Update SaaS discount slider display
+    document.getElementById('saasDiscountValue').textContent = `${values.saasDiscount}%`;
+
     // Update runner mix validation
     const rawTotal = values.smallPct + values.mediumPct + values.largePct;
     const mixTotalElement = document.getElementById('mixTotal');
@@ -266,7 +295,7 @@ function generateLineChartData(values) {
         );
         const saas = calculateSaaSHosted(
             minutes, values.smallPct, values.mediumPct, values.largePct,
-            values.saasSmallRate, values.saasMediumRate, values.saasLargeRate
+            values.saasSmallRate, values.saasMediumRate, values.saasLargeRate, values.saasDiscount
         );
 
         dataPoints.push({
@@ -413,10 +442,39 @@ function updateCharts() {
     lineChart.update();
 }
 
+// Update Cost Structure Display
+function updateCostStructure() {
+    const values = getInputValues();
+    const structure = getCostStructure(values);
+    const container = document.getElementById('costStructure');
+    if (!container) return;
+
+    // Show discount info for SaaS if discount is applied
+    const saasRateDisplay = structure.saas.discount > 0
+        ? `$${structure.saas.baseRate.toFixed(4)} − ${structure.saas.discount}% = $${structure.saas.varRate.toFixed(4)}/min`
+        : `$${structure.saas.varRate.toFixed(4)}/min`;
+
+    container.innerHTML = `
+        <div class="cost-structure-item">
+            <span class="cost-structure-label">Current Self-Hosted</span>
+            <span class="cost-structure-formula">${formatCurrency(structure.current.fixed)} fixed + $${structure.current.varRate.toFixed(4)}/min</span>
+        </div>
+        <div class="cost-structure-item">
+            <span class="cost-structure-label">Optimized Self-Hosted</span>
+            <span class="cost-structure-formula">${formatCurrency(structure.optimized.fixed)} fixed + $${structure.optimized.varRate.toFixed(4)}/min</span>
+        </div>
+        <div class="cost-structure-item">
+            <span class="cost-structure-label">SaaS Hosted</span>
+            <span class="cost-structure-formula">${formatCurrency(structure.saas.fixed)} fixed + ${saasRateDisplay}</span>
+        </div>
+    `;
+}
+
 // Update Crossover Points Display
 function updateCrossoverPoints() {
     const values = getInputValues();
     const crossovers = calculateCrossoverPoints(values);
+    const structure = getCostStructure(values);
     const container = document.getElementById('crossoverPoints');
 
     if (crossovers.length === 0) {
@@ -429,12 +487,20 @@ function updateCrossoverPoints() {
         const isBelow = values.monthlyMinutes < cp.minutes;
         const yourPosition = isBelow ? cp.cheaper_below : cp.cheaper_above;
 
+        // Determine which fixed cost applies based on the label
+        const isOptimized = cp.label.includes('Optimized');
+        const selfHostedFixed = isOptimized ? structure.optimized.fixed : structure.current.fixed;
+
         html += `
             <div class="crossover-item">
                 <div class="crossover-label">${cp.label}</div>
                 <div class="crossover-value">
                     <strong>${formatNumber(Math.round(cp.minutes))}</strong> minutes
                     <span class="crossover-cost">(${formatCurrency(cp.cost)})</span>
+                </div>
+                <div class="crossover-formula">
+                    <span class="formula-label">Formula:</span> Fixed ÷ (SaaS rate − Per-minute fee)<br>
+                    <span class="formula-calc">${formatCurrency(selfHostedFixed)} ÷ ($${structure.saas.varRate.toFixed(4)} − $${structure.current.varRate.toFixed(4)}) = ${formatNumber(Math.round(cp.minutes))}</span>
                 </div>
                 <div class="crossover-insight">
                     Below: <span class="cheaper">${cp.cheaper_below}</span> is cheaper<br>
@@ -464,7 +530,7 @@ function updateDataTable() {
     );
     const saas = calculateSaaSHosted(
         values.monthlyMinutes, values.smallPct, values.mediumPct, values.largePct,
-        values.saasSmallRate, values.saasMediumRate, values.saasLargeRate
+        values.saasSmallRate, values.saasMediumRate, values.saasLargeRate, values.saasDiscount
     );
 
     // Component breakdown
@@ -473,32 +539,25 @@ function updateDataTable() {
     const adminFees = values.monthlyMinutes * values.adminFee;
     const labor = (values.fteCount * values.fteSalary) / 12;
 
-    // SaaS costs using normalized percentages
+    // SaaS costs using normalized percentages (before discount)
     const saasSmall = (values.monthlyMinutes * norm.small / 100) * values.saasSmallRate;
     const saasMedium = (values.monthlyMinutes * norm.medium / 100) * values.saasMediumRate;
     const saasLarge = (values.monthlyMinutes * norm.large / 100) * values.saasLargeRate;
+    const saasSubtotal = saasSmall + saasMedium + saasLarge;
+    const saasDiscountAmount = saasSubtotal * (values.saasDiscount / 100);
 
-    // Build table body
+    // Build table body with fixed/variable grouping
     const tbody = document.getElementById('breakdownBody');
     tbody.innerHTML = `
+        <tr class="group-header">
+            <td colspan="4">Fixed Costs <span class="group-note">(do not change with usage)</span></td>
+        </tr>
         <tr>
             <td>Infrastructure</td>
             <td><span class="cost-value">${formatCurrency(currentInfra)}</span></td>
             <td>
                 <span class="cost-value">${formatCurrency(optimizedInfra)}</span>
                 <div class="formula">${formatCurrency(values.infraCost)} × ${(1 - values.optimizationPct / 100).toFixed(2)}</div>
-            </td>
-            <td>—</td>
-        </tr>
-        <tr>
-            <td>Admin Fees</td>
-            <td>
-                <span class="cost-value">${formatCurrency(adminFees)}</span>
-                <div class="formula">${formatNumber(values.monthlyMinutes)} × $${values.adminFee.toFixed(4)}</div>
-            </td>
-            <td>
-                <span class="cost-value">${formatCurrency(adminFees)}</span>
-                <div class="formula">${formatNumber(values.monthlyMinutes)} × $${values.adminFee.toFixed(4)}</div>
             </td>
             <td>—</td>
         </tr>
@@ -511,6 +570,21 @@ function updateDataTable() {
             <td>
                 <span class="cost-value">${formatCurrency(labor)}</span>
                 <div class="formula">${values.fteCount} × ${formatCurrency(values.fteSalary)} / 12</div>
+            </td>
+            <td>—</td>
+        </tr>
+        <tr class="group-header">
+            <td colspan="4">Variable Costs <span class="group-note">(per-minute charges)</span></td>
+        </tr>
+        <tr>
+            <td>Per-Minute Fees</td>
+            <td>
+                <span class="cost-value">${formatCurrency(adminFees)}</span>
+                <div class="formula">${formatNumber(values.monthlyMinutes)} × $${values.adminFee.toFixed(4)}</div>
+            </td>
+            <td>
+                <span class="cost-value">${formatCurrency(adminFees)}</span>
+                <div class="formula">${formatNumber(values.monthlyMinutes)} × $${values.adminFee.toFixed(4)}</div>
             </td>
             <td>—</td>
         </tr>
@@ -541,6 +615,17 @@ function updateDataTable() {
                 <div class="formula">${formatNumber(values.monthlyMinutes)} × ${norm.large.toFixed(1)}% × $${values.saasLargeRate.toFixed(4)}</div>
             </td>
         </tr>
+        ${values.saasDiscount > 0 ? `
+        <tr class="discount-row">
+            <td>Account Discount (${values.saasDiscount}%)</td>
+            <td>—</td>
+            <td>—</td>
+            <td>
+                <span class="cost-value diff-negative">−${formatCurrency(saasDiscountAmount)}</span>
+                <div class="formula">${formatCurrency(saasSubtotal)} × ${values.saasDiscount}%</div>
+            </td>
+        </tr>
+        ` : ''}
     `;
 
     // Calculate per-minute costs
@@ -597,7 +682,7 @@ function updateExecutiveSummary() {
     );
     const saas = calculateSaaSHosted(
         minutes, values.smallPct, values.mediumPct, values.largePct,
-        values.saasSmallRate, values.saasMediumRate, values.saasLargeRate
+        values.saasSmallRate, values.saasMediumRate, values.saasLargeRate, values.saasDiscount
     );
 
     const scenarios = [
@@ -652,7 +737,7 @@ function updateQuickStats() {
     );
     const saas = calculateSaaSHosted(
         minutes, values.smallPct, values.mediumPct, values.largePct,
-        values.saasSmallRate, values.saasMediumRate, values.saasLargeRate
+        values.saasSmallRate, values.saasMediumRate, values.saasLargeRate, values.saasDiscount
     );
 
     const costs = [
@@ -705,7 +790,6 @@ function updateCrossoverPreview() {
     // Find most relevant crossover (Current vs SaaS)
     const cp = crossovers.find(c => c.label.includes('Current')) || crossovers[0];
     const minutesK = Math.round(cp.minutes / 1000);
-    const isBelow = values.monthlyMinutes < cp.minutes;
 
     if (minutesK >= 1000) {
         preview.textContent = `${cp.cheaper_below} cheaper below ${(minutesK/1000).toFixed(1)}M min`;
@@ -737,6 +821,7 @@ function updateAll() {
     updateSliderDisplays();
     updateCharts();
     updateExecutiveSummary();
+    updateCostStructure();
     updateCrossoverPoints();
     updateDataTable();
     updateQuickStats();
@@ -760,6 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSliderDisplays();
     initLineChart();
     updateExecutiveSummary();
+    updateCostStructure();
     updateCrossoverPoints();
     updateDataTable();
     updateQuickStats();
