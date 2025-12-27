@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Santa Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="tool-header">
+    <nav class="tool-nav" aria-label="Tool navigation">
+      <a class="tool-nav__link" href="/tools/">← Tools</a>
+      <a class="tool-nav__link" href="/">Home</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1><span>🎄</span> Secret Santa Generator</h1>
+
+    <div class="card">
+      <h2>👥 Participants</h2>
+      <div class="input-row">
+        <input type="text" id="nameInput" placeholder="Enter a name..." autocomplete="off">
+        <button class="btn-add" onclick="addParticipant()">Add</button>
+      </div>
+      <div class="list" id="participantList">
+        <span class="empty-state">No participants yet</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚫 Exclusion Rules</h2>
+      <p class="card-description">
+        Select two people who shouldn't be matched with each other.
+      </p>
+      <div class="rule-row">
+        <select id="rulePersonA">
+          <option value="">Person A</option>
+        </select>
+        <span class="rule-arrow">↔</span>
+        <select id="rulePersonB">
+          <option value="">Person B</option>
+        </select>
+        <button class="btn-add" onclick="addRule()">Add Rule</button>
+      </div>
+      <div class="list" id="ruleList" style="margin-top: 12px;">
+        <span class="empty-state">No rules yet</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Forced Pairings</h2>
+      <p class="card-description">
+        Require that a specific person gives to another.
+      </p>
+      <div class="rule-row">
+        <select id="forcedGiver">
+          <option value="">Giver</option>
+        </select>
+        <span class="rule-arrow">→</span>
+        <select id="forcedReceiver">
+          <option value="">Receiver</option>
+        </select>
+        <button class="btn-add" onclick="addForcedPairing()">Add</button>
+      </div>
+      <div class="list" id="forcedList" style="margin-top: 12px;">
+        <span class="empty-state">No forced pairings yet</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎲 Generate</h2>
+      <div id="permutationCount" class="permutation-count"></div>
+      <p class="card-description">
+        Enter a seed phrase everyone agrees on. Same seed = same results every time.
+      </p>
+      <div class="input-row">
+        <input type="text" id="seedInput" placeholder="e.g., Christmas2024" autocomplete="off">
+      </div>
+      <button class="btn-generate" id="generateBtn" onclick="generate()" disabled>
+        🎁 Generate Assignments
+      </button>
+    </div>
+
+    <button class="btn-copy" id="copyBtn" onclick="copyLink()" style="display: none;">
+      🔗 Copy Link to This Setup
+    </button>
+
+    <div class="card results-card" id="resultsCard" style="display: none;">
+      <h2>🎉 Assignments</h2>
+      <div id="resultsList"></div>
+      <p class="results-note">
+        Same participants + rules + seed = same results every time
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
